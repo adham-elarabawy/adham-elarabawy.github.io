@@ -4,7 +4,9 @@
         <title>Adham Elarabawy</title>
         <meta charset="utf-8">
         <!-- include the termynal stylesheet -->
-        <link rel="stylesheet" href="termynal.css">
+        <link rel="stylesheet" href="termynal/termynal.css">
+        <!-- include the general stylesheet -->
+        <link rel="stylesheet" href="general.css">
         <!-- some custom styles for the page -->
         <link href="https://fonts.googleapis.com/css?family=Fira+Mono">
         <style>
@@ -13,34 +15,36 @@
                 background: #1a1e24;
                 width: 100%;
                 min-height: 100vh;
-                display: -webkit-box; display: -ms-flexbox; display: flex;
+                display: -webkit-box; display: -ms-flexbox; display: flex; flex-direction: column;
                 -webkit-box-align: center; -ms-flex-align: center; align-items: center;
                 -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
                 -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-            }
-           	.tle {
+           	}
+           	h1.tle {
            		font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
-           		padding: 0; margin: 0;
-                background: #1a1e24;
-                width: 100%;
+           		color: white;
+                font-size: 4rem;
            	}
         </style>
     </head>
     <body>
+        <div class="fade-in-centered">
+            <h1 class="tle">adham elarabawy</h1>
+        </div>
         <!-- the termynal container -->
-        <div id="termynal" data-ty-typeDelay="30" data-ty-lineDelay="300" data-ty-progressLength="40" data-termynal>
+        <div id="termynal" data-ty-typeDelay="30" data-ty-lineDelay="300" data-ty-progressLength="40" class="fade-in" data-termynal>
             <span data-ty="input">pip install adham-elarabawy</span>
             <span data-ty="progress"></span>
             <span data-ty>Successfully installed adham-elarabawy</span>
             <span data-ty></span>
             <span data-ty="input">python</span>
             <span data-ty="input" data-ty-prompt=">>>">import adham-elarabawy as adham</span>
-            <span data-ty="input" data-ty-prompt=">>>">model = adham.load('portfolio')</span>
-            <span data-ty="input" data-ty-prompt=">>>">print(model)</span>
-            <span data-ty>[('Hello', 'INTJ'), ('world', 'NOUN')]</span>
+            <span data-ty="input" data-ty-prompt=">>>">portfolio = adham.load('model')</span>
+            <span data-ty="input" data-ty-prompt=">>>">print(portfolio)</span>
+            <span data-ty>[('lightnet', 'python convolutional neural network implementation'), <br>('light-notator', 'custom frame annotator implemented in p5')]</span>
         </div>
 
         <!-- include and initialise termynal.js -->
-        <script src="termynal.js" data-termynal-container="#termynal"></script>
+        <script src="termynal/termynal.js" data-termynal-container="#termynal"></script>
     </body>
 </html>
