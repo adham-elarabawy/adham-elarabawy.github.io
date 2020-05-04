@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<title>Adham Elarabawy</title>
+
+<style type="text/css">
+	body {
+		background-color: black;
+	}
+	.title {
+		text-align: center;
+		color: white;
+		margin: 1 auto;
+		font-family: "Helvetica Neue", "Arial", sans-serif;
+		font-style: italic;
+		font-weight: 100;
+		font-variant-ligatures: normal;
+		font-size: 5rem;
+		letter-spacing: 1px;
+	}
+	.console {
+		  width: 30%;
+		  height: 30%;
+		  overflow: auto;
+		  margin: auto;
+		  position: absolute;
+		  top: 0; left: 0; bottom: 0; right: 0;
+		  border: solid black;
+	}
+	.rapid_text {
+		font-family: "Courier New", Courier, monospace;
+		color: white;
+	}
+</style>
+<body>
+
+<p class="title">Adham Elarabawy</p>
+
+<div class="console">
+	<p id="demo" class="rapid_text"><span>adham</span></p>
+
+	<script>
+	var i = 0;
+	var txt = 'Lorem ipsum dummy text blabla.';
+	var speed = 30;
+
+	function typeWriter() {
+	  if (i < txt.length) {
+	    document.getElementById("demo").innerHTML += txt.charAt(i);
+	    i++;
+	    setTimeout(typeWriter, speed);
+	  }
+	}
+
+	typeWriter();
+	</script>
+</div>
+
+</body>
+</html>
