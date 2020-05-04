@@ -1,7 +1,10 @@
 .fade-in-centered {
-  display: flex;
   position: fixed;
-  top: 0;
+  height: 22%;
+  bottom: 10;
+  left: 0;
+  right: 0;
+  text-align: center;
   animation: fadeIn ease 4s;
   -webkit-animation: fadeIn ease 4s;
   -moz-animation: fadeIn ease 4s;

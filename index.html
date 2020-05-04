@@ -1,54 +1,60 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <title>Adham Elarabawy</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-        <link rel="manifest" href="assets/favicon/site.webmanifest">
-        <meta charset="utf-8">
-        <!-- include the termynal stylesheet -->
-        <link rel="stylesheet" href="termynal/termynal.css">
-        <!-- include the general stylesheet -->
-        <link rel="stylesheet" href="general.css">
-        <!-- some custom styles for the page -->
-        <link href="https://fonts.googleapis.com/css?family=Fira+Mono">
-        <style>
-            body {
-                padding: 0; margin: 0;
-                background: #1a1e24;
-                width: 100%;
-                min-height: 100vh;
-                display: -webkit-box; display: -ms-flexbox; display: flex; flex-direction: column;
-                -webkit-box-align: center; -ms-flex-align: center; align-items: center;
-                -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
-                -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-           	}
-           	h1.tle {
-           		font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
-           		color: white;
-                font-size: 4rem;
-           	}
-        </style>
-    </head>
-    <body>
-        <div class="fade-in-centered">
-            <h1 class="tle">adham elarabawy</h1>
-        </div>
-        <!-- the termynal container -->
-        <div id="termynal" data-ty-typeDelay="30" data-ty-lineDelay="300" data-ty-progressLength="40" class="fade-in" data-termynal>
-            <span data-ty="input">pip install adham-elarabawy</span>
-            <span data-ty="progress"></span>
-            <span data-ty>Successfully installed adham-elarabawy</span>
-            <span data-ty></span>
-            <span data-ty="input">python</span>
-            <span data-ty="input" data-ty-prompt=">>>">import adham-elarabawy as adham</span>
-            <span data-ty="input" data-ty-prompt=">>>">portfolio = adham.load('model')</span>
-            <span data-ty="input" data-ty-prompt=">>>">print(portfolio)</span>
-            <span data-ty>[('lightnet', 'python convolutional neural network implementation'), <br>('light-notator', 'custom frame annotator implemented in p5')]</span>
-        </div>
+<meta charset="utf-8">
+<link rel="stylesheet" href="parallax_assets/parallax.css">
+<!-- include the termynal stylesheet -->
+<link rel="stylesheet" href="termynal/termynal.css">
+<!-- include the general stylesheet -->
+<link rel="stylesheet" href="general.css">
+<!-- some custom styles for the page -->
+<link href="https://fonts.googleapis.com/css?family=Fira+Mono">
+<script src="parallax/parallax.js"></script>
+<style>
+   	h1.tle {
+   		font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
+   		color: #e0e0e0;
+        font-size: 11rem;
+   	}
 
-        <!-- include and initialise termynal.js -->
-        <script src="termynal/termynal.js" data-termynal-container="#termynal"></script>
-    </body>
-</html>
+   	h1.tle1 {
+   		font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
+   		color: #252a33;
+        font-size: 11rem;
+   	}
+</style>
+
+<main>
+	<header>
+		<div class="container">
+		<!-- 	<div class="fade-in-centered">
+	            <h1 class="tle">adham elarabawy</h1>
+	        </div> -->
+	        <!-- the termynal container -->
+	        <div class="fade-in" id="termynal" data-ty-typeDelay="30" data-ty-lineDelay="300" data-ty-progressLength="40" data-termynal>
+	            <span data-ty="input">pip install adham-elarabawy</span>
+	            <span data-ty="progress"></span>
+	            <span data-ty>Successfully installed adham-elarabawy</span>
+	            <span data-ty></span>
+	            <span data-ty="input">python</span>
+	            <span data-ty="input" data-ty-prompt=">>>">import adham-elarabawy as adham</span>
+	            <span data-ty="input" data-ty-prompt=">>>">portfolio = adham.load('model')</span>
+	            <span data-ty="input" data-ty-prompt=">>>">print(portfolio)</span>
+	            <span data-ty><span style="color:red;"><b>error:</b> unexpected list dimension</span></span>
+	            <span data-ty><span style="color:green;"><b>found solution:</b> scroll to see expanded portfolio</span></span>
+	        </div>
+
+	        <div class="fade-in-centered">
+	            <h1 class="tle">adham elarabawy</h1>
+	        </div>
+	        
+
+<!-- 		</div> -->
+	</header>
+
+	<section>
+		<div>
+	        <h1 class="tle1">projects</h1>
+	    </div>
+	</section>
+</main>
+
+<!-- include and initialise termynal.js -->
+<script src="termynal/termynal.js" data-termynal-container="#termynal"></script>
