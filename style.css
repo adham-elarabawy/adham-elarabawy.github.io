@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 div.page{
   display: flex;
   flex-direction: column;
@@ -14,12 +18,22 @@ div.page{
 
 h2 {
   font-family: 'Raleway', sans-serif;
-  font-size: 9vw;
+  font-size: 5vw;
   margin: 6vh;
 }
 
 h2.title {
   color: white;
+  font-size: 9vw;
+  text-shadow: 1px 1px 0px #252a33,
+  2px 2px 0px #252a33,
+  3px 3px 0px #252a33,
+  4px 4px 0px #252a33;
+}
+
+a.nav_button {
+  display: flex;
+
 }
 
 
@@ -36,10 +50,42 @@ div.page2 {
 }
 
 div.page3 {
-  background: linear-gradient(135deg, #4f4f4f, #454545, #383838);
+  background: linear-gradient(135deg, #252a33, #353b47,#444c5c);
   height:60vh;
 }
 
 .fade {
   opacity: 0;
+}
+
+#mySidenav a {
+  position: fixed;
+  left: -90px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 110px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#home {
+  top: 20px;
+  background-color: #252a33;
+}
+
+#portfolio {
+  top: 80px;
+  background-color: #252a33;
+}
+
+#about {
+  top: 140px;
+  background-color: #252a33;
 }

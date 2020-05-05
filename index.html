@@ -8,14 +8,23 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="assets/favicon/site.webmanifest">
 
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="assets/termynal.css">
   <link rel="stylesheet" href="style.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/43b853fc9d.js" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <div class="page page1">
+  <div id="mySidenav" class="sidenav">
+    <a href="#home_page" id="home">home <span style="color: #252a33;">asd</span><i style="text-align: center;" class="fas fa-home"></i></a>
+    <a href="#portfolio_page" id="portfolio">portfolio <span style="color: #252a33;">a.</span><i style="text-align: center;" class="fas fa-code-branch"></i></a>
+    <a href="#about_page" id="about">about <span style="color: #252a33;">aa..</span><i style="text-align: center;" class="fas fa-address-card"></i></a>
+  </div>
+  <div id="home_page" class="page page1">
     <div id="termynal" class="fade" data-ty-typeDelay="30" data-ty-lineDelay="300" data-ty-progressLength="40" data-termynal>
           <span data-ty="input">pip install adham-elarabawy</span>
           <span data-ty="progress"></span>
@@ -29,15 +38,13 @@
       </div>
     <h2 class="title fade">adham elarabawy</h1>
   </div>
-  <div class="page page2">
-    <h2 class="fade">projects</h2>
+  <div id="portfolio_page" class="page page2">
+    <h2 class="fade header">portfolio</h2>
   </div>
-  <div class="page page3">
-    <h2 class="fade" style="color: white;">about me</h2>
+  <div id="about_page" class="page page3">
+    <h2 class="fade header" style="color: white;">about me</h2>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="assets/termynal.js" data-termynal-container="#termynal"></script>
-  <script src="main.js"></script>
 </body>
 </html>
