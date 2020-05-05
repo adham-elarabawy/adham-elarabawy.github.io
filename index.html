@@ -1,64 +1,43 @@
-<title>Adham Elarabawy</title>
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-<link rel="manifest" href="assets/favicon/site.webmanifest">
-<meta charset="utf-8">
-<!-- include the termynal stylesheet -->
-<link rel="stylesheet" href="termynal/termynal.css">
-<!-- include the general stylesheet -->
-<link rel="stylesheet" href="general.css">
-<link rel="stylesheet" href="parallax_assets/parallax.css">
-<!-- some custom styles for the page -->
-<link href="https://fonts.googleapis.com/css?family=Fira+Mono">
-<style>
-   	h1.tle {
-   		font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
-   		color: #e0e0e0;
-        font-size: 11rem;
-   	}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adham Elarabawy</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
 
-   	h1.tle1 {
-   		font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
-   		color: #252a33;
-        font-size: 11rem;
-   	}
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap" rel="stylesheet">
 
-<main>
-	<header>
-		<div class="container">
-		<!-- 	<div class="fade-in-centered">
-	            <h1 class="tle">adham elarabawy</h1>
-	        </div> -->
-	        <!-- the termynal container -->
-	        <div class="fade-in" id="termynal" data-ty-typeDelay="30" data-ty-lineDelay="300" data-ty-progressLength="40" data-termynal>
-	            <span data-ty="input">pip install adham-elarabawy</span>
-	            <span data-ty="progress"></span>
-	            <span data-ty>Successfully installed adham-elarabawy</span>
-	            <span data-ty></span>
-	            <span data-ty="input">python</span>
-	            <span data-ty="input" data-ty-prompt=">>>">import adham-elarabawy as adham</span>
-	            <span data-ty="input" data-ty-prompt=">>>">portfolio = adham.load('model')</span>
-	            <span data-ty="input" data-ty-prompt=">>>">print(portfolio)</span>
-	            <span data-ty><span style="color:red;"><b>error:</b> unexpected list dimension</span></span>
-	            <span data-ty><span style="color:green;"><b>found solution:</b> scroll to see expanded portfolio</span></span>
-	        </div>
+  <link rel="stylesheet" href="assets/termynal.css">
+  <link rel="stylesheet" href="style.css">
 
-	        <div class="fade-in-centered">
-	            <h1 class="tle">adham elarabawy</h1>
-	        </div>
-	        
+</head>
+<body>
+  <div class="page page1">
+    <div id="termynal" class="fade" data-ty-typeDelay="30" data-ty-lineDelay="300" data-ty-progressLength="40" data-termynal>
+          <span data-ty="input">pip install adham-elarabawy</span>
+          <span data-ty="progress"></span>
+          <span data-ty>Successfully installed adham-elarabawy</span>
+          <span data-ty></span>
+          <span data-ty="input">python</span>
+          <span data-ty="input" data-ty-prompt=">>>">import adham-elarabawy as adham</span>
+          <span data-ty="input" data-ty-prompt=">>>">portfolio = adham.load('model')</span>
+          <span data-ty="input" data-ty-prompt=">>>">print(portfolio)</span>
+          <span data-ty><span style="color:red;"><b>error:</b> unexpected list dimension, expanding...</span></span>
+      </div>
+    <h2 class="title fade">adham elarabawy</h1>
+  </div>
+  <div class="page page2">
+    <h2 class="fade">projects</h2>
+  </div>
+  <div class="page page3">
+    <h2 class="fade" style="color: white;">about me</h2>
+  </div>
 
-<!-- 		</div> -->
-	</header>
-
-	<section>
-		<div>
-	        <h1 class="tle1">projects</h1>
-	    </div>
-	</section>
-</main>
-
-<!-- include and initialise termynal.js -->
-<script src="termynal/termynal.js" data-termynal-container="#termynal"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="assets/termynal.js" data-termynal-container="#termynal"></script>
+  <script src="main.js"></script>
+</body>
+</html>
