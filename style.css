@@ -47,7 +47,7 @@ a.nav_button {
 div.page1 {
   background: linear-gradient(135deg, #0b4e8c, #165fa3, #4576a3);
   height:100vh;
-  justify-content: flex-end;
+  justify-content: space-evenly;
 }
 
 div.page2 {
@@ -148,7 +148,7 @@ img.profile {
   transform: scale(1.5);
 }
 
-@media (max-width:1000px) {
+@media (max-width:1200px) {
   div#mySidenav {
     display: none;
   }
