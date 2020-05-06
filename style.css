@@ -147,3 +147,9 @@ img.profile {
   -webkit-text-fill-color: transparent;
   transform: scale(1.5);
 }
+
+@media (max-width:1000px) {
+  div#mySidenav {
+    display: none;
+  }
+}
