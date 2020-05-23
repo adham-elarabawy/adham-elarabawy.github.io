@@ -19,5 +19,13 @@ collections:
     output: true
     permalink: /project/:slug
 
+defaults:
+  -
+    scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
 paginate: 6
 paginate_path: "/blog/page:num/"

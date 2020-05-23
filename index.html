@@ -8,14 +8,14 @@ title: 'Adham - Portfolio'
   {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
   {% if thecycle == 'odd' %}
   <div class="project_card">
-    <a href="{{ project.url }}" style="text-decoration: none;">
+    <a class="v0" href="{{ project.url }}" style="text-decoration: none;">
       <div class="colorstrip"></div>
       <div class="project_slide">
         <div>
           <img style="height: 300px; width: auto;" src="{{ project.featured_image }}">
         </div>
         <div class="text_showcase">
-          <h3 style="padding-bottom: 5px;"><u>{{ project.title }}</u></h3>
+          <h3 style="padding-bottom: 5px;">{{ project.title }}</h3>
           <p>{{ project.description }}</p>
         </div>
       </div>
@@ -24,11 +24,11 @@ title: 'Adham - Portfolio'
   </div>
   {% else %}
   <div class="project_card">
-    <a href="{{ project.url }}" style="text-decoration: none;">
+    <a class="v0" href="{{ project.url }}" style="text-decoration: none;">
       <div class="colorstrip"></div>
       <div class="project_slide">
         <div class="text_showcase">
-          <h3 style="padding-bottom: 5px;"><u>{{ project.title }}</u></h3>
+          <h3 style="padding-bottom: 5px;">{{ project.title }}</h3>
           <p>{{ project.description }}</p>
         </div>
         <div>
