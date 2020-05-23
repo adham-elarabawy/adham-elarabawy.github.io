@@ -7,8 +7,12 @@ body {
   font-family: $bodyFont;
 }
 
-h1, p {
+h1, h2, h3, h4, p {
   color: #383838;
+}
+
+p:link{
+  text-decoration: none!important;
 }
 
 .nav_bar {
@@ -51,6 +55,11 @@ a {
   flex-direction: column;
 }
 
+.project_slide {
+    display: flex;
+    flex-direction: row;
+}
+
 .profile_img {
   border-radius: 50%;
   width: 12%;
@@ -70,6 +79,10 @@ a {
 
 .social {
   margin: 0 5px;
+  color: #383838;
+}
+
+#social_button:hover {
   color: #383838;
 }
 

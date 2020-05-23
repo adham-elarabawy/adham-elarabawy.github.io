@@ -1,6 +1,8 @@
 body { background: #ffffff; color: #000000; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
-h1, p { color: #383838; }
+h1, h2, h3, h4, p { color: #383838; }
+
+p:link { text-decoration: none !important; }
 
 .nav_bar { display: flex; flex-direction: row; justify-content: space-evenly; background-color: #383838; }
 
@@ -16,11 +18,15 @@ a { color: #E0E0E0; margin: 10px; font-size: 20px; }
 
 .profile_section { display: flex; flex-direction: column; }
 
+.project_slide { display: flex; flex-direction: row; }
+
 .profile_img { border-radius: 50%; width: 12%; min-width: 140px; height: auto; width: auto\9; /* ie8 */ margin: 15px; }
 
 ._header { display: flex; flex-direction: row; align-items: center; justify-content: center; background: #e9ecef; }
 
 .social { margin: 0 5px; color: #383838; }
+
+#social_button:hover { color: #383838; }
 
 .colorstrip { height: 0px; border-top: solid 5px; color: #55acee; }
 
