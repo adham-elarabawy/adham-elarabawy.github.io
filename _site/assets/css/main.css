@@ -3,7 +3,7 @@ body { background: #ffffff; color: #000000; font-family: "Lato", sans-serif !imp
 
 h1, h2, h3, h4, p { color: #383838; }
 
-@media screen and (max-width: 1000px) { img { width: 350px; } }
+@media screen and (max-width: 1000px) { img { width: 330px; } }
 
 p:link { text-decoration: none !important; }
 
