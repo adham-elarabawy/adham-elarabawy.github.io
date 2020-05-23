@@ -8,9 +8,16 @@ linkedin: https://www.linkedin.com/in/adham-elarabawy/
 github: https://github.com/adham-elarabawy
 
 plugins:
+  - jekyll-paginate
   - jekyll-sitemap
 
 collections:
+  posts:
+    output: true
+    permalink: /blog/:slug
   projects:
     output: true
     permalink: /project/:slug
+
+paginate: 6
+paginate_path: "/blog/page:num/"
