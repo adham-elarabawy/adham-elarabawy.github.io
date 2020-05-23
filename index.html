@@ -3,7 +3,7 @@ layout: default
 title: 'Adham - Portfolio'
 ---
 
-<div style="display: flex; flex-direction: column; align-items: center; padding-top: 10px;" class=" w3-animate-opacity">
+<div style="display: flex; flex-direction: column; align-items: center; padding-top: 10px;" class="w3-animate-opacity">
   {% for project in site.projects reversed%}
   {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
   {% if thecycle == 'odd' %}
