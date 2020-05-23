@@ -4,7 +4,7 @@ $bodyFont: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu
 body {
   background: $backgroundColor;
   color: $bodyColor;
-  font-family: $bodyFont;
+  font-family: 'Lato', sans-serif;
 }
 
 h1, h2, h3, h4, p {
@@ -85,9 +85,41 @@ a {
 #social_button:hover {
   color: #383838;
 }
+.text_showcase {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+}
 
 .colorstrip {
   height: 0px;
   border-top: solid 5px;
   color: #55acee;
+}
+
+.project_slide:hover {
+  background-color: #d2d4d6!important;
+}
+
+// SCROLLBAR
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #d9d9d9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #55acee;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3a83ba;
 }

@@ -2,7 +2,7 @@
 title: 'Dynamic Gradient Descent'
 subtitle: 'This is a demo'
 date: 2018-06-30 00:00:00
-description: This page is a demo that shows everything you can do inside portfolio and blog posts.
+description: I implemented my own dynamic gradient descent algorithm with varying step size & hyper-parameterized sample momentum.
 featured_image: '/images/gradient_descent.gif'
 ---
 

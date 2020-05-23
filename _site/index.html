@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,10 +18,10 @@
 <div class="_header">
   <img src="/assets/img/profile.jpeg" class="profile_img" </div>
   <div style="width: 15px;"></div>
-  <div class="profile_section">
-    <h1>Adham Elarabawy</h1>
+  <div class="profile_section" style="paddint-top: 10px;">
+    <h1><b>Adham Elarabawy</b></h1>
     <p style="font-size: 20px;">UC Berkeley: Electrical Engineering & Computer Science Freshman</p>
-    <div>
+    <div style="padding-bottom: 20px;">
       <a id="social_button" class="btn btn-social-icon btn-twitter social" href="https://github.com/adham-elarabawy" target="_blank">
         <span class="fa fa-github"></span>
       </a>
@@ -39,68 +40,67 @@
   <a class="blog" style="text-decoration: none;" href="blog.html">Blog</a>
   <a class="about" style="text-decoration: none;" href="about.html">About</a>
 </div>
-  <div style="display: flex; flex-direction: column; align-items: center; padding-top: 15px;">
-  <h2 style="padding: 15px;">Here are some projects I've worked on.</h2>
+  <div style="display: flex; flex-direction: column; align-items: center; padding-top: 10px;">
+  <h2 style="padding: 5px;"><b>Here are some projects I've worked on.</b></h2>
   
-  <div style="padding: 5px">
-    <a href="blog.html" style="text-decoration: underline;">
+  
+  
+  <div id="project_card">
+    <a href="blog.html" style="text-decoration: none;">
       <div class="colorstrip"></div>
-      <div class="project_slide" style="width: 50vw; min-width: 800px; display: flex; flex-direction: row; flex-flow: row; align-items: center; background-color: #e9ecef;">
-        <div id="image_showcase">
+      <div class="project_slide" style="width: 50vw; min-width: 800px; display: flex; flex-direction: row; flex-flow: row; align-items: flex-start; background-color: #e9ecef;">
+        <div>
           <img style="height: 300px; width: auto;" src="/images/gradient_descent.gif">
         </div>
-        <div id="text_showcase" style="display: flex; flex-direction: column; align-items: flex-end; padding: 20px;">
-          <h3>Dynamic Gradient Descent</h3>
-          <p>This page is a demo that shows everything you can do inside portfolio and blog posts.</p>
+        <div class="text_showcase">
+          <h3 style="padding-bottom: 5px;"><u>Dynamic Gradient Descent</u></h3>
+          <p>I implemented my own dynamic gradient descent algorithm with varying step size & hyper-parameterized sample momentum.</p>
         </div>
       </div>
       <div class="colorstrip" style="color: #383838;"></div>
     </a>
   </div>
   
-  <div style="padding: 5px">
-    <a href="blog.html" style="text-decoration: underline;">
+  
+  
+  
+  <div id="project_card">
+    <a href="blog.html" style="text-decoration: none;">
       <div class="colorstrip"></div>
-      <div class="project_slide" style="width: 50vw; min-width: 800px; display: flex; flex-direction: row; flex-flow: row; align-items: center; background-color: #e9ecef;">
-        <div id="image_showcase">
-          <img style="height: 300px; width: auto;" src="/images/gradient_descent.gif">
-        </div>
-        <div id="text_showcase" style="display: flex; flex-direction: column; align-items: flex-end; padding: 20px;">
-          <h3>Trajectify</h3>
+      <div class="project_slide" style="width: 50vw; min-width: 800px; display: flex; flex-direction: row; flex-flow: row; align-items: flex-start; background-color: #e9ecef;">
+        <div class="text_showcase">
+          <h3 style="padding-bottom: 5px;"><u>Trajectify</u></h3>
           <p>This page is a demo that shows everything you can do inside portfolio and blog posts.</p>
+        </div>
+        <div>
+          <img style="height: 300px; width: auto;" src="/images/gradient_descent.gif">
         </div>
       </div>
       <div class="colorstrip" style="color: #383838;"></div>
     </a>
   </div>
   
-  <div style="padding: 5px">
-    <a href="blog.html" style="text-decoration: underline;">
+  
+  
+  
+  <div id="project_card">
+    <a href="blog.html" style="text-decoration: none;">
       <div class="colorstrip"></div>
-      <div class="project_slide" style="width: 50vw; min-width: 800px; display: flex; flex-direction: row; flex-flow: row; align-items: center; background-color: #e9ecef;">
-        <div id="image_showcase">
+      <div class="project_slide" style="width: 50vw; min-width: 800px; display: flex; flex-direction: row; flex-flow: row; align-items: flex-start; background-color: #e9ecef;">
+        <div>
           <img style="height: 300px; width: auto;" src="/images/gradient_descent.gif">
         </div>
-        <div id="text_showcase" style="display: flex; flex-direction: column; align-items: flex-end; padding: 20px;">
-          <h3>Dynamic Gradient Descent</h3>
-          <p>This page is a demo that shows everything you can do inside portfolio and blog posts.</p>
+        <div class="text_showcase">
+          <h3 style="padding-bottom: 5px;"><u>Dynamic Gradient Descent</u></h3>
+          <p>I implemented my own dynamic gradient descent algorithm with varying step size & hyper-parameterized sample momentum.</p>
         </div>
       </div>
       <div class="colorstrip" style="color: #383838;"></div>
     </a>
   </div>
+  
   
 </div>
-
-
-<!-- <article class="">
-  <p>projects</p>
-
-  <p></p>
-  <p></p>
-  <p></p>
-  <img src="">
-</article> -->
 </body>
 
 </html>
