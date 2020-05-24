@@ -27,7 +27,7 @@ a:hover { color: #55acee; }
 
 .project_slide { display: flex; flex-direction: row; }
 
-.profile_img { border-radius: 50%; width: 12%; min-width: 140px; height: auto; width: auto\9; /* ie8 */ margin: 15px; }
+.profile_img { border-radius: 50%; width: 11%; min-width: 140px; height: auto; width: auto\9; /* ie8 */ margin: 15px; }
 
 .profile_img:hover { opacity: 0.6; }
 
