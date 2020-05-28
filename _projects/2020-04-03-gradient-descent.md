@@ -1,6 +1,6 @@
 ---
 title: 'Dynamic Gradient Descent'
-date: 2018-06-30 00:00:00
+date: 2020-04-03 00:00:00
 description: I implemented my own dynamic gradient descent algorithm with varying step size & hyper-parameterized sample momentum.
 featured_image: '/images/gradient_descent.gif'
 ---
@@ -11,5 +11,5 @@ In order to better understand the gradient descent algorithm and its flaws, I de
 
 You can find the source code [on my github.](https://github.com/adham-elarabawy/PyDataAnalysis/blob/master/src/common/math/dyn_gradient_descent.py)
 <div class="centered">
-	<img src="/images/gradient_descent.gif">
+	<img class="disp" src="/images/gradient_descent.gif">
 </div>

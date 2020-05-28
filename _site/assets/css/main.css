@@ -3,7 +3,11 @@ body { background: #ffffff; color: #000000; font-family: "Lato", sans-serif !imp
 
 h1, h2, h3, h4, p { color: #383838; }
 
-@media screen and (max-width: 1000px) { img { width: 330px; } }
+p { font-size: 20px; }
+
+@media screen and (max-width: 800px) { img, iframe { width: 330px !important; } }
+
+.disp { width: 30vw; height: auto; margin: 10px; }
 
 p:link { text-decoration: none !important; }
 
@@ -33,7 +37,7 @@ a:hover { color: #55acee; }
 
 ._header { display: flex; flex-direction: row; align-items: center; justify-content: center; background: #e9ecef; }
 
-.centered { align-self: center; }
+.centered { align-self: center; flex-wrap: wrap; }
 
 .social { margin: 0 5px; color: #383838; }
 

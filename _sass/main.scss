@@ -12,10 +12,21 @@ h1, h2, h3, h4, p {
   color: #383838;
 }
 
-@media screen and (max-width: 1000px) {
-    img {
-         width: 330px;
+p {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    img, iframe {
+         width: 330px!important;
     }
+
+}
+
+.disp {
+  width: 30vw;
+  height: auto;
+  margin: 10px;
 }
 
 p:link{
@@ -106,6 +117,7 @@ a:hover {
 
 .centered {
   align-self: center;
+  flex-wrap: wrap;
 }
 
 .social {

@@ -1,9 +1,0 @@
-I"â<h2 id="introduction">Introduction</h2>
-
-<p>In order to better understand the gradient descent algorithm and its flaws, I decided to try and implement it from scratch using python and matplotlib (to visualize). After implementing the vanilla gradient descent algorithm, I started to add hyperparameters such as dynamic step size proportional to the gradient &amp; a momentum that would allow the scanning point to overcome local maximas to possibly find a greater (magnitude) absolute maxima.</p>
-
-<p>You can find the source code <a href="https://github.com/adham-elarabawy/PyDataAnalysis/blob/master/src/common/math/dyn_gradient_descent.py">on my github.</a></p>
-<div class="centered">
-	<img src="/images/gradient_descent.gif" />
-</div>
-:ET
