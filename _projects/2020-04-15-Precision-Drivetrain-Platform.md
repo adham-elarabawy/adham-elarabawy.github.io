@@ -1,7 +1,7 @@
 ---
 title: 'Precision Drivetrain'
 date: 2020-04-15 00:00:00
-description: I designed, 3D-printed, & developed a precision differential drivetrain platform with stepper motors from scratch. Features Quintic Hermite Spline path generation and pursuit, waypoint selection, & manual control over WiFi hotspot.
+description: I designed & developed a precision differential drivetrain platform with stepper motors from scratch. Features Quintic Hermite Spline path generation and pursuit, & control over WiFi.
 featured_image: '/images/drivetrain/demo.gif'
 ---
 
