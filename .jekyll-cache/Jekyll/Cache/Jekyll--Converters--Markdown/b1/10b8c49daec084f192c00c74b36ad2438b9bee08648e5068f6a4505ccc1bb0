@@ -1,72 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/png" href="/favicon.ico?">
-  <title>Precision Drivetrain</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css">
-  <script src="https://kit.fontawesome.com/43b853fc9d.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/w3.css">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167962359-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-
-  gtag('config', 'UA-167962359-1');
-</script>
-</head>
-
-<body>
-  <!-- Header -->
-<script>
-  function home() {
-    window.location.href = "/";
-  }
-</script>
-<div class="_header">
-  <img onclick="home()" src="/assets/img/profile.jpeg" class="profile_img">
-  <div style="width: 15px;"></div>
-  <div class="profile_section" style="padding-top: 10px;">
-    <h1><b>Adham Elarabawy</b></h1>
-    <p style="font-size: 20px;">UC Berkeley: EECS Freshman</p>
-    <div style="padding-bottom: 20px;">
-      <a id="social_button" class="btn btn-social-icon btn-twitter social" href="https://github.com/adham-elarabawy" target="_blank">
-        <span class="fa fa-github"></span>
-      </a>
-      <a id="social_button" class="btn btn-social-icon btn-twitter social" href="https://www.linkedin.com/in/adham-elarabawy/" target="_blank">
-        <span class="fa fa-linkedin"></span>
-      </a>
-      <a id="social_button" class="btn btn-social-icon btn-twitter social" href="https://www.youtube.com/channel/UCMXZwXFwd7tI7pO7vUo5iuQ" target="_blank">
-        <span class="fa fa-youtube"></span>
-      </a>
-    </div>
-  </div>
-</div>
-  <div class="colorstrip"></div>
-<div class="nav_bar">
-  <!-- <a class="blog" style="text-decoration: none;" href="/blog/">Blog</a> -->
-  <a class="projects" style="text-decoration: none;" href="/">Projects</a>
-  <a class="about" style="text-decoration: none;" href="/about/">About</a>
-</div>
-  <div style="display: flex; flex-direction: row; justify-content: center; padding: 20px;" class="w3-animate-opacity">
-  <div>
-    <div class="colorstrip" style="width: 80vw;"></div>
-    <div class="project_page" style="display: flex; flex-direction: column; align-items: flex-start; padding: 30px; background-color: #e9ecef; width: 80vw;">
-      <h1 style="padding: 10px; align-self: center;">Precision Drivetrain</h1>
-      <h2>What is this?</h2>
-      <p>I designed & developed a precision differential drivetrain platform with stepper motors from scratch. Features Quintic Hermite Spline path generation and pursuit, & control over WiFi.</p>
-      <div class="centered">
+I"«#<div class="centered">
 	<img class="disp" src="/images/drivetrain/demo.gif" />
 </div>
 
@@ -117,6 +49,7 @@
 
     <span class="k">return</span> <span class="n">spdL</span><span class="p">,</span> <span class="n">spdR</span></code></pre></figure>
 
+<iframe width="560" height="315" class="centered" src="https://www.youtube.com/embed/E_C7dhMRbvQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </div>
 
 <h2 id="path-generation--pursuit">Path Generation &amp; Pursuit</h2>
@@ -148,11 +81,4 @@
 <div class="centered">
 	<img class="disp" src="/images/drivetrain/plot.png" />
 </div>
-
-    </div>
-    <div class="colorstrip" style="width: 80vw; color: #383838;"></div>
-  </div>
-</div>
-</body>
-
-</html>
+:ET

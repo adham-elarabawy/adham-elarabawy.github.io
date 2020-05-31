@@ -27,6 +27,38 @@ I then designed and 3D-printed the precision platform, seen here:
 </div>
 
 You can find the source code for base control (for both the arduino & RPi) [on my github.](https://github.com/adham-elarabawy/Precision-Drivetrain-Platform)
+
+I also created a custom drive controller board that handled the interface between the arduino nano and the DRV stepper drivers:
+
+<div class="centered">
+	<img class="disp" src="/images/drivetrain/top_board.jpg">
+	<img class="disp" src="/images/drivetrain/bottom_board.jpg">
+</div>
+
+By this point, I could drive the robot with an xbox controller by using some simple differential drive logic to map the joystick values to velocities for the left & right sides of the drivetrain.
+
+<div class="centered">
+{% highlight python %}
+def arcade_drive():
+    joyX = -joy.leftX()
+    joyY = joy.leftY()
+
+    if (abs(joyX) < 0.1):
+        joyX = 0
+    if (abs(joyY) < 0.1):
+        joyY = 0
+
+    pwrL = clamp(joyY-joyX, -1, 1)
+    pwrR = clamp(joyY+joyX, -1, 1)
+
+    spdL = pwrL * max_speed
+    spdR = pwrR * max_speed
+
+    return spdL, spdR
+{% endhighlight %}
+</div>
+
+
 ## Path Generation & Pursuit
 
 Now that I had a working drivetrain that I could precisely control, I decided to implement a path generation and pursuit suite. The basic premise is as follows: I wanted to be able to select waypoints with a specified heading (global yaw), and the suite should find a continuous path of continuous curvature (since this is a differential drive after all) constrained by the selected waypoints. Then, I wanted the suite to create a time-parametrized trajectory from the aforementioned path using the velocity and acceleration constraints of the platform.
