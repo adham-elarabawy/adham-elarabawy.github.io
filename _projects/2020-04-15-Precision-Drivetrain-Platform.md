@@ -58,7 +58,6 @@ def arcade_drive():
 {% endhighlight %}
 </div>
 
-
 ## Path Generation & Pursuit
 
 Now that I had a working drivetrain that I could precisely control, I decided to implement a path generation and pursuit suite. The basic premise is as follows: I wanted to be able to select waypoints with a specified heading (global yaw), and the suite should find a continuous path of continuous curvature (since this is a differential drive after all) constrained by the selected waypoints. Then, I wanted the suite to create a time-parametrized trajectory from the aforementioned path using the velocity and acceleration constraints of the platform.
