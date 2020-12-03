@@ -1,10 +1,10 @@
-I"Ò<div class="centered">
+I"‹<div class="centered">
 	<img class="disp" src="/images/OpenQuadruped/demo0.gif" />
 	<img class="disp" src="/images/OpenQuadruped/demo1.gif" />
 </div>
 
 <h2 id="more-information">More information:</h2>
-<p>I am currently still writing this project page. However, you can find more technical information about this project on <a href="https://github.com/adham-elarabawy/open-quadruped">my github repo</a>.</p>
+<p>I am currently still writing this project page. However, you can find more technical information about this project on <a href="https://github.com/adham-elarabawy/open-quadruped">my github repo</a>. I also wrote <a href="https://www.adham-e.dev/pdf/IK_Model.pdf">this whitepaper</a> on my custom 12DOF Inverse Kinematic Model that accounts for the various joint offsets in my design.</p>
 
 <p>In the meantime, you can also take a look at some of the demo videos Iâ€™ve uploaded to youtube about my robot dog!</p>
 

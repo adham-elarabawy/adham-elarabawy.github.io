@@ -12,7 +12,7 @@ featured_image: '/images/OpenQuadruped/demo1.gif'
 
 
 ## More information:
-I am currently still writing this project page. However, you can find more technical information about this project on [my github repo](https://github.com/adham-elarabawy/open-quadruped).
+I am currently still writing this project page. However, you can find more technical information about this project on [my github repo](https://github.com/adham-elarabawy/open-quadruped). I also wrote [this whitepaper](https://www.adham-e.dev/pdf/IK_Model.pdf) on my custom 12DOF Inverse Kinematic Model that accounts for the various joint offsets in my design.
 
 In the meantime, you can also take a look at some of the demo videos I've uploaded to youtube about my robot dog!
 
