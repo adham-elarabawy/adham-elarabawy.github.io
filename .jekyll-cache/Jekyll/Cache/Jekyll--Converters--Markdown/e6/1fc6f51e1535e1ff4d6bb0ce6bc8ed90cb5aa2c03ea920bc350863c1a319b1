@@ -1,4 +1,4 @@
-I"Ì"<div class="centered">
+I"ß"<div class="centered">
 	<img class="disp" src="/images/drivetrain/demo.gif" />
 </div>
 
@@ -68,7 +68,7 @@
 <p>Just because I like matplotlib (who doesnâ€™t?), I decided to make a simple visualization tool so that one can preview the path &amp; trajectory before actually deploying to the robot. <em>Note: Keep in mind that the trajectory animation isnâ€™t 100% accurate, since matplotlib sometimes takes more time to plot the animation than the desired timestep.</em></p>
 
 <p>You can find the source code for the visualization tool <a href="https://github.com/adham-elarabawy/PyDataAnalysis/tree/master/src/common/interpolation">on my github.</a>
-<em>The file to run is <code class="highlighter-rouge">test_interface.py</code></em></p>
+<em>The file to run is <code class="language-plaintext highlighter-rouge">test_interface.py</code></em></p>
 
 <p>Hereâ€™s a little demo:</p>
 
