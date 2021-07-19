@@ -6,7 +6,7 @@ featured_image: '/images/OpenStartracker/anim_startracker.gif'
 ---
 
 <div class="centered">
-	<img class="disp" src="/images/OpenQuadruped/anim_startracker.gif">
+	<img class="disp" src="/images/OpenStartracker/anim_startracker.gif">
 </div>
 
 This is currently a work-in-progress project.
