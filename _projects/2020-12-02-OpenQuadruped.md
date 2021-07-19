@@ -1,6 +1,6 @@
 ---
 title: 'OpenQuadruped'
-date: 2020-04-15 00:00:00
+date: 2020-12-02 00:00:00
 description: I designed & developed a 3D-printed quadrupedal robot dog from scratch. Features custom 12DOF Inverse Kinematics model + Intuitive Gait Planner.
 featured_image: '/images/OpenQuadruped/demo1.gif'
 ---
