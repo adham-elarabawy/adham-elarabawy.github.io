@@ -24,7 +24,7 @@ I gave this R&D presentation about my OpenQuadruped project during my time with 
 My first milestone was deriving a full inverse kinematics model for a 3 DOF (degree of freedom) leg with various joint offsets that would allow me to simplify my design. In essence, an Inverse Kinematics (IK) model attempts to convert some intuitive domain, like xyz cartesian coordinate system, into directly useful values, like motor angles. To help you visualize, here’s a diagram from [the paper I wrote about the IK model I derived.](https://www.adham-e.dev/pdf/IK_Model.pdf){:target="_blank"}
 
 <div class="centered">
-	<img class="disp" src="/images/OpenQuadruped/ik_demo.png" height=200>
+	<img class="disp" src="/images/OpenQuadruped/ik_demo.png">
 </div>
 
 I ended up writing a small paper on the full derivation for documentation and reference, and I also made a visualization tool to illustrate the IK model at work:
