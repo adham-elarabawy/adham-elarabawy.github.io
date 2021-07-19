@@ -19,10 +19,6 @@ I gave this R&D presentation about my OpenQuadruped project during my time with 
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/K3KR-O-sAyI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Motivation
-
-A quadruped utilizes a very different type of locomotion than I was used to developing (legged movement vs wheeled), so I was a little daunted at first. I started with quite a bit of quadrupedal locomotion research, and after a bit of research, I felt confident enough that I had an idea of what to do to move forward.
-
 
 ## Controllability
 My first milestone was deriving a full inverse kinematics model for a 3 DOF (degree of freedom) leg with various joint offsets that would allow me to simplify my design. In essence, an Inverse Kinematics (IK) model attempts to convert some intuitive domain, like xyz cartesian coordinate system, into directly useful values, like motor angles. To help you visualize, here’s a diagram from [the paper I wrote about the IK model I derived.](https://www.adham-e.dev/pdf/IK_Model.pdf){:target="_blank"}
