@@ -22,6 +22,17 @@
                     <a href="https://adhamelarabawy.gitbook.io/wiki/" target="_blank" class="button"><h3>wiki</h3></a>
                 </div>
             </div>
+            <div class="projects">
+                {% for project in site.projects reversed%}
+                <div class="project-card">
+                    <img src="{{ project.featured_image }}" class="project-card-thumbnail"></img>
+                    <section class="project-card-info">
+                        <h3 style="color: white; margin-bottom: 10px; font-weight: normal;">{{project.title}}</h3>
+                        <h5 style="font-weight: lighter; font-size: 1rem">{{project.description}}</h5>
+                    </section>
+                </div>
+                {% endfor%}
+            </div>
         </div>
 
         <div class="blobs">

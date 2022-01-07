@@ -1,6 +1,7 @@
 ---
 ---
 * {
+    transition-duration: 0.4s;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,13 +12,13 @@ body {
     background-color: #1f1f1f;
 }
 
-h1, h3 {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+h1, h2, h3, h5 {
     color: white;
 }
 
 h3 {
     color: grey;
+    font-weight: bold;
 }
 
 .wrapper {
@@ -25,7 +26,6 @@ h3 {
     width: 100%;
     height: 100%;
     overflow:hidden;
-
 }
 
 .foreground {
@@ -51,10 +51,53 @@ h3 {
     justify-content: space-evenly;
 }
 
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.03));
+    width: max(45vw, 350px);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(75px);
+
+    line-height: 1.2rem;
+    max-height: 14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+}
+
+.project-card-thumbnail {
+    border-radius: 8px;
+    height: 30vh;
+    width: auto;
+}
+
+.project-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    margin: 3%;
+}
+
+.project-card:hover {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.07));
+}
+
 .blobs {
     position: relative;
-    width:100vw;
-    height:100%;
+    /*width:100vw;*/
+    /*height:200vh;*/
     justify-content: center;
     align-items: center;
     filter: blur(100px);

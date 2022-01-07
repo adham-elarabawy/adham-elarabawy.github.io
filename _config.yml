@@ -38,6 +38,10 @@ orange: ffb685
 purple: be71ff
 pink: f773fb
 
+collections:
+  projects:
+    output: true
+
 # Build settings
 theme: minima
 plugins:
