@@ -17,15 +17,12 @@ h1, h2, h3, h5 {
 }
 
 h3 {
-    color: grey;
     font-weight: bold;
 }
 
 .wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
-    overflow:hidden;
 }
 
 .foreground {
@@ -35,7 +32,6 @@ h3 {
     justify-content: flex-start;
     align-items: center;
     width:100%;
-    height:100%;
 }
 
 .header {
@@ -51,6 +47,10 @@ h3 {
     justify-content: space-evenly;
 }
 
+.navbar-text {
+    font-weight: normal;
+}
+
 .projects {
     display: flex;
     flex-direction: column;
@@ -63,17 +63,13 @@ h3 {
     flex-direction: row;
     justify-content: flex-start;
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.03));
-    width: max(45vw, 350px);
+    width: max(45vw, 450px);
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
     backdrop-filter: blur(75px);
 
-    line-height: 1.2rem;
-    max-height: 14rem;
     overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
 }
 
 .project-card-thumbnail {
@@ -122,36 +118,6 @@ h3 {
     --fill: #{{ site.green }};
 }
 
-.pink-blob {
-    position: absolute;
-    width: 35vw;
-    bottom: 85vh;
-    left: 50vw;
-    --time: 20s;
-    --amount: 2;
-    --fill: #{{ site.pink }};
-}
-
-.purple-blob {
-    position: absolute;
-    width: 70vw;
-    bottom: 110vh;
-    left: 60vw;
-    --time: 15s;
-    --amount: 2;
-    --fill: #{{ site.purple }};
-}
-
-.orange-blob {
-    position: absolute;
-    width: 20vw;
-    bottom: 190vh;
-    left: 75vw;
-    --time: 15s;
-    --amount: 2;
-    --fill: #{{ site.orange }};
-}
-
 .button {
     -webkit-appearance: button;
     -moz-appearance: button;
@@ -173,4 +139,18 @@ h3 {
 .button:hover {
     color: white;
     background: rgba(255,255,255,0.05);
+}
+
+.footer {
+    justify-content: center;
+    justify-self: flex-end;
+    border-radius: 7px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(75px);
+    margin-bottom: 20px;
+    padding: 6px;
+}
+
+.footer-text {
+    font-weight: normal;
 }
