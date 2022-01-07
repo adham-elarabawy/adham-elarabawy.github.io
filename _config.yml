@@ -29,6 +29,13 @@ url: https://adhamelarabawy.com # the base hostname & protocol for your site, e.
 twitter_username: jekyllrb
 github_username:  adham-elarabawy
 
+# color pallete
+blue: 0dbdfd
+green: 5cffc0
+orange: ffb685
+purple: be71ff
+pink: f773fb
+
 # Build settings
 theme: minima
 plugins:

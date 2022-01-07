@@ -1,0 +1,109 @@
+---
+---
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1f1f1f;
+}
+
+h1, h3 {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color: white;
+}
+
+h3 {
+    color: grey;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+
+}
+
+.foreground {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.blobs {
+    position: relative;
+    width:100vw;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    filter: blur(100px);
+    z-index: -100;
+}
+
+.blue-blob {
+    position: absolute;
+    width: 60vw;
+    top: 30vh;
+    right: 10vw;
+    --time: 20s;
+    --amount: 2;
+    --fill: #{{ site.blue }};
+}
+
+.green-blob {
+    position: absolute;
+    width: 35vw;
+    bottom: 20vh;
+    right: 5vw;
+    --time: 18s;
+    --amount: 7;
+    --fill: #{{ site.green }};
+}
+
+.pink-blob {
+    position: absolute;
+    width: 35vw;
+    bottom: 85vh;
+    left: 50vw;
+    --time: 20s;
+    --amount: 2;
+    --fill: #{{ site.pink }};
+}
+
+.purple-blob {
+    position: absolute;
+    width: 70vw;
+    bottom: 110vh;
+    left: 60vw;
+    --time: 15s;
+    --amount: 2;
+    --fill: #{{ site.purple }};
+}
+
+.orange-blob {
+    position: absolute;
+    width: 20vw;
+    bottom: 190vh;
+    left: 75vw;
+    --time: 15s;
+    --amount: 2;
+    --fill: #{{ site.orange }};
+}
