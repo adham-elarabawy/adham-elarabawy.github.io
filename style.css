@@ -96,8 +96,6 @@ h3 {
 
 .blobs {
     position: relative;
-    /*width:100vw;*/
-    /*height:200vh;*/
     justify-content: center;
     align-items: center;
     filter: blur(100px);
