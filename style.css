@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -106,4 +107,27 @@ h3 {
     --time: 15s;
     --amount: 2;
     --fill: #{{ site.orange }};
+}
+
+.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    font-family: -apple-system, BlinkMacSystemFont;
+    border: none;
+    padding: 6px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 7px;
+    background: rgba(255,255,255,0);
+}
+
+.button:hover {
+    color: white;
+    background: rgba(255,255,255,0.05);
 }

@@ -28,6 +28,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: https://adhamelarabawy.com # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  adham-elarabawy
+linkedin: https://www.linkedin.com/in/adham-elarabawy/
+youtube: https://www.youtube.com/channel/UCMXZwXFwd7tI7pO7vUo5iuQ
 
 # color pallete
 blue: 0dbdfd
