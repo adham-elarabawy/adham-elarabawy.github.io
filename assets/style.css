@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    transition-duration: 0.4s;
 }
 
 html, body {
@@ -95,13 +96,14 @@ h3 {
 }
 
 .project-card:hover {
+    transition-duration: 0.4s;
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.07));
 }
 
 .blobs {
     position: absolute;
     background: #1f1f1f;
-    filter: blur(70px);
+    filter: blur(80px);
     width: 100%;
     height: 100%;
     z-index: -100;
@@ -113,9 +115,9 @@ h3 {
     height: 30vw;
 
     animation-name: blobby;
-    animation-duration: 7s;
+    animation-duration: 6s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease;
+    animation-timing-function: ease-in-out;
     animation-direction: alternate;
 }
 
@@ -151,10 +153,10 @@ h3 {
 
 .green-blob {
     background: #{{ site.green }};
-    width: 15vw;
-    height: 15vw;
-    animation-delay: -4s;
-    margin-top: 55vh;
+    width: 20vw;
+    height: 20vw;
+    animation-delay: -5s;
+    margin-top: 63vh;
     margin-left: 3vw;
 }
 
@@ -162,7 +164,7 @@ h3 {
     background: #{{ site.purple }};
     width: 65vw;
     height: 65vw;
-    animation-delay: -2s;
+    animation-delay: 0s;
     margin-top: 65vh;
     margin-left: 70vw;
 }
@@ -171,7 +173,7 @@ h3 {
     background: #{{ site.pink }};
     width: 30vw;
     height: 30vw;
-    animation-delay: -7s;
+    animation-delay: -5s;
     margin-top: 80vh;
     margin-left: 75vw;
 }
@@ -180,7 +182,7 @@ h3 {
     background: #{{ site.orange }};
     width: 10vw;
     height: 10vw;
-    animation-delay: 0s;
+    animation-delay: -2s;
     margin-top: 90vh;
     margin-left: 80vw;
 }
