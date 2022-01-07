@@ -8,8 +8,12 @@
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
-    background-color: #1f1f1f;
+    background: #1f1f1f;
 }
 
 h1, h2, h3, h5 {
@@ -17,7 +21,6 @@ h1, h2, h3, h5 {
 }
 
 h3 {
-    color: grey;
     font-weight: bold;
 }
 
@@ -25,7 +28,6 @@ h3 {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow:hidden;
 }
 
 .foreground {
@@ -35,7 +37,7 @@ h3 {
     justify-content: flex-start;
     align-items: center;
     width:100%;
-    height:100%;
+    overflow: hidden
 }
 
 .header {
@@ -51,6 +53,10 @@ h3 {
     justify-content: space-evenly;
 }
 
+.navbar-text {
+    font-weight: normal;
+}
+
 .projects {
     display: flex;
     flex-direction: column;
@@ -63,20 +69,18 @@ h3 {
     flex-direction: row;
     justify-content: flex-start;
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.03));
-    width: max(45vw, 350px);
+    width: max(45vw, 450px);
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
     backdrop-filter: blur(75px);
 
-    line-height: 1.2rem;
-    max-height: 14rem;
     overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
 }
 
 .project-card-thumbnail {
+    align-self: center;
+    justify-self: center;
     border-radius: 8px;
     height: 30vh;
     width: auto;
@@ -95,61 +99,90 @@ h3 {
 }
 
 .blobs {
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    filter: blur(100px);
+    position: absolute;
+    background: #1f1f1f;
+    filter: blur(70px);
+    width: 100%;
+    height: 100%;
     z-index: -100;
 }
 
-.blue-blob {
+.blob {
     position: absolute;
-    width: 60vw;
-    top: 30vh;
-    right: 10vw;
-    --time: 20s;
-    --amount: 2;
-    --fill: #{{ site.blue }};
+    width: 30vw;
+    height: 30vw;
+
+    animation-name: blobby;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate;
+}
+
+@keyframes blobby {
+    0% {
+        border-radius: 50%;
+    }
+    20% {
+        border-radius: 41% 59% 41% 59% / 53% 51% 49% 47%;
+        transform: rotate(36deg);
+    }
+    40% {
+        transform: rotate(72deg);
+        border-radius: 43% 57% 41% 59% / 53% 52% 48% 47%;
+    }
+    80% {
+        border-radius: 48% 52% 41% 59% / 48% 58% 42% 52%;
+        transform: rotate(108deg);
+    }
+    100% {
+        transform: rotate(144deg);
+        border-radius: 54% 46% 60% 40% / 43% 55% 45% 57%;
+    }
+}
+
+.blue-blob {
+    background: #{{ site.blue }};
+    width: 45vw;
+    height: 45vw;
+    margin-top: 25vh;
+    margin-left: -15vw;
 }
 
 .green-blob {
-    position: absolute;
-    width: 35vw;
-    bottom: 20vh;
-    right: 5vw;
-    --time: 18s;
-    --amount: 7;
-    --fill: #{{ site.green }};
-}
-
-.pink-blob {
-    position: absolute;
-    width: 35vw;
-    bottom: 85vh;
-    left: 50vw;
-    --time: 20s;
-    --amount: 2;
-    --fill: #{{ site.pink }};
+    background: #{{ site.green }};
+    width: 15vw;
+    height: 15vw;
+    animation-delay: -4s;
+    margin-top: 55vh;
+    margin-left: 3vw;
 }
 
 .purple-blob {
-    position: absolute;
-    width: 70vw;
-    bottom: 110vh;
-    left: 60vw;
-    --time: 15s;
-    --amount: 2;
-    --fill: #{{ site.purple }};
+    background: #{{ site.purple }};
+    width: 65vw;
+    height: 65vw;
+    animation-delay: -2s;
+    margin-top: 65vh;
+    margin-left: 70vw;
+}
+
+.pink-blob {
+    background: #{{ site.pink }};
+    width: 30vw;
+    height: 30vw;
+    animation-delay: -7s;
+    margin-top: 80vh;
+    margin-left: 75vw;
 }
 
 .orange-blob {
-    position: absolute;
-    width: 20vw;
-    bottom: 190vh;
-    left: 75vw;
-    --time: 15s;
-    --amount: 2;
-    --fill: #{{ site.orange }};
+    background: #{{ site.orange }};
+    width: 10vw;
+    height: 10vw;
+    animation-delay: 0s;
+    margin-top: 90vh;
+    margin-left: 80vw;
 }
 
 .button {
@@ -173,4 +206,18 @@ h3 {
 .button:hover {
     color: white;
     background: rgba(255,255,255,0.05);
+}
+
+.footer {
+    justify-content: center;
+    justify-self: flex-end;
+    border-radius: 7px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(75px);
+    margin-bottom: 20px;
+    padding: 6px;
+}
+
+.footer-text {
+    font-weight: normal;
 }
