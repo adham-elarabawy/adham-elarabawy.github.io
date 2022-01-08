@@ -1,5 +1,8 @@
 ---
 ---
+:root {
+    color-scheme: dark;
+}
 * {
     transition-duration: 0.4s;
     margin: 0;
@@ -108,7 +111,9 @@ h3 {
 }
 
 .project-card-full {
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
+    max-height: 100vh;
 }
 
 .project-card-thumbnail {
@@ -156,22 +161,27 @@ h3 {
 @keyframes blobby {
     0% {
         border-radius: 50%;
+        transform: scaleY(1);
     }
     20% {
         border-radius: 41% 59% 41% 59% / 53% 51% 49% 47%;
         transform: rotate(36deg);
+        transform: scaleY(1.05);
     }
     40% {
         transform: rotate(72deg);
         border-radius: 43% 57% 41% 59% / 53% 52% 48% 47%;
+        transform: scale(1);
     }
     80% {
         border-radius: 48% 52% 41% 59% / 48% 58% 42% 52%;
         transform: rotate(108deg);
+        transform: scale(0.95);
     }
     100% {
         transform: rotate(144deg);
         border-radius: 54% 46% 60% 40% / 43% 55% 45% 57%;
+        transform: scale(1.05);
     }
 }
 
