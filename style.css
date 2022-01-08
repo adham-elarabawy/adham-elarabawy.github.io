@@ -134,7 +134,7 @@ h3 {
 
 .project-card:hover {
     transition-duration: 0.4s;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.07));
+    background: rgba(255, 255, 255, 0.07);
 }
 
 .blobs {
