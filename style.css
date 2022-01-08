@@ -15,6 +15,27 @@ html, body {
 
 body {
     background: #1f1f1f;
+    color: white;
+    font-weight: lighter;
+    font-size: 1rem;
+}
+
+p {
+    margin-top:5px;
+    margin-bottom: 10px;
+}
+
+.disp {
+    max-width: 80%;
+}
+
+a {
+    color: white;
+}
+
+h4 {
+    margin-top: 10px;
+    font-weight: normal;
 }
 
 h1, h2, h3, h5 {
@@ -67,16 +88,27 @@ h3 {
 
 .project-card {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.03));
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
     width: max(45vw, 450px);
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
     backdrop-filter: blur(75px);
-
     overflow: hidden;
+    cursor: pointer;
+    transition: width 600ms ease-out, height 600ms ease-out;
+}
+
+.project-card-preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.project-card-full {
+    overflow:hidden;
 }
 
 .project-card-thumbnail {
