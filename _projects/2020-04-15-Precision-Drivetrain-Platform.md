@@ -1,19 +1,16 @@
 ---
+id: 1
 title: 'Precision Drivetrain'
 date: 2020-04-15 00:00:00
 description: I designed a precision differential drivetrain platform with stepper motors from scratch. Features Quintic Hermite Spline path generation and pursuit, & control over WiFi.
 featured_image: '/images/drivetrain/demo_square.gif'
 ---
 
-<div class="centered">
-	<img class="disp" src="/images/drivetrain/demo.gif">
-</div>
-
-## Introduction
+#### Introduction
 
 After 3 years of high school robotics, working primarily on differential drives, I was slightly frustrated by the inaccuracies stemming primarily from elementary mechanical tolerances. Considering that I was about to graduate from this level of high school robotics into my undergraduate studies at Berkeley, I decided to undertake this project to formalize all that I learned into a 'from-scratch', 'start-to-finish' differential drive system where I had control over every single step along the design process.
 
-## Design Process
+#### Design Process
 
 My first step was to decide on the motors I wanted to use. I had it narrowed down to two options. Firstly, I could go the brushed motor route (very similar to what I had done previously in FRC), characterize the motors and determine a voltage-velocity equation and solve for the arbitrary constants, then design and tune a velocity PID controller. Although familiar, I really wanted to take my precision and accuracy up a notch, so I decided to go the second route. The second option (that I picked) was to use stepper motors, which are inherently accurate and precise (assuming the load isn't too large), since I would just be able to tell the motors to go to a velocity and assume they reached it semi-instantaneously. An added benefit was not having to worry about encoders.
 
@@ -58,7 +55,7 @@ def arcade_drive():
 {% endhighlight %}
 </div>
 
-## Path Generation & Pursuit
+#### Path Generation & Pursuit
 
 Now that I had a working drivetrain that I could precisely control, I decided to implement a path generation and pursuit suite. The basic premise is as follows: I wanted to be able to select waypoints with a specified heading (global yaw), and the suite should find a continuous path of continuous curvature (since this is a differential drive after all) constrained by the selected waypoints. Then, I wanted the suite to create a time-parametrized trajectory from the aforementioned path using the velocity and acceleration constraints of the platform.
 
@@ -81,7 +78,7 @@ Here's a little demo:
 
 <iframe width="560" height="315" class="centered" src="https://www.youtube.com/embed/E_C7dhMRbvQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Some fun!
+#### Some fun!
 I wanted to make a visualization tool for deriving quintic hermite splines, so while messing around with desmos, I decided to show all the control points, hermite basis functions, xy position/derivative/second derivative functions on the same plot. I found this to be quite aesthetically pleasing.
 
 <div class="centered">
