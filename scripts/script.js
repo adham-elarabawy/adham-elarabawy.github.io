@@ -1,5 +1,4 @@
 function toggleProjectCard(i) {
-    console.log("toggled");
     let content = document.getElementById(i);
     if (content.getAttribute('data-collapsed') == 'false') {
         collapseSection(content);
