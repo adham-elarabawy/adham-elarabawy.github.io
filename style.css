@@ -256,6 +256,12 @@ h3 {
     cursor: pointer;
     border-radius: 7px;
     background: rgba(255,255,255,0);
+
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    align-content: center;
+    justify-content: center;
 }
 
 .button:hover {
