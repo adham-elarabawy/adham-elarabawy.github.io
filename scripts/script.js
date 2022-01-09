@@ -1,5 +1,6 @@
 function toggleProjectCard(i) {
     let content = document.getElementById(i);
+    content.scrollTop = 0;
     if (content.getAttribute('data-collapsed') == 'false') {
         collapseSection(content);
     } else {
