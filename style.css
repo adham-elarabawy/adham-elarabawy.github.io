@@ -21,6 +21,10 @@ body {
     color: white;
     font-weight: lighter;
     font-size: 1rem;
+
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 p {
@@ -285,5 +289,14 @@ h3 {
 
     .project-card-thumbnail {
         height: 30vw;
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
