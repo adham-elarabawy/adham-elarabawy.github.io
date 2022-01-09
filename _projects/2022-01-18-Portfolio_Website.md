@@ -8,7 +8,7 @@ featured_image: '/images/website_demo.mp4'
 
 #### What is this?
 
-In an effort to showcase my personal projects cohesively, I decided to create a portfolio website (the one you're on right now!).
+In an effort to showcase my personal projects cohesively, I decided to make my own portfolio website (the one you're on right now!).
 
 #### Anything special?
 
