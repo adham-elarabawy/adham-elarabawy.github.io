@@ -114,14 +114,7 @@ h3 {
     overflow-x:hidden;
     overflow-y:auto;
     max-height: 100vh;
-}
-
-.project-card-thumbnail {
-    align-self: center;
-    justify-self: center;
     border-radius: 8px;
-    height: 30vh;
-    width: auto;
 }
 
 .project-card-info {
@@ -129,7 +122,21 @@ h3 {
     flex-direction: column;
     justify-content: flex-start;
     align-content: flex-start;
-    margin: 3%;
+    align-self: flex-start;
+    margin-left: 3%;
+    margin-top: 1%;
+}
+
+.project-card-thumbnail {
+    border-radius: 8px;
+    height: max(12vw, 150px);
+    object-fit: cover;
+}
+
+.project-card-thumbnail-wrapper {
+    display: flex;
+    align-self: center;
+    justify-self: center;
 }
 
 .project-card:hover {
@@ -140,7 +147,7 @@ h3 {
 .blobs {
     position: absolute;
     background: #1f1f1f;
-    filter: blur(120px);
+    filter: blur(155px);
     width: 100%;
     height: 100%;
     z-index: -100;
@@ -264,4 +271,18 @@ h3 {
 
 .footer-text {
     font-weight: normal;
+}
+
+@media (max-width: 500px) {
+    body {
+        font-size: 0.8rem;
+    }
+
+    .project-card {
+        width: 85vw;
+    }
+
+    .project-card-thumbnail {
+        height: 30vw;
+    }
 }
