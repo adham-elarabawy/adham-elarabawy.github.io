@@ -267,6 +267,7 @@ h3 {
     backdrop-filter: blur(75px);
     margin-bottom: 20px;
     padding: 6px;
+    height: 100%;
 }
 
 .footer-text {
