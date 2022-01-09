@@ -35,7 +35,7 @@
                 <div class="project-card" onclick="toggleProjectCard('{{ project.id }}')">
                     <div class="project-card-preview">
                         <div class="project-card-thumbnail-wrapper"">
-                            <video autoplay muted loop playsinline class="project-card-thumbnail">
+                            <video autoplay="autoplay" loop="loop" autoplay muted defaultMuted loop playsinline class="project-card-thumbnail">
                                 <source src="{{ project.featured_image }}" type="video/MP4">
                             </video>
                         </div>
