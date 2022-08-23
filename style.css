@@ -90,7 +90,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 30px;
+    /* margin: 30px; */
 }
 
 .project-card {
@@ -106,6 +106,28 @@ h3 {
     overflow: hidden;
     cursor: pointer;
     transition: width 600ms ease-out, height 600ms ease-out;
+}
+
+.consult-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    /* background: rgba(255, 255, 255, 0.03); */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(75px);
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 600ms ease-out, height 600ms ease-out;
+    background: rgb(13,189,253);
+    background: radial-gradient(circle, rgba(13,189,253,1) 0%, rgba(102,151,254,0.19371498599439774) 0%, rgba(154,128,255,0.19091386554621848) 100%, rgba(171,121,255,1) 100%, rgba(190,113,255,1) 100%)
+}
+
+.consult-button:hover {
+    transition-duration: 0.4s;
+    background: rgba(255, 255, 255, 0.07);
 }
 
 .project-card-preview {

@@ -30,11 +30,14 @@
                     <a href="https://adhamelarabawy.gitbook.io/wiki/" target="_blank" class="button"><h3 class="navbar-text">wiki</h3></a>
                 </div>
             </div>
+            <div class="consult-button">
+                <a href="https://booking.appointy.com/adhamelarabawy" target="_blank" style="text-decoration: none;"><h3 style="color: white; font-weight: normal;">schedule a consultation with me.</h3></a>
+            </div>
             <div class="projects">
                 {% for project in site.projects reversed%}
                 <div class="project-card" onclick="toggleProjectCard('{{ project.id }}')">
                     <div class="project-card-preview">
-                        <div class="project-card-thumbnail-wrapper"">
+                        <div class="project-card-thumbnail-wrapper">
                             <video autoplay="autoplay" loop="loop" autoplay muted defaultMuted loop playsinline class="project-card-thumbnail">
                                 <source src="{{ project.featured_image }}" type="video/MP4">
                             </video>
