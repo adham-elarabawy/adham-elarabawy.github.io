@@ -3,7 +3,7 @@ id: 5
 title: 'Direct Inversion'
 date: 2022-12-19 00:00:00
 description: 'Preprint Publication (Under Review): Optimization-Free Text-Driven Real Image Editing with Diffusion Models.'
-featured_image: '/images/direct_inversion_thumbnail'
+featured_image: '/images/direct_inversion_thumbnail.png'
 ---
 **[arxiv](https://arxiv.org/abs/2211.07825)**
 #### Abstract
