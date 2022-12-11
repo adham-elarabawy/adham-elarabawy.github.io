@@ -8,7 +8,7 @@ featured_image: '/images/OpenStartracker/anim_startracker.mp4'
 
 #### Presentation
 I'm currently working on creating and editing a video on youtube outlining my design, development, and programming process for this entire project. Once it is done, I will link it here.
-
+gi
 #### What is this?
 
 I created OpenStartracker in an effort to provide a lower-cost, open-source, machine-learning compatible solution to long-exposure astrophotography.
