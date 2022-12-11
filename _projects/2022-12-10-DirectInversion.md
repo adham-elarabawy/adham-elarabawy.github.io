@@ -1,5 +1,5 @@
 ---
-id: 5
+id: 1
 title: 'Direct Inversion'
 date: 2022-12-19 00:00:00
 description: 'Preprint Publication (Under Review): Optimization-Free Text-Driven Real Image Editing with Diffusion Models.'

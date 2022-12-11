@@ -1,5 +1,5 @@
 ---
-id: 0
+id: 6
 title: 'Dynamic Gradient Descent'
 date: 2020-04-03 00:00:00
 description: I implemented my own dynamic gradient descent algorithm with varying step size & hyper-parameterized sample momentum.

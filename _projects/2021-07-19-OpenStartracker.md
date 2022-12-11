@@ -1,5 +1,5 @@
 ---
-id: 3
+id: 4
 title: 'OpenStartracker'
 date: 2021-07-19 00:00:00
 description: I developed an open-source 3D-printed star tracker with a motorized equatorial mount for full automatic latitude calibration, polaris alignment, & object tracking via onboard computer vision.
