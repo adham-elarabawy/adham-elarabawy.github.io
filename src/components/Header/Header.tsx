@@ -31,16 +31,6 @@ export function Header() {
     </a>
   ));
 
-//   return (
-//     <header className={classes.header}>
-//       <Container size="md" className={classes.inner}>
-//         <Group gap={5} visibleFrom="xs">
-//           {items}
-//         </Group>
-//         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
-//       </Container>
-//     </header>
-//   );
     return (
         <header className={classes.header}>
         <Container size="md" className={classes.inner}>
