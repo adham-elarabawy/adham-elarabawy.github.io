@@ -23,7 +23,7 @@ export function Header() {
       className={classes.link}
       data-active={active === link.link || undefined}
       onClick={(event) => {
-        // event.preventDefault();
+        event.preventDefault();
         setActive(link.link);
       }}
     >
@@ -32,15 +32,19 @@ export function Header() {
   ));
 
     return (
-        <header className={classes.header}>
-        <Container size="md" className={classes.inner}>
-            <div className={classes.navContainer}>
-                <Group gap={5} className={classes.navGroup}>
-                    {items}
-                </Group>
-            </div>
+      <header className={classes.header}>
+        <div className={classes.inner}>
+          {/* This div will contain the nav items and be centered in the header */}
+          <div className={classes.navContainer}>
+            <Group gap={5} className={classes.navGroup}>
+              {items} {/* Your navigation items go here */}
+            </Group>
+          </div>
+          {/* The ColorSchemeToggle is absolutely positioned relative to the inner div */}
+          <div className={classes.ColorSchemeToggle}>
             <ColorSchemeToggle />
-        </Container>
-        </header>
+          </div>
+        </div>
+      </header>
     );
 }
