@@ -13,7 +13,12 @@ const config: GatsbyConfig = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-mdx",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".md", ".mdx"],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -21,7 +26,15 @@ const config: GatsbyConfig = {
         name: `projects`,
       },
     },
-],
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images`,
+        name: `images`,
+      },
+    },
+  ],
 };
 
 export default config;
+
