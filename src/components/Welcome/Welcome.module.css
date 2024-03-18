@@ -1,0 +1,18 @@
+.title {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-size: rem(72px);
+  font-weight: 700;
+  letter-spacing: rem(-2px);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: rem(50px);
+  }
+}
+
+.avatarZoom {
+  transition: transform 0.3s ease;
+}
+
+.avatarZoom:hover {
+  transform: scale(1.05); /* Adjust scale value as needed */
+}
