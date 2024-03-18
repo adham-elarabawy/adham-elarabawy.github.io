@@ -1,9 +1,12 @@
 import type { GatsbyConfig } from "gatsby";
 
+const siteMetadata = {
+  title: 'Adham Elarabawy',
+  description: 'Machine Learning Researcher. Currently @ Harvey AI, previously Scale AI, Google, UC Berkeley, BAIR.',
+};
+
 const config: GatsbyConfig = {
-  siteMetadata: {
-    title: `My Mantine Site`,
-  },
+  siteMetadata: siteMetadata,
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-postcss",
@@ -14,7 +17,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/projects`,
+        path: `${__dirname}/src/projects`,
         name: `projects`,
       },
     },

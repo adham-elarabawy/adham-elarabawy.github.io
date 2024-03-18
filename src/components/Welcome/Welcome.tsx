@@ -8,7 +8,7 @@ export function Welcome() {
   return (
     <>
       <Center mt={100}>
-          <StaticImage src='../../images/avatar.png' width={150} style={{ borderRadius: '20%' }}></StaticImage>
+          <StaticImage src='../../images/avatar.png' width={150} style={{ borderRadius: '50%' }}></StaticImage>
       </Center>
       <Title className={classes.title} ta="center" mt={10}>
         Adham Elarabawy
