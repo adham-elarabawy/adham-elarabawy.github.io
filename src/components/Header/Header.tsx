@@ -10,8 +10,6 @@ const links = [
   { link: '/resume', label: 'Resume' },
 ];
 
-// Adjust the Header function to accept props
-// export function Header({ location }) {
 export function Header({ location = { pathname: '/' } }) {
   const normalizePath = (path) => {
     if (path === '/') return path;
