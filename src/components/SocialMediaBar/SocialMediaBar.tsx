@@ -1,6 +1,6 @@
 import React from 'react';
 import { Group, ActionIcon } from '@mantine/core';
-import { IconBrandGithub, IconBrandLinkedin, IconBrandYoutube } from '@tabler/icons-react';
+import { IconBrandGithub, IconBrandLinkedin, IconBrandX, IconBrandXing, IconBrandYoutube } from '@tabler/icons-react';
 import * as classes from './SocialMediaBar.module.css';
 
 export function SocialMediaBar() {
@@ -38,6 +38,18 @@ export function SocialMediaBar() {
         rel="noopener noreferrer"
       >
         <IconBrandYoutube style={{ width: 18, height: 18 }} stroke={1.5} />
+      </ActionIcon>
+
+      <ActionIcon
+        size="lg"
+        color="gray"
+        variant="subtle"
+        component="a"
+        href="https://twitter.com/adhamelarabawy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <IconBrandX style={{ width: 18, height: 18 }} stroke={1.5} />
       </ActionIcon>
     </Group>
   );
