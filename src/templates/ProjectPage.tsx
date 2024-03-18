@@ -1,21 +1,33 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby" // Import `navigate` here
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
 import { PageLayout } from "../components/PageLayout"
-import { Center, Container } from "@mantine/core"
+import { Button, Container } from "@mantine/core"
+import { IconArrowLeft } from "@tabler/icons-react"
 
-const shortcodes = { Link } // Provide common components here
+const shortcodes = { Link } // Shortcodes for common components
 
 export default function PageTemplate({ data, children }) {
+  // Function to handle back button click, navigating to the "/projects" path
+  const handleBackClick = () => {
+    navigate("/"); // Replace "/projects" with your specific path
+  };
+
   return (
     <PageLayout>
-        <Container mt={100}>
-            <h1>{data.mdx.frontmatter.title}</h1>
-            <MDXProvider components={shortcodes}>
-                {children}
-            </MDXProvider>
-        </Container>
+      <Container pt={100}>
+        <Button
+          leftSection={<IconArrowLeft size={14} />}
+          onClick={handleBackClick} // Attach the `onClick` handler
+        >
+          Back to Projects
+        </Button>
+        <h1>{data.mdx.frontmatter.title}</h1>
+        <MDXProvider components={shortcodes}>
+          {children}
+        </MDXProvider>
+      </Container>
     </PageLayout>
   )
 }

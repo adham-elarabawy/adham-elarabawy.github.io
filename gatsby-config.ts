@@ -33,6 +33,18 @@ const config: GatsbyConfig = {
         name: `images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Adham Elarabawy`,
+        short_name: `AE`,
+        start_url: `/`,
+        // background_color: `#ffffff`,
+        // theme_color: `#007acc`, // Customize with your theme color
+        display: `minimal-ui`,
+        icon: `static/favicon.png`, 
+      },
+    },
   ],
 };
 

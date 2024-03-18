@@ -8,3 +8,11 @@
     font-size: rem(50px);
   }
 }
+
+.avatarZoom {
+  transition: transform 0.3s ease;
+}
+
+.avatarZoom:hover {
+  transform: scale(1.05); /* Adjust scale value as needed */
+}

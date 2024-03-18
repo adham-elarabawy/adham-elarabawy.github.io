@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Transition } from '@mantine/core';
+import { ScrollArea, Transition } from '@mantine/core';
 import { Header } from "../components/Header/Header";
 import { Footer } from "../components/Footer/Footer";
-import { useLocation } from "@reach/router"; // If you're using reach router
+import { useLocation } from "@reach/router"; // Import useLocation from Reach Router
 
 export const PageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
@@ -10,7 +10,7 @@ export const PageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
       {(styles) => (
         <div style={styles}>
           <Header location={location} />
-          <div className="mx-auto mb-12 max-w-5xl">{children}</div>
+            <div className="mx-auto mb-12 max-w-5xl">{children}</div>
           <Footer />
         </div>
       )}

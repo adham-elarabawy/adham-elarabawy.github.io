@@ -11,6 +11,7 @@
   margin-bottom: 120px; /* Assuming rem(120px) is equivalent to 120px */
   background-color: rgba(var(--mantine-color-body-rgb), 0.9);
   backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   z-index: 1000;
 }
 
