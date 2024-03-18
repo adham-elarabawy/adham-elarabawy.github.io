@@ -1,3 +1,7 @@
+.activeLink {
+  color: var(--mantine-color-blue); /* Active link color */
+}
+
 .header {
   position: fixed;
   top: 0;

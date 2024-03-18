@@ -1,50 +1,47 @@
-import React from "react";
-import { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { ColorSchemeToggle } from "../ColorSchemeToggle/ColorSchemeToggle";
+import React from 'react';
+import { Group } from '@mantine/core';
+import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 import * as classes from './Header.module.css';
+import { Link } from 'gatsby';
 
 const links = [
   { link: '/', label: 'Home' },
   { link: '/projects', label: 'Projects' },
-  { link: '/blog', label: 'Blog' },
   { link: '/resume', label: 'Resume' },
 ];
 
-export function Header() {
-  const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+// Adjust the Header function to accept props
+// export function Header({ location }) {
+export function Header({ location = { pathname: '/' } }) {
+  const normalizePath = (path) => {
+    if (path === '/') return path;
+    return path.endsWith('/') ? path.slice(0, -1) : path;
+  };
+  const activeLink = normalizePath(location.pathname);
 
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
-      href={link.link}
+      to={link.link}
       className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
+      data-active={activeLink === link.link ? 'true' : undefined}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
-    return (
-      <header className={classes.header}>
-        <div className={classes.inner}>
-          {/* This div will contain the nav items and be centered in the header */}
-          <div className={classes.navContainer}>
-            <Group gap={5} className={classes.navGroup}>
-              {items} {/* Your navigation items go here */}
-            </Group>
-          </div>
-          {/* The ColorSchemeToggle is absolutely positioned relative to the inner div */}
-          <div className={classes.ColorSchemeToggle}>
-            <ColorSchemeToggle />
-          </div>
+  return (
+    <header className={classes.header}>
+      <div className={classes.inner}>
+        <div className={classes.navContainer}>
+          <Group gap={5} className={classes.navGroup}>
+            {items}
+          </Group>
         </div>
-      </header>
-    );
+        <div className={classes.ColorSchemeToggle}>
+          <ColorSchemeToggle />
+        </div>
+      </div>
+    </header>
+  );
 }
