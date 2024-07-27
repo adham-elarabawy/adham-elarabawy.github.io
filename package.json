@@ -13,7 +13,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "deploy": "gatsby build && gh-pages -d public -b main"
+    "deploy-prod": "gatsby build && gh-pages -d public -b main"
   },
   "dependencies": {
     "@mantine/carousel": "^7.11.2",
