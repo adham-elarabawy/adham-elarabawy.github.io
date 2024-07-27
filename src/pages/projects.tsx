@@ -7,7 +7,6 @@ import { Center } from "@mantine/core";
 export default function HomePage({ data }) {
   const projects = data.allMdx.nodes.sort((a, b) => a.frontmatter.sort_id - b.frontmatter.sort_id);
 
-
   return (
     <PageLayout>
       <Center style={{ marginTop: '100px' }}>
@@ -24,8 +23,11 @@ export default function HomePage({ data }) {
 }
 
 export const query = graphql`
-  query SITE_INDEX_QUERY {
-    allMdx {
+  query {
+    allMdx(
+    sort: {frontmatter: {sort_id: ASC}}
+    filter: {internal: {contentFilePath: {regex: "/projects/"}}}
+    ) {
       nodes {
         id
         frontmatter {
@@ -38,4 +40,5 @@ export const query = graphql`
         }
       }
     }
-  }`;
+  }
+`;

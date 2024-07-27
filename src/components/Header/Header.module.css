@@ -34,6 +34,8 @@
 
 .navGroup {
   display: flex;
+  flex-grow: 1;
+  justify-content: center;
   gap: 10px; /* Adjust the gap as needed */
   /* No need to set flex-grow or margin here as it's already centered */
 }

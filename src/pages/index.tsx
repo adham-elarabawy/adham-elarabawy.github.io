@@ -20,7 +20,10 @@ export default function HomePage({ data }) {
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
-    allMdx {
+    allMdx(
+      sort: {frontmatter: {sort_id: ASC}}
+      filter: {internal: {contentFilePath: {regex: "/projects/"}}}
+    ) {
       nodes {
         id
         frontmatter {
@@ -34,4 +37,3 @@ export const query = graphql`
       }
     }
   }`;
-

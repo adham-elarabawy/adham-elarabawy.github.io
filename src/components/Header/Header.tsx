@@ -6,14 +6,20 @@ import { Link } from 'gatsby';
 
 const links = [
   { link: '/', label: 'Home' },
-  // { link: '/projects', label: 'Projects' },
+  { link: '/blog', label: 'Blog' },
   { link: '/resume', label: 'Resume' },
 ];
 
 export function Header({ location = { pathname: '/' } }) {
+  // const normalizePath = (path) => {
+  //   if (path === '/') return path;
+  //   return path.endsWith('/') ? path.slice(0, -1) : path;
+  // };
   const normalizePath = (path) => {
-    if (path === '/') return path;
-    return path.endsWith('/') ? path.slice(0, -1) : path;
+    // Split the path into segments
+    const segments = path.split('/').filter(Boolean);
+    // Return the first segment, or '/' if no significant segments are found
+    return segments.length > 0 ? `/${segments[0]}` : '/';
   };
   const activeLink = normalizePath(location.pathname);
 
