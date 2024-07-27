@@ -6,19 +6,26 @@ import { Button, Center, Container, Title, Tooltip, rem } from '@mantine/core';
 const BlogPage = ({ data }) => {
   return (
     <PageLayout>
-      <Container pt={80} size="lg" mb={0} style={{ paddingTop: '20px', paddingBottom: '0px' }}> {/* Adjust padding as needed */}
-      <div>
-        <h1>Blog</h1>
-        <ul>
-          {data.allMdx.nodes.map(node => (
-            <li key={node.id}>
-              <Link to={node.frontmatter.slug}>
-                {node.frontmatter.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Container pt={100}>
+        <div>
+          <h1>Blog</h1>
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
+            {data.allMdx.nodes.map(node => (
+              <li key={node.id} style={{ marginBottom: '20px' }}>
+                <div style={{ fontSize: '14px', color: '#888888' }}>
+                  {new Date(node.frontmatter.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </div>
+                <Link to={node.frontmatter.slug} style={{ fontSize: '20px', textDecoration: 'none', color: '#1a0dab' }}>
+                  {node.frontmatter.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </PageLayout>
   );
