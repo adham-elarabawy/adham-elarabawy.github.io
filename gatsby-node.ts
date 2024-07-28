@@ -1,19 +1,52 @@
-const path = require("path")
+const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem");
 
-const ProjectPageTemplate = path.resolve(`./src/templates/ProjectPage.tsx`)
+const ProjectPageTemplate = path.resolve(`./src/templates/ProjectPage.tsx`);
+const BlogPostTemplate = path.resolve(`./src/templates/BlogPost.tsx`);
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === `Mdx`) {
+    const parentNode = getNode(node.parent);
+    const sourceInstanceName = parentNode.sourceInstanceName;
+
+    // Attempt to use the existing slug from frontmatter if available
+    const existingSlug = node.frontmatter && node.frontmatter.slug;
+
+    if (!existingSlug) {
+      // If there is no existing slug in frontmatter, throw an error
+      throw new Error(`Missing 'slug' in the frontmatter of ${sourceInstanceName} file. Node ID: ${node.id}`);
+    }
+
+    // Use the existing slug from the frontmatter
+    createNodeField({
+      node,
+      name: `slug`,
+      value: existingSlug,
+    });
+    createNodeField({
+      node,
+      name: `sourceInstanceName`,
+      value: sourceInstanceName,
+    });
+  }
+};
 
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
+  const { createPage } = actions;
   const result = await graphql(`
-    query {
+    {
       allMdx {
         nodes {
           id
           frontmatter {
             slug
-            date
+          }
+          fields {
+            slug
+            sourceInstanceName
           }
           internal {
             contentFilePath
@@ -21,27 +54,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     }
-  `)
+  `);
 
   if (result.errors) {
-    reporter.panicOnBuild('Error loading MDX result', result.errors)
+    reporter.panicOnBuild('Error loading MDX result', result.errors);
+    return;
   }
 
-  // Create blog post pages.
-  const posts = result.data.allMdx.nodes
+  const projects = result.data.allMdx.nodes.filter(node => node.fields.sourceInstanceName === "projects");
+  const posts = result.data.allMdx.nodes.filter(node => node.fields.sourceInstanceName === "blog");
 
-  // you'll call `createPage` for each result
+  // Create pages for projects and posts separately
+  projects.forEach(node => {
+    createPage({
+      path: node.fields.slug,
+      component: `${ProjectPageTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      // component: ProjectPageTemplate,
+      context: { id: node.id },
+    });
+  });
+
   posts.forEach(node => {
     createPage({
-      // As mentioned above you could also query something else like frontmatter.title above and use a helper function
-      // like slugify to create a slug
-      path: node.frontmatter.slug,
-      // Provide the path to the MDX content file so webpack can pick it up and transform it into JSX
-    //   component: node.internal.contentFilePath,
-      component: `${ProjectPageTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-      // You can use the values in this context in
-      // our page layout component
+      path: node.fields.slug,
+      component: `${BlogPostTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      // component: BlogPostTemplate,
       context: { id: node.id },
-    })
-  })
-}
+    });
+  });
+};

@@ -22,8 +22,11 @@ export default function Projects({ data }) {
 }
 
 export const query = graphql`
-  query SITE_INDEX_QUERY {
-    allMdx {
+  query ProjectsQuery {
+    allMdx(
+    sort: {frontmatter: {sort_id: ASC}}
+    filter: {internal: {contentFilePath: {regex: "/projects/"}}}
+    ) {
       nodes {
         id
         frontmatter {
@@ -36,4 +39,5 @@ export const query = graphql`
         }
       }
     }
-  }`;
+  }
+`;
