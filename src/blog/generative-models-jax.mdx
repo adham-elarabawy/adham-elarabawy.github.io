@@ -1,0 +1,35 @@
+---
+title: "Tracing Deep Generative Models from the 1980s: A Research Study [JAX]"
+date: "2024-07-28"
+slug: '/blog/generative-models-jax'
+---
+
+I was recently asked to explain the history of deep generative modeling on a whiteboard. As I tried to explain each advancement further, it was difficult to articulate the extent of qualitative improvement directly resulting from each new model. This is meant to be a more complete, thorough answer to that question.
+
+Simultaneously, I've wanted to explore the JAX library for a while. This blog post is an attempt to scratch both of these itches, by implementing the major deep generative models from the 1980s to now, using JAX. I will do my best to train/evaluate these models in the same manner, to provide a fair comparison. The following will be the exact same across models:
+ - training/evaluation dataset
+ - evaluation metrics
+ - training time
+ - model parameters
+ - time spent tuning hyperparameters
+
+**TODO: Add some note here about the weird dynamics that come from serially improving on models and architectures, and how previous architectures may actually be more powerful / why these things feel like a loop/cycle in research just over a long time. It feels like there should be some intuitive term or visualization to drive this point home.** 
+
+ I will be implementing the following models, in their most vanilla forms, using JAX:
+
+1. Autoencoder (1980s) | [Rumelhart et al. 1986](https://stanford.edu/~jlmcc/papers/PDP/Volume%201/Chap8_PDP86.pdf)
+2. Variational Autoencoder (2013) | [Kingma et al. 2013](https://arxiv.org/abs/1312.6114)
+3. Generative Adversarial Network (2014) | [Goodfellow et al. 2014](https://arxiv.org/abs/1406.2661)
+4. Normalizing Flow Model (2015) | [Rezende et al. 2015](https://arxiv.org/abs/1505.05770)
+5. Diffusion Model (2015) | [Ho et al. 2015](https://arxiv.org/abs/2006.11239)
+6. Transformer Model (2017) | [Vaswani et al. 2017](https://arxiv.org/abs/1706.03762)
+
+## Autoencoder
+## Variational Autoencoder
+## Generative Adversarial Network
+## Normalizing Flow Model
+## Diffusion Model
+## Transformer Model
+
+### Reference
+https://lilianweng.github.io/posts/2018-10-13-flow-models/

@@ -19,7 +19,7 @@ const BlogPage = ({ data }) => {
                     day: 'numeric',
                   })}
                 </div>
-                <Link to={node.frontmatter.slug} style={{ fontSize: '20px', textDecoration: 'none', color: '#1a0dab' }}>
+                <Link to={node.frontmatter.slug} style={{ fontSize: '20px', textDecoration: 'none'}}>
                   {node.frontmatter.title}
                 </Link>
               </li>
