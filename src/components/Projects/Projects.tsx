@@ -7,6 +7,7 @@ import { Center, SimpleGrid } from "@mantine/core";
 export default function Projects({ data }) {
   const projects = data.allMdx.nodes.sort((a, b) => a.frontmatter.sort_id - b.frontmatter.sort_id);
 
+  console.log("Projects data:", projects); // Add this line
 
   return (
         <Center style={{ marginTop: '20px' }}>
@@ -33,6 +34,8 @@ export const query = graphql`
           description
           date
           featured_image
+          type
+          state
         }
       }
     }

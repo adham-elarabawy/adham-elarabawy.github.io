@@ -14,6 +14,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           frontmatter {
             slug
             date
+            type
+            state
           }
           internal {
             contentFilePath

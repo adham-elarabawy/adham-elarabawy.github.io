@@ -30,6 +30,8 @@ export const query = graphql`
           description
           date
           featured_image
+          type
+          state
         }
       }
     }
