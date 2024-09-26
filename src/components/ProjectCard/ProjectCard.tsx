@@ -40,7 +40,11 @@ export function ProjectCard({ project }) {
                 {project.title}
               </Text>
               <Badge size="sm" variant="light">
-                {project.date}
+              {new Date(project.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
               </Badge>
             </Group>
             <Text fz="sm" mt="xs">
