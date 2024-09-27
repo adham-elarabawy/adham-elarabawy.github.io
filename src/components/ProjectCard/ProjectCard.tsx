@@ -13,7 +13,10 @@ const imageContainerStyle = {
 };
 
 const imageStyle = {
-  width: '100%',
+  width: '102%', // Slightly wider than the container
+  height: '102%', // Slightly taller than the container
+  objectFit: 'cover',
+  objectPosition: 'center',
 };
 
 const CroppedImage = ({ src, alt }) => (
@@ -53,20 +56,31 @@ export function ProjectCard({ project }) {
             <Card.Section className={classes.section} mt="md">
               <div style={{ position: 'relative' }}>
                 {project.state && (
-                  <Flex align="center" style={{ position: 'absolute', top: 0, right: 0 }}>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 8,
+                      right: 8,
+                      backgroundColor: `var(--mantine-color-${stateColors[project.state]}-light)`,
+                      padding: '4px 8px',
+                      borderRadius: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
                     <div
                       style={{
-                        width: '8px',
-                        height: '8px',
+                        width: '6px',
+                        height: '6px',
                         borderRadius: '50%',
-                        backgroundColor: stateColors[project.state],
+                        backgroundColor: `var(--mantine-color-${stateColors[project.state]}-filled)`,
                         marginRight: '6px',
                       }}
                     />
-                    <Text size="xs" color="dimmed">
+                    <Text size="xs">
                       {project.state.charAt(0).toUpperCase() + project.state.slice(1)}
                     </Text>
-                  </Flex>
+                  </div>
                 )}
                 <Text fz="lg" fw={500}>
                   {project.title}
@@ -82,9 +96,11 @@ export function ProjectCard({ project }) {
                   </Badge>
                 ))}
               </Group>
-              <Text fz="sm" mt="xs">
-                {project.description}
-              </Text>
+              <div className={classes.descriptionContainer}>
+                <Text fz="sm" className={classes.description}>
+                  {project.description}
+                </Text>
+              </div>
             </Card.Section>
           </Card>
         </GatsbyLink>
