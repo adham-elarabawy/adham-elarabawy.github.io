@@ -39,14 +39,22 @@ const stateColors = {
 };
 
 export function ProjectCard({ project }) {
-  const formattedDate = new Date(project.date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-  });
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      // Invalid date, return original string or a placeholder
+      return dateString || 'No date';
+    }
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+    });
+  };
+  console.log('adham')
+  console.log(project.date)
+  const formattedDate = formatDate(project.date);
 
   const CardWrapper = ({ children }) => {
-    console.log('test adham')
-    console.log(project.url_override)
     if (project.url_override) {
       return (
         <a href={project.url_override} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
