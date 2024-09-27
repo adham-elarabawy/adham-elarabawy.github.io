@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Text, Badge, Group, Container, Center, Flex, Divider } from "@mantine/core";
 import { Link as GatsbyLink } from "gatsby";
+import { DefaultMantineColor } from '@mantine/core';
 import * as classes from './ProjectCard.module.css';
 
 const imageContainerStyle = {
@@ -25,11 +26,13 @@ const CroppedImage = ({ src, alt }) => (
   </div>
 );
 
-const typeColors = {
-  paper: "blue",
-  robotics: "grape",
-  github: "gray",
-  "machine learning": "green",
+
+export const typeColors: Record<string, DefaultMantineColor> = {
+  robotics: '#9775fa',
+  nlp: '#ff8787',
+  "machine learning": '#20c997',
+  paper: 'blue',
+  github: 'gray',
 };
 
 const stateColors = {
