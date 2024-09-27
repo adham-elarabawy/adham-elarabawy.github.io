@@ -44,10 +44,23 @@ export function ProjectCard({ project }) {
     month: 'long',
   });
 
+  const CardWrapper = ({ children }) => {
+    console.log('test adham')
+    console.log(project.url_override)
+    if (project.url_override) {
+      return (
+        <a href={project.url_override} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+          {children}
+        </a>
+      );
+    }
+    return <GatsbyLink to={project.slug} style={{ textDecoration: 'none' }}>{children}</GatsbyLink>;
+  };
+
   return (
     <Container>
       <Center>
-        <GatsbyLink to={project.slug} style={{ textDecoration: 'none' }}>
+        <CardWrapper>
           <Card withBorder radius="md" p="md" className={classes.card}>
             <Card.Section>
               <CroppedImage src={project.featured_image} alt="Description" />
@@ -103,8 +116,11 @@ export function ProjectCard({ project }) {
               </div>
             </Card.Section>
           </Card>
-        </GatsbyLink>
+        </CardWrapper>
       </Center>
     </Container>
   );
 }
+
+
+

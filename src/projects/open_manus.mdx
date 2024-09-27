@@ -1,33 +1,11 @@
 ---
 sort_id: 0
-title: 'Open Manus'
+title: 'OpenManus'
 date: 2024-7-1
 slug: '/projects/open_manus'
 description: 'An open-source 3D-printed direct-drive bionic hand.'
 featured_image: '/images/open_manus_preview.png'
 type: ["robotics", "machine learning", "github"]
 state: "in-progress"
+url_override: https://github.com/adham-elarabawy/open-manus
 ---
-
-**See [the github repo](https://github.com/adham-elarabawy/open-manus) for implementation details, roadmap, etc. The current status is summarized below.**
-
-I'm almost done with the joint connecting the middle and distal phalanges (labeled and highlighted in blue below).
-
-<div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-    <img src="https://github.com/adham-elarabawy/open-manus/raw/main/assets/mk6_render.png" title="OpenManus Preview" style={{ height: "300px" }}/>
-        <img src="https://github.com/adham-elarabawy/open-manus/raw/main/assets/mk6_hand_bone_anatomy_diagram.png" title="OpenManus Preview" style={{ height: "300px" }}/>
-</div>
-
-Just wrote up a whitepaper on my [MPC controller for impedance control using current sensing](https://github.com/adham-elarabawy/open-manus/raw/main/assets/OpenManus_MPC_Controller.pdf)!
-
-I have a joint with an embedded magnetic encoder working. Currently working on a custom transmission to rotate the motor 90 degrees to be inline to keep the finger compact and the joints serially composable.
-
-Also, drafted a schematic for the transmission that will allow me to rotate the motor 90 degrees to be inline with the rest of the joint without jutting out (see schematic below). For the coupler between the motor shaft (1.5mm) and the transmission shaft (2mm) in the diagram, I was unable to find an off-the-shelf solution, so am going to 3d print my own coupler. [Found a nice resource on YT on best practices to 3d print holes](https://www.youtube.com/watch?v=Bd7Yyn61XWQ&pp=ygUOM2QgcHJpbnQgaG9sZXM%3D).
-
-<img src="https://github.com/adham-elarabawy/open-manus/raw/main/assets/transmission.png" width="425"/>
-
-I am also considering a few design choices to reduce the width of the joint:
-
-<img src="https://github.com/adham-elarabawy/open-manus/raw/main/assets/areas_for_improvement_diagram.png" width="1000"/>
-
-See [the logbook](https://github.com/adham-elarabawy/open-manus/raw/main/logbook.md) for more detailed progress updates.

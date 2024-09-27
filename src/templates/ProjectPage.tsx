@@ -10,7 +10,6 @@ const shortcodes = { Link }; // Provides shorthand for embedding components with
 
 // Define the page template component, accepting `data` and `children` props.
 export default function PageTemplate({ data, children }) {
-  // Handles navigation back to the home page (or another specific path).
   const handleBackClick = () => {
     navigate("/"); // Adjust the path as necessary.
   };
@@ -42,6 +41,7 @@ export const query = graphql`
       frontmatter {
         title
         description
+        url_override
       }
     }
   }
