@@ -37,6 +37,7 @@ export const query = graphql`
           featured_image
           type
           state
+          url_override
         }
       }
     }

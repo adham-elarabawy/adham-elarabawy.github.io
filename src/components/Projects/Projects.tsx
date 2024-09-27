@@ -14,7 +14,7 @@ export default function Projects({ data }) {
             <SimpleGrid cols={{ base: 1, sm: 2}} spacing="sm" verticalSpacing="sm">
                 {projects.map(project => (
                     <div key={project.id}>
-                    <ProjectCard project={project.frontmatter} />
+                    <ProjectCard project={{...project.frontmatter, url_override: project.frontmatter.url_override}} />
                     </div>
                 ))}
             </SimpleGrid>
@@ -36,7 +36,9 @@ export const query = graphql`
           featured_image
           type
           state
+          url_override
         }
       }
     }
-  }`;
+  }
+`;
