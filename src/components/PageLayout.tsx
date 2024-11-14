@@ -10,7 +10,7 @@ export const PageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <Transition transition="fade" duration={150} timingFunction="ease-out" mounted={true}>
       {(styles) => (
-        <div style={styles}>
+        <div style={{ ...styles, position: 'relative', zIndex: 1 }}>
           <Header location={location} /> 
             <div className="mx-auto mb-12 max-w-5xl">{children}</div>
           <Footer />

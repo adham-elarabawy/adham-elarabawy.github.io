@@ -4,14 +4,15 @@ import { PageLayout } from "../components/PageLayout";
 import { Badge, Center, Container, Divider } from '@mantine/core';
 import SocialMediaBar from "../components/SocialMediaBar/SocialMediaBar";
 import Projects from "../components/Projects/Projects";
+import { DotGrid } from "../components/DotGrid/DotGrid";
 import { graphql } from "gatsby";
 
 
 export default function HomePage({ data }) {
   return (
     <PageLayout>
+      <DotGrid />
       <Welcome />
-      {/* <Badge color="blue">Badge</Badge> */}
       <SocialMediaBar />
       <Projects data={data} />
     </PageLayout>
@@ -37,4 +38,3 @@ export const query = graphql`
       }
     }
   }`;
-
