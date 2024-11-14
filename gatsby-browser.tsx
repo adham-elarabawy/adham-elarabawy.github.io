@@ -1,5 +1,6 @@
 // Assuming your global styles are in src/styles/global.css
 import "@mantine/core/styles.css"; // Mantine styles
+import "./src/styles/global.css"; // Global styles
 import React from "react";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "./src/theme";
