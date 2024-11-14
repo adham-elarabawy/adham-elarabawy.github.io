@@ -1,17 +1,13 @@
-import { Text, Container, Group, ActionIcon, rem, useMantineTheme, useMantineColorScheme } from '@mantine/core';
+import { Text, Container, Group, ActionIcon, rem } from '@mantine/core';
 import { IconBrandGithub, IconBrandLinkedin, IconBrandYoutube , IconBrandX} from '@tabler/icons-react';
 import * as classes from './Footer.module.css';
 import React from 'react';
 
 export function Footer() {
-    const theme = useMantineTheme();
-    const { colorScheme } = useMantineColorScheme();
-    const textColor = colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7];
-  
     return (
       <div className={classes.footer}>
         <Container className={classes.inner}>
-          <Text align="center" size="sm" color={textColor} className={classes.copyright}>
+          <Text align="center" size="sm" className={classes.copyright}>
               © 2024 Adham Elarabawy. All rights reserved.
           </Text>
         <Group gap={0} className={classes.links} justify="flex-end" wrap="nowrap">
