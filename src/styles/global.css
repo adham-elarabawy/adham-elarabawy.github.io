@@ -1,0 +1,25 @@
+/* Global cursor styles */
+* {
+  cursor: crosshair !important; /* You can change 'crosshair' to any cursor type you want */
+}
+
+/* Optional: Different cursor for clickable elements */
+a, button, [role="button"] {
+  cursor: pointer !important;
+}
+
+/* Available cursor options include:
+  - default
+  - pointer
+  - crosshair
+  - text
+  - wait
+  - move
+  - not-allowed
+  - grab
+  - grabbing
+  - zoom-in
+  - zoom-out
+  You can also use a custom cursor image:
+  cursor: url('path-to-your-cursor.png'), auto;
+*/
