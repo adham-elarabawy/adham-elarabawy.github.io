@@ -1,21 +1,23 @@
 import React from 'react';
-import { ScrollArea, Transition } from '@mantine/core';
-import { Header } from "../components/Header/Header";
+import { Transition } from '@mantine/core';
 import { Footer } from "../components/Footer/Footer";
-import { useLocation } from "@reach/router"; // Correct import of useLocation
+import { useLocation } from "@reach/router";
+import { MantineProvider } from '@mantine/core';
+import { theme } from '../theme';
 
-export const PageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const location = useLocation(); // Use the useLocation hook to get the current location object
+export function PageLayout({ children }) {
+  const location = useLocation();
 
   return (
-    <Transition transition="fade" duration={150} timingFunction="ease-out" mounted={true}>
-      {(styles) => (
-        <div style={{ ...styles, position: 'relative', zIndex: 1 }}>
-          <Header location={location} /> 
+    <MantineProvider theme={theme}>
+      <Transition transition="fade" duration={150} timingFunction="ease-out" mounted={true}>
+        {(styles) => (
+          <div style={{ ...styles, position: 'relative', zIndex: 1 }}>
             <div className="mx-auto mb-12 max-w-5xl">{children}</div>
-          <Footer />
-        </div>
-      )}
-    </Transition>
+            <Footer />
+          </div>
+        )}
+      </Transition>
+    </MantineProvider>
   );
-};
+}

@@ -6,7 +6,7 @@ import { StaticImage } from "gatsby-plugin-image";
 export function Welcome() {
   return (
     <>
-      <Center pt={70}>
+      <Center pt={40}>
         <Tooltip label="Hello!" position="center">
           <div> {/* Wrap StaticImage in a div for Tooltip to work correctly */}
             <StaticImage
