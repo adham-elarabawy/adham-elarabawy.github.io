@@ -2,11 +2,31 @@ const path = require("path")
 
 const ProjectPageTemplate = path.resolve(`./src/templates/ProjectPage.tsx`)
 
+interface MdxNode {
+  id: string
+  frontmatter: {
+    slug: string
+    date: string
+    type: string[]
+    state: string
+    url_override?: string
+  }
+  internal: {
+    contentFilePath: string
+  }
+}
+
+interface QueryResult {
+  allMdx: {
+    nodes: MdxNode[]
+  }
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const result = await graphql(`
-    query {
+  const result = await graphql<QueryResult>(`
+    query CreatePagesQuery {
       allMdx {
         nodes {
           id
@@ -29,9 +49,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('Error loading MDX result', result.errors)
   }
 
-  const posts = result.data.allMdx.nodes
+  const posts = result.data?.allMdx.nodes
 
-  posts.forEach(node => {
+  posts?.forEach(node => {
     if (!node.frontmatter.url_override) {
       createPage({
         path: node.frontmatter.slug,
@@ -57,6 +77,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       type: [String]
       state: String
       url_override: String
+      sort_id: Int
     }
   `
   createTypes(typeDefs)

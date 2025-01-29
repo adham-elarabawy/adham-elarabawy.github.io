@@ -7,36 +7,38 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "develop": "node --no-deprecation ./node_modules/.bin/gatsby develop",
+    "build": "node --no-deprecation ./node_modules/.bin/gatsby build",
+    "serve": "node --no-deprecation ./node_modules/.bin/gatsby serve",
+    "clean": "node --no-deprecation ./node_modules/.bin/gatsby clean",
     "typecheck": "tsc --noEmit",
-    "deploy-prod": "gatsby build && gh-pages -d public -b main"
+    "deploy-prod": "node --no-deprecation ./node_modules/.bin/gatsby build && gh-pages -d public -b main"
   },
   "dependencies": {
-    "@mantine/carousel": "^7.11.2",
+    "@mantine/carousel": "7.11.2",
     "@mantine/core": "7.11.2",
     "@mantine/hooks": "7.11.2",
-    "@mdx-js/mdx": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/mdx": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "@tabler/icons-react": "^3.11.0",
-    "embla-carousel-auto-scroll": "^8.1.7",
-    "embla-carousel-autoplay": "^8.1.7",
-    "embla-carousel-react": "^8.1.7",
-    "gatsby": "^5.13.7",
-    "gatsby-plugin-image": "^3.13.1",
-    "gatsby-plugin-manifest": "^5.13.1",
-    "gatsby-plugin-mdx": "^5.13.1",
-    "gatsby-plugin-postcss": "^6.13.1",
-    "gatsby-plugin-sharp": "^5.13.1",
-    "gatsby-remark-images": "^7.13.1",
-    "gatsby-source-filesystem": "^5.13.1",
-    "gatsby-transformer-sharp": "^5.13.1",
+    "embla-carousel": "8.1.7",
+    "embla-carousel-auto-scroll": "8.1.7",
+    "embla-carousel-autoplay": "8.1.7",
+    "embla-carousel-react": "8.1.7",
+    "gatsby": "^5.14.1",
+    "gatsby-plugin-image": "^3.14.0",
+    "gatsby-plugin-manifest": "^5.14.0",
+    "gatsby-plugin-mdx": "^5.14.0",
+    "gatsby-plugin-postcss": "^6.14.0",
+    "gatsby-plugin-sharp": "^5.14.0",
+    "gatsby-remark-images": "7.14.0",
+    "gatsby-source-filesystem": "^5.14.0",
+    "gatsby-transformer-sharp": "^5.14.0",
     "gh-pages": "^6.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "jquery": "^3.7.1",
+    "punycode": "^2.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-router-dom": "^6.25.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
@@ -44,13 +46,17 @@
     "three": "^0.170.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
     "@types/node": "^20.14.12",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "postcss": "^8.4.40",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
-    "typescript": "^5.5.4"
+    "typescript": "^5.3.3"
   },
-  "packageManager": "yarn@4.1.1"
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "yarn@4.6.0"
 }

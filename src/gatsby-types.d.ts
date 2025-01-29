@@ -1340,12 +1340,23 @@ type MdxFilterListInput = {
 };
 
 type MdxFrontmatter = {
-  readonly date: Maybe<Scalars['String']>;
+  readonly date: Maybe<Scalars['Date']>;
   readonly description: Maybe<Scalars['String']>;
   readonly featured_image: Maybe<Scalars['String']>;
-  readonly slug: Maybe<Scalars['String']>;
+  readonly slug: Scalars['String'];
   readonly sort_id: Maybe<Scalars['Int']>;
-  readonly title: Maybe<Scalars['String']>;
+  readonly state: Maybe<Scalars['String']>;
+  readonly title: Scalars['String'];
+  readonly type: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly url_override: Maybe<Scalars['String']>;
+};
+
+
+type MdxFrontmatter_dateArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString?: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
 };
 
 type MdxFrontmatterFieldSelector = {
@@ -1354,16 +1365,22 @@ type MdxFrontmatterFieldSelector = {
   readonly featured_image: InputMaybe<FieldSelectorEnum>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
   readonly sort_id: InputMaybe<FieldSelectorEnum>;
+  readonly state: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+  readonly url_override: InputMaybe<FieldSelectorEnum>;
 };
 
 type MdxFrontmatterFilterInput = {
-  readonly date: InputMaybe<StringQueryOperatorInput>;
+  readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly featured_image: InputMaybe<StringQueryOperatorInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly sort_id: InputMaybe<IntQueryOperatorInput>;
+  readonly state: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+  readonly url_override: InputMaybe<StringQueryOperatorInput>;
 };
 
 type MdxFrontmatterSortInput = {
@@ -1372,7 +1389,10 @@ type MdxFrontmatterSortInput = {
   readonly featured_image: InputMaybe<SortOrderEnum>;
   readonly slug: InputMaybe<SortOrderEnum>;
   readonly sort_id: InputMaybe<SortOrderEnum>;
+  readonly state: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+  readonly url_override: InputMaybe<SortOrderEnum>;
 };
 
 type MdxGroupConnection = {
@@ -2585,10 +2605,20 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type ProjectsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly frontmatter: { readonly slug: string | null, readonly date: string | null } | null, readonly internal: { readonly contentFilePath: string | null } }> } };
+type ProjectsQueryQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly frontmatter: { readonly sort_id: number | null, readonly title: string, readonly slug: string, readonly description: string | null, readonly date: string | null, readonly featured_image: string | null, readonly type: ReadonlyArray<string | null> | null, readonly state: string | null, readonly url_override: string | null } | null }> } };
+
+type SITE_INDEX_QUERYQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SITE_INDEX_QUERYQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly frontmatter: { readonly sort_id: number | null, readonly title: string, readonly slug: string, readonly description: string | null, readonly date: string | null, readonly featured_image: string | null, readonly type: ReadonlyArray<string | null> | null, readonly state: string | null, readonly url_override: string | null } | null }> } };
+
+type CreatePagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CreatePagesQueryQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly frontmatter: { readonly slug: string, readonly date: string | null, readonly type: ReadonlyArray<string | null> | null, readonly state: string | null, readonly url_override: string | null } | null, readonly internal: { readonly contentFilePath: string | null } }> } };
 
 
 }
