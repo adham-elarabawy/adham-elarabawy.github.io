@@ -1,5 +1,5 @@
 import React from "react";
-import { Center, Title, Text, Tooltip } from '@mantine/core';
+import { Center, Title, Text, Tooltip, Anchor } from '@mantine/core';
 import * as classes from "./Welcome.module.css";
 import { StaticImage } from "gatsby-plugin-image";
 
@@ -23,8 +23,8 @@ export function Welcome() {
       <Title className={classes.title} ta="center" mt={10}>
         Adham Elarabawy
       </Title>
-      <Text color="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="l">
-        Machine Learning Researcher
+      <Text size="lg" color="dimmed" ta="center" maw={580} mx="auto" mt="l">
+        ML Research at <Anchor href="https://π.com" target="_blank" rel="noopener noreferrer">Physical Intelligence</Anchor>
       </Text>
     </>
   );

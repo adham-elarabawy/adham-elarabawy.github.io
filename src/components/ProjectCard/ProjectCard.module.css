@@ -1,9 +1,6 @@
 .card {
     background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
     max-width: 400px;
-    /* margin-left: auto; /* These two lines will center your card */
-    /* margin-right: auto; */
-    margin-top: var(--mantine-spacing-lg);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 

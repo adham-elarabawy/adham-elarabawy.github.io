@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Text, Badge, Group, Container, Center, Flex, Divider } from "@mantine/core";
+import { Card, Text, Badge, Group, Center, Flex, Divider } from "@mantine/core";
 import { Link as GatsbyLink } from "gatsby";
 import { DefaultMantineColor } from '@mantine/core';
 import * as classes from './ProjectCard.module.css';
@@ -69,69 +69,62 @@ export function ProjectCard({ project }) {
   };
 
   return (
-    <Container>
-      <Center>
-        <CardWrapper>
-          <Card withBorder radius="md" p="md" className={classes.card}>
-            <Card.Section>
-              <CroppedImage src={project.featured_image} alt="Description" />
-            </Card.Section>
+    <CardWrapper>
+      <Card withBorder radius="md" p="xs" className={classes.card} style={{ width: '100%' }}>
+        <Card.Section>
+          <CroppedImage src={project.featured_image} alt="Description" />
+        </Card.Section>
 
-            <Card.Section className={classes.section} mt="md">
-              <div style={{ position: 'relative' }}>
-                {project.state && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 8,
-                      right: 8,
-                      backgroundColor: `var(--mantine-color-${stateColors[project.state]}-light)`,
-                      padding: '4px 8px',
-                      borderRadius: '4px',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '6px',
-                        height: '6px',
-                        borderRadius: '50%',
-                        backgroundColor: `var(--mantine-color-${stateColors[project.state]}-filled)`,
-                        marginRight: '6px',
-                      }}
-                    />
-                    <Text size="xs">
-                      {project.state.charAt(0).toUpperCase() + project.state.slice(1)}
-                    </Text>
-                  </div>
-                )}
-                <Text fz="lg" fw={500}>
-                  {project.title}
-                </Text>
-                <Text fz="xs" c="dimmed" style={{ fontWeight: 300, marginTop: '4px' }}>
-                  {formattedDate}
+        <Card.Section className={classes.section} mt="xs">
+          <div style={{ position: 'relative' }}>
+            {project.state && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 8,
+                  right: 8,
+                  backgroundColor: `var(--mantine-color-${stateColors[project.state]}-light)`,
+                  padding: '4px 8px',
+                  borderRadius: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <div
+                  style={{
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    backgroundColor: `var(--mantine-color-${stateColors[project.state]}-filled)`,
+                    marginRight: '6px',
+                  }}
+                />
+                <Text size="xs">
+                  {project.state.charAt(0).toUpperCase() + project.state.slice(1)}
                 </Text>
               </div>
-              <Group mt="xs">
-                {project.type && Array.isArray(project.type) && project.type.map((type, index) => (
-                  <Badge key={index} size="sm" variant="light" color={typeColors[type] || "gray"}>
-                    {type}
-                  </Badge>
-                ))}
-              </Group>
-              <div className={classes.descriptionContainer}>
-                <Text fz="sm" className={classes.description}>
-                  {project.description}
-                </Text>
-              </div>
-            </Card.Section>
-          </Card>
-        </CardWrapper>
-      </Center>
-    </Container>
+            )}
+            <Text fz="lg" fw={500}>
+              {project.title}
+            </Text>
+            <Text fz="xs" c="dimmed" style={{ fontWeight: 300, marginTop: '4px' }}>
+              {formattedDate}
+            </Text>
+          </div>
+          <Group mt="xs">
+            {project.type && Array.isArray(project.type) && project.type.map((type, index) => (
+              <Badge key={index} size="sm" variant="light" color={typeColors[type] || "gray"}>
+                {type}
+              </Badge>
+            ))}
+          </Group>
+          <div className={classes.descriptionContainer}>
+            <Text fz="sm" className={classes.description}>
+              {project.description}
+            </Text>
+          </div>
+        </Card.Section>
+      </Card>
+    </CardWrapper>
   );
 }
-
-
-
