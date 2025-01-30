@@ -15,6 +15,7 @@ export default function HomePage({ data }) {
   const [isScrollable, setIsScrollable] = useState(false);
   const textColor = theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.dark[7];
   const bgColor = theme.colorScheme === 'dark' ? '#1A1A1A' : '#FFFFFF';
+  const rightPaneBgColor = theme.colorScheme === 'dark' ? '#161616' : '#F9F9F9';
   const scrollAreaRef = useRef(null);
   const [activeCard, setActiveCard] = useState(0);
 
@@ -173,6 +174,9 @@ export default function HomePage({ data }) {
           height: '100%',
           position: 'relative',
           padding: '1rem',
+          backgroundColor: bgColor,
+          boxShadow: '2px 0 8px rgba(0, 0, 0, 0.08)',
+          zIndex: 1
         }}>
           {/* Content overlay */}
           <div style={{
@@ -214,7 +218,7 @@ export default function HomePage({ data }) {
           width: '65%',
           height: '100%',
           position: 'relative',
-          backgroundColor: bgColor,
+          backgroundColor: rightPaneBgColor,
           display: 'flex',
           flexDirection: 'column'
         }}>
