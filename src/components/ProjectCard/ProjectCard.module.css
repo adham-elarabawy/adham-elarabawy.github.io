@@ -1,12 +1,13 @@
 .card {
     width: 100%;
-    max-width: 400px;
+    max-width: 340px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    height: 460px;
+    height: 420px;
     display: flex;
     flex-direction: column;
+    font-size: 0.95em;
 }
 
 .card::before {
@@ -33,7 +34,7 @@
 }
 
 .section {
-    padding: 1rem;
+    padding: 0.85rem;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -46,7 +47,7 @@
 
 .description {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -6,7 +6,7 @@ import * as classes from './ProjectCard.module.css';
 
 const imageContainerStyle = {
   width: '100%',
-  height: '300px',
+  height: '240px',
   overflow: 'hidden',
   display: 'flex',
   justifyContent: 'center',
@@ -73,7 +73,7 @@ export function ProjectCard({ project, theme }) {
         overflow: 'hidden',
         border: `1px solid ${theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)'}`
       }}>
-        <div style={{ height: '300px' }}>
+        <div style={{ height: '240px' }}>
           <CroppedImage src={project.featured_image} alt={project.title} />
         </div>
         

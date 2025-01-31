@@ -31,7 +31,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
 }) => {
   // Memoize constants
   const dimensions = useMemo(() => ({
-    CARD_WIDTH: 400,
+    CARD_WIDTH: 340,
     CARD_GAP: 32
   }), []);
 
@@ -137,7 +137,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: '520px'
+        minHeight: '460px'
       }}>
         <div 
           ref={scrollAreaRef} 
@@ -160,7 +160,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
             alignItems: 'center',
             gap: `${dimensions.CARD_GAP}px`,
             padding: `0 ${dimensions.CARD_GAP}px`,
-            minHeight: '520px',
+            minHeight: '460px',
             width: `${(projects.length * (dimensions.CARD_WIDTH + dimensions.CARD_GAP)) + dimensions.CARD_GAP}px`
           }}>
             {projects.map((project) => (
@@ -192,7 +192,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '1rem'
+        marginTop: '0.25rem'
       }}>
         <div style={{
           display: 'inline-flex',

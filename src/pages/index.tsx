@@ -73,12 +73,35 @@ export default function HomePage({ data }) {
           </div>
         </div>
         <Box style={{ 
-          padding: '0 5%',
+          padding: '1.5rem 5%',
           margin: '0 auto',
           maxWidth: '1600px',
-          position: 'relative',
-          marginTop: '2rem'
+          position: 'relative'
         }}>
+          <div style={{
+            textAlign: 'center',
+            color: textColor,
+            fontSize: '1.05rem',
+            lineHeight: '1.6',
+            padding: '1.25rem 1.5rem',
+            background: theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.85)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            borderRadius: '12px',
+            border: `1px solid ${theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+            boxShadow: theme.colorScheme === 'dark' ? 
+              '0 4px 30px rgba(0, 0, 0, 0.1)' : 
+              '0 4px 30px rgba(0, 0, 0, 0.05)',
+            marginBottom: '2rem'
+          }}>
+            I'm passionate about robotics, machine learning, and creating innovative solutions.
+            Here's a collection of my notable projects that showcase my expertise in autonomous systems,
+            computer vision, and full-stack development.
+          </div>
+          <div style={{ 
+            width: '100%',
+            position: 'relative'
+          }}>
           <Grid 
             grow={true} 
             justify="center"
@@ -105,6 +128,7 @@ export default function HomePage({ data }) {
               </Grid.Col>
             ))}
           </Grid>
+          </div>
         </Box>
         <Footer />
       </div>
@@ -205,10 +229,33 @@ export default function HomePage({ data }) {
             width: '100%',
             height: '100%',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            paddingBottom: '2rem'
+            justifyContent: 'flex-start',
+            paddingTop: '4rem',
+            paddingBottom: '2rem',
+            gap: '2rem'
           }}>
+            <div style={{
+              maxWidth: '80%',
+              textAlign: 'center',
+              color: textColor,
+              fontSize: '1.1rem',
+              lineHeight: '1.6',
+              padding: '1.5rem 2rem',
+              background: theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.85)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              borderRadius: '12px',
+              border: `1px solid ${theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+              boxShadow: theme.colorScheme === 'dark' ? 
+                '0 4px 30px rgba(0, 0, 0, 0.1)' : 
+                '0 4px 30px rgba(0, 0, 0, 0.05)'
+            }}>
+              I'm passionate about robotics, machine learning, and creating innovative solutions.
+              Here's a collection of my notable projects that showcase my expertise in autonomous systems,
+              computer vision, and full-stack development.
+            </div>
             <ProjectCarousel 
               projects={projects}
               textColor={textColor}
