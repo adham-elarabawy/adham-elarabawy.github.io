@@ -1,12 +1,16 @@
 import React from "react";
-import { Center, Title, Text, Tooltip, Anchor } from '@mantine/core';
+import { Center, Title, Text, Tooltip, Anchor, useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import * as classes from "./Welcome.module.css";
 import { StaticImage } from "gatsby-plugin-image";
 
 export function Welcome() {
+  const theme = useMantineTheme();
+  const isMobile = useMediaQuery('(max-width: 1200px)');
+
   return (
     <>
-      <Center pt={40}>
+      <Center pt={isMobile ? 0 : 40}>
         <Tooltip label="Hello!" position="center">
           <div> {/* Wrap StaticImage in a div for Tooltip to work correctly */}
             <StaticImage

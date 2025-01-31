@@ -34,14 +34,31 @@ const DEFAULT_PARAMS = {
   f: 0.1
 };
 
-const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
+// Utility functions
+function hexToRGB(hex: string): [number, number, number] {
+  const hexNum = hex.startsWith('#') ? parseInt(hex.substring(1), 16) : parseInt(hex.replace(/[^0-9a-f]/gi, ''), 16);
+  return [
+    ((hexNum >> 16) & 0xFF) / 255,
+    ((hexNum >> 8) & 0xFF) / 255,
+    (hexNum & 0xFF) / 255
+  ];
+}
+
+function calculateAizawaDerivatives(x: number, y: number, z: number, params: typeof DEFAULT_PARAMS) {
+  const dx = (z - params.b) * x - params.d * y;
+  const dy = params.d * x + (z - params.b) * y;
+  const dz = params.c + params.a * z - Math.pow(z, 3) / 3 - (Math.pow(x, 2) + Math.pow(y, 2)) * (1 + params.e * z) + params.f * z * Math.pow(x, 3);
+  return { dx, dy, dz };
+}
+
+export function AizawaAttractor({
   params = DEFAULT_PARAMS,
   noiseFactor = 0.001,
-  wobble = { frequency: 3, amplitude: 0.1 },
-  particleCounts = { baseActive: 2000, hoverActive: 4000, trail: 20000 },
-  color = '#ffffff',
+  wobble = { frequency: 2, amplitude: 0.05 },
+  particleCounts = { baseActive: 4000, hoverActive: 4000, trail: 50000 },
+  color = '#FFFFFF',
   backgroundColor = '#000000'
-}) => {
+}: AizawaAttractorProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [showParams, setShowParams] = useState(false);
@@ -53,7 +70,9 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
     // Scene setup
     const container = containerRef.current;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+    
+    // Force a 1:1 aspect ratio for the camera
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true
@@ -61,18 +80,11 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
 
     // Set pixel ratio for sharper rendering
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    const size = Math.min(container.clientWidth, container.clientHeight);
+    renderer.setSize(size, size);
     
-    // Convert hex background color to RGB
-    const hex = backgroundColor.startsWith('#') ? 
-      parseInt(backgroundColor.substring(1), 16) :
-      parseInt(backgroundColor.replace(/[^0-9a-f]/gi, ''), 16);
-    
-    const r = ((hex >> 16) & 0xFF) / 255;
-    const g = ((hex >> 8) & 0xFF) / 255;
-    const b = (hex & 0xFF) / 255;
-    
-    renderer.setClearColor(new THREE.Color(r, g, b), 1);
+    const [bgR, bgG, bgB] = hexToRGB(backgroundColor);
+    renderer.setClearColor(new THREE.Color(bgR, bgG, bgB), 1);
     container.appendChild(renderer.domElement);
 
     // Particle counts
@@ -94,25 +106,26 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
     const trailColors = new Float32Array(trailParticleCount * 3);
     const trailSizes = new Float32Array(trailParticleCount);
 
-    function generateParticleStream(startIdx: number, count: number, positions: Float32Array, colors: Float32Array, sizes: Float32Array, scale = 1.5) {
+    function generateParticleStream(startIdx: number, count: number, positions: Float32Array, colors: Float32Array, sizes: Float32Array, options: { scale?: number, particleSize?: number } = {}) {
+      const { scale = 1.5, particleSize = 0.04 } = options;
       // Start particles more centered around origin
       let x = (Math.random() - 0.5) * 0.1;
       let y = (Math.random() - 0.5) * 0.1;
       let z = (Math.random() - 0.5) * 0.1;
 
+      const [r, g, b] = hexToRGB(color);
+      const dt = 0.01;
+      const randOffset = 0.025;
+
       for (let i = 0; i < count; i++) {
         const idx = (startIdx + i) * 3;
-        const dt = 0.01;
-
+        
         // Add small random offsets to create more variation
-        const randOffset = 0.025;
         x += (Math.random() - 0.5) * randOffset;
         y += (Math.random() - 0.5) * randOffset;
         z += (Math.random() - 0.5) * randOffset;
 
-        const dx = (z - params.b) * x - params.d * y;
-        const dy = params.d * x + (z - params.b) * y;
-        const dz = params.c + params.a * z - Math.pow(z, 3) / 3 - (Math.pow(x, 2) + Math.pow(y, 2)) * (1 + params.e * z) + params.f * z * Math.pow(x, 3);
+        const { dx, dy, dz } = calculateAizawaDerivatives(x, y, z, params);
 
         x += dx * dt;
         y += dy * dt;
@@ -122,16 +135,11 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
         positions[idx + 1] = y * scale;
         positions[idx + 2] = z * scale;
 
-        const hex = parseInt(color.substring(1), 16);
-        const r = (hex >> 16) / 255;
-        const g = ((hex >> 8) & 0xFF) / 255;
-        const b = (hex & 0xFF) / 255;
-
         colors[idx] = r;
         colors[idx + 1] = g;
         colors[idx + 2] = b;
 
-        sizes[startIdx + i] = 0.04;
+        sizes[startIdx + i] = particleSize;
       }
     }
 
@@ -183,16 +191,19 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
     const trailSystem = new THREE.Points(trailParticles, trailMaterial);
 
     // Offset particle systems to center the visual point cloud
-    activeSystem.position.set(0, 2, 0);
-    trailSystem.position.set(0, 2, 0);
+    activeSystem.position.set(0, 0, 0);
+    trailSystem.position.set(0, 0, 0);
 
     // Ensure group is centered
     const group = new THREE.Group();
-    group.position.set(0, 0, 0);
+    group.position.set(0, -1, 0);  
+    // Rotate the group to face upward (π/2 radians = 90 degrees)
+    const initialRotationX = -Math.PI / 2;
+    group.rotation.x = initialRotationX;
 
     // Adjust camera to better frame the centered group
-    camera.position.set(0, 6, 10);
-    camera.lookAt(0, 2, 0);
+    camera.position.set(0, 0, 9);
+    camera.lookAt(0, -1, 0);  
     camera.up.set(0, 1, 0);
 
     group.add(activeSystem);
@@ -200,21 +211,27 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
     scene.add(group);
 
     const NORMAL_SPEED = 0.001;
-    const HOVER_SPEED = 0.005;
+    const HOVER_SPEED = 0.004;
+    const NORMAL_CAMERA_Z = 9;
+    const HOVER_CAMERA_Z = 4;
     
     let time = 0;
     let currentSpeed = NORMAL_SPEED;
     let targetSpeed = NORMAL_SPEED;
+    let currentCameraZ = NORMAL_CAMERA_Z;
+    let targetCameraZ = NORMAL_CAMERA_Z;
 
     function handleMouseEnter() {
       setIsHovering(true);
       targetSpeed = HOVER_SPEED;
+      targetCameraZ = HOVER_CAMERA_Z;
       setShowParams(true);
     }
 
     function handleMouseLeave() {
       setIsHovering(false);
       targetSpeed = NORMAL_SPEED;
+      targetCameraZ = NORMAL_CAMERA_Z;
       setShowParams(false);
     }
 
@@ -235,38 +252,36 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
       currentSpeed += (targetSpeed - currentSpeed) * 0.1;
       const dt = currentSpeed;
 
-      // Add randomness to particle positions
-      for (let i = 0; i < maxActiveParticleCount; i++) {
-        const idx = i * 3;
-        let x = activePositions[idx] / 2;
-        let y = activePositions[idx + 1] / 2;
-        let z = activePositions[idx + 2] / 2;
+      function updateParticleSet(
+        positions: Float32Array,
+        count: number,
+        options: { speedMultiplier?: number, updateSizes?: boolean } = {}
+      ) {
+        const { speedMultiplier = 1, updateSizes = false } = options;
+        
+        for (let i = 0; i < count; i++) {
+          const idx = i * 3;
+          let x = positions[idx] / 2;
+          let y = positions[idx + 1] / 2;
+          let z = positions[idx + 2] / 2;
 
-        const dx = (z - params.b) * x - params.d * y;
-        const dy = params.d * x + (z - params.b) * y;
-        const dz = params.c + params.a * z - Math.pow(z, 3) / 3 - (Math.pow(x, 2) + Math.pow(y, 2)) * (1 + params.e * z) + params.f * z * Math.pow(x, 3);
+          const { dx, dy, dz } = calculateAizawaDerivatives(x, y, z, params);
 
-        activePositions[idx] = (x + dx * dt + (Math.random() - 0.5) * noiseFactor) * 2;
-        activePositions[idx + 1] = (y + dy * dt + (Math.random() - 0.5) * noiseFactor) * 2;
-        activePositions[idx + 2] = (z + dz * dt + (Math.random() - 0.5) * noiseFactor) * 2;
+          positions[idx] = (x + dx * dt * speedMultiplier + (Math.random() - 0.5) * noiseFactor) * 2;
+          positions[idx + 1] = (y + dy * dt * speedMultiplier + (Math.random() - 0.5) * noiseFactor) * 2;
+          positions[idx + 2] = (z + dz * dt * speedMultiplier + (Math.random() - 0.5) * noiseFactor) * 2;
 
-        activeSizes[i] = 0.02 * (1 + Math.sin(time * 4 + i) * 0.3);
+          if (updateSizes) {
+            activeSizes[i] = 0.02 * (1 + Math.sin(time * 4 + i) * 0.3);
+          }
+        }
       }
 
-      for (let i = 0; i < trailParticleCount; i++) {
-        const idx = i * 3;
-        let x = trailPositions[idx] / 2;
-        let y = trailPositions[idx + 1] / 2;
-        let z = trailPositions[idx + 2] / 2;
-
-        const dx = (z - params.b) * x - params.d * y;
-        const dy = params.d * x + (z - params.b) * y;
-        const dz = params.c + params.a * z - Math.pow(z, 3) / 3 - (Math.pow(x, 2) + Math.pow(y, 2)) * (1 + params.e * z) + params.f * z * Math.pow(x, 3);
-
-        trailPositions[idx] = (x + dx * dt * 0.2) * 2;
-        trailPositions[idx + 1] = (y + dy * dt * 0.2) * 2;
-        trailPositions[idx + 2] = (z + dz * dt * 0.2) * 2;
-      }
+      // Update active particles
+      updateParticleSet(activePositions, maxActiveParticleCount, { updateSizes: true });
+      
+      // Update trail particles with slower speed
+      updateParticleSet(trailPositions, trailParticleCount, { speedMultiplier: 0.2 });
 
       if (isHovering && currentActiveCount < hoverActiveParticleCount) {
         currentActiveCount = Math.min(hoverActiveParticleCount, currentActiveCount + 50);
@@ -283,22 +298,29 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
 
     function animate() {
       requestAnimationFrame(animate);
-      time += 0.002;
+
+      time += 0.01;
+
+      // Update camera position with smooth interpolation
+      currentCameraZ += (targetCameraZ - currentCameraZ) * 0.05;
+      camera.position.setZ(currentCameraZ);
+
+      // Update rotation while preserving initial pose
+      const wobbleX = Math.sin(time * wobble.frequency) * wobble.amplitude;
+      const wobbleY = Math.cos(time * wobble.frequency) * wobble.amplitude;
+      group.rotation.x = initialRotationX + wobbleX;
+      group.rotation.y = wobbleY;
 
       updateParticles();
-
-      // Enhance wobble effect
-      group.rotation.x = Math.sin(time * wobble.frequency) * wobble.amplitude;
-      group.rotation.y = Math.cos(time * wobble.frequency) * wobble.amplitude;
 
       renderer.render(scene, camera);
     }
 
     function handleResize() {
       if (!containerRef.current) return;
-      camera.aspect = containerRef.current.clientWidth / containerRef.current.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+      const container = containerRef.current;
+      const size = Math.min(container.clientWidth, container.clientHeight);
+      renderer.setSize(size, size);
     }
 
     window.addEventListener('resize', handleResize);
@@ -320,7 +342,7 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
       ref={containerRef}
       style={{
         width: '100%',
-        height: '75vh',
+        height: '100%',
         position: 'relative',
         overflow: 'hidden',
         cursor: 'crosshair'
@@ -333,15 +355,15 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
           top: mousePosition.y + 10,
           pointerEvents: 'none',
           zIndex: 1000,
-          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
           padding: '8px 12px',
           borderRadius: '4px',
           fontSize: '12px',
           color: 'white',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}>
           <div style={{ fontWeight: 600, marginBottom: '4px' }}>Aizawa Attractor</div>
-          <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '11px' }}>
+          <div style={{ color: 'rgba(255,255,255,0.9)', fontSize: '11px' }}>
             a: {params.a.toFixed(2)}, b: {params.b.toFixed(2)}, c: {params.c.toFixed(2)},
             d: {params.d.toFixed(2)}, e: {params.e.toFixed(2)}, f: {params.f.toFixed(2)}
           </div>
@@ -349,6 +371,4 @@ const AizawaAttractor: React.FC<AizawaAttractorProps> = ({
       )}
     </div>
   );
-};
-
-export default AizawaAttractor;
+}

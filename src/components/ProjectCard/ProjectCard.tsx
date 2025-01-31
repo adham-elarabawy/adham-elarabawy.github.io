@@ -41,7 +41,7 @@ const stateColors = {
   done: "green",
 };
 
-export function ProjectCard({ project }) {
+export function ProjectCard({ project, theme }) {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
@@ -53,8 +53,6 @@ export function ProjectCard({ project }) {
       month: 'long',
     });
   };
-  console.log('adham')
-  console.log(project.date)
   const formattedDate = formatDate(project.date);
 
   const CardWrapper = ({ children }) => {
@@ -70,60 +68,93 @@ export function ProjectCard({ project }) {
 
   return (
     <CardWrapper>
-      <Card withBorder radius="md" p="xs" className={classes.card} style={{ width: '100%' }}>
-        <Card.Section>
-          <CroppedImage src={project.featured_image} alt="Description" />
-        </Card.Section>
-
-        <Card.Section className={classes.section} mt="xs">
-          <div style={{ position: 'relative' }}>
-            {project.state && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 8,
-                  right: 8,
-                  backgroundColor: `var(--mantine-color-${stateColors[project.state]}-light)`,
-                  padding: '4px 8px',
-                  borderRadius: '4px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <div
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    backgroundColor: `var(--mantine-color-${stateColors[project.state]}-filled)`,
-                    marginRight: '6px',
-                  }}
-                />
-                <Text size="xs">
-                  {project.state.charAt(0).toUpperCase() + project.state.slice(1)}
-                </Text>
-              </div>
-            )}
-            <Text fz="lg" fw={500}>
+      <Card withBorder radius="md" p={0} className={classes.card} style={{
+        backgroundColor: 'transparent',
+        overflow: 'hidden',
+        border: `1px solid ${theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)'}`
+      }}>
+        <div style={{ height: '300px' }}>
+          <CroppedImage src={project.featured_image} alt={project.title} />
+        </div>
+        
+        <div className={classes.section} style={{
+          background: theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.85)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          boxShadow: theme.colorScheme === 'dark' ? 'inset 0 1px 0 0 rgba(255, 255, 255, 0.1)' : 'inset 0 1px 0 0 rgba(255, 255, 255, 0.9)',
+          position: 'relative'
+        }}>
+          {project.state && (
+            <Badge
+              variant="dot"
+              size="sm"
+              color={stateColors[project.state]}
+              style={{
+                position: 'absolute',
+                top: '0.5rem',
+                right: '0.5rem',
+                textTransform: 'lowercase',
+                fontFamily: 'monospace',
+                letterSpacing: '-0.02em',
+                backdropFilter: 'blur(8px)',
+                backgroundColor: theme.colorScheme === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)',
+                border: `1px solid ${theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'}`
+              }}
+            >
+              {project.state}
+            </Badge>
+          )}
+          <Group position="apart" mb={4}>
+            <Text size="lg" weight={900} style={{
+              letterSpacing: '-0.01em',
+              color: theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.9)'
+            }}>
               {project.title}
             </Text>
-            <Text fz="xs" c="dimmed" style={{ fontWeight: 300, marginTop: '4px' }}>
-              {formattedDate}
+          </Group>
+
+          <Text size="xs" mb="xs" style={{
+            fontFamily: 'monospace',
+            color: theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
+            letterSpacing: '-0.02em'
+          }}>
+            {new Date(project.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: '2-digit'
+            }).replace(/\//g, '.')}
+          </Text>
+
+          <div className={classes.descriptionContainer}>
+            <Text className={classes.description} style={{
+              color: theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
+              fontSize: '0.9rem',
+              lineHeight: '1.4'
+            }}>
+              {project.description}
             </Text>
           </div>
-          <Group mt="xs">
+
+          <Group spacing={8} mt="auto">
             {project.type && Array.isArray(project.type) && project.type.map((type, index) => (
-              <Badge key={index} size="sm" variant="light" color={typeColors[type] || "gray"}>
+              <Badge
+                key={index}
+                variant="light"
+                radius="sm"
+                size="sm"
+                style={{
+                  backgroundColor: `${typeColors[type]}15`,
+                  color: typeColors[type],
+                  border: `1px solid ${typeColors[type]}30`,
+                  textTransform: 'lowercase',
+                  fontFamily: 'monospace',
+                  letterSpacing: '-0.02em'
+                }}
+              >
                 {type}
               </Badge>
             ))}
           </Group>
-          <div className={classes.descriptionContainer}>
-            <Text fz="sm" className={classes.description}>
-              {project.description}
-            </Text>
-          </div>
-        </Card.Section>
+        </div>
       </Card>
     </CardWrapper>
   );

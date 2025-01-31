@@ -54,5 +54,3 @@ export function SocialMediaBar() {
     </Group>
   );
 }
-
-export default SocialMediaBar;
