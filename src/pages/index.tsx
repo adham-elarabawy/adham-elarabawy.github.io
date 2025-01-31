@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Grid, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { graphql } from "gatsby";
@@ -18,6 +18,7 @@ export default function HomePage({ data }) {
   const gridColor = theme.colorScheme === 'dark' ? 
     'rgba(255, 255, 255, 0.05)' : 
     'rgba(0, 0, 0, 0.05)';
+  const leftPanelRef = useRef<HTMLDivElement>(null);
 
   const projects = data.allMdx.nodes.sort((a, b) => a.frontmatter.sort_id - b.frontmatter.sort_id);
 
@@ -126,17 +127,20 @@ export default function HomePage({ data }) {
         overflow: 'hidden'
       }}>
         {/* Left side - Personal Info and Attractor */}
-        <div style={{ 
-          width: '35%', 
-          height: '100%',
-          position: 'relative',
-          backgroundColor: bgColor,
-          boxShadow: '2px 0 8px rgba(0, 0, 0, 0.08)',
-          zIndex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2rem'
-        }}>
+        <div 
+          ref={leftPanelRef}
+          style={{ 
+            width: '35%', 
+            height: '100%',
+            position: 'relative',
+            backgroundColor: bgColor,
+            boxShadow: '2px 0 8px rgba(0, 0, 0, 0.08)',
+            zIndex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2rem'
+          }}
+        >
           {/* Content overlay */}
           <div style={{
             position: 'relative',
@@ -209,6 +213,7 @@ export default function HomePage({ data }) {
               projects={projects}
               textColor={textColor}
               backgroundColor={rightPaneBgColor}
+              scrollRef={leftPanelRef}
               isMobile={isMobile}
             />
           </div>

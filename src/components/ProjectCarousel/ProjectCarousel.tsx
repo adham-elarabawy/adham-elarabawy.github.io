@@ -19,13 +19,15 @@ interface ProjectCarouselProps {
   textColor: string;
   backgroundColor: string;
   isMobile?: boolean;
+  scrollRef?: React.RefObject<HTMLDivElement>;
 }
 
 const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
   projects,
   textColor,
   backgroundColor,
-  isMobile = false
+  isMobile = false,
+  scrollRef
 }) => {
   // Memoize constants
   const dimensions = useMemo(() => ({
@@ -85,36 +87,52 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
     const resizeObserver = new ResizeObserver(() => {
       setIsScrollable(currentRef.scrollWidth > currentRef.clientWidth);
     });
-    
-    const wheelHandler = !isMobile ? (e: WheelEvent) => {
-      e.preventDefault();
-      currentRef.scrollLeft += e.deltaY;
-      handleScroll();
-    } : null;
 
     currentRef.addEventListener('scroll', handleScroll);
     resizeObserver.observe(currentRef);
-    if (wheelHandler) {
-      currentRef.addEventListener('wheel', wheelHandler, { passive: false });
-    }
 
     return () => {
       currentRef.removeEventListener('scroll', handleScroll);
       resizeObserver.unobserve(currentRef);
-      if (wheelHandler) {
-        currentRef.removeEventListener('wheel', wheelHandler);
-      }
     };
-  }, [handleScroll, isMobile]);
+  }, [handleScroll]);
+
+  const handleWheel = useCallback((e: WheelEvent) => {
+    e.preventDefault();
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollLeft += e.deltaY;
+      handleScroll();
+    }
+  }, [handleScroll]);
+
+  useEffect(() => {
+    if (scrollRef?.current) {
+      const handleExternalWheel = (e: WheelEvent) => {
+        e.preventDefault();
+        if (scrollAreaRef.current) {
+          scrollAreaRef.current.scrollLeft += e.deltaY;
+          handleScroll();
+        }
+      };
+
+      scrollRef.current.addEventListener('wheel', handleExternalWheel, { passive: false });
+      return () => {
+        scrollRef.current?.removeEventListener('wheel', handleExternalWheel);
+      };
+    }
+  }, [handleScroll, scrollRef]);
 
   return (
-    <div style={{ 
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center'
-    }}>
+    <div 
+      style={{ 
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+      }}
+      onWheel={handleWheel as any}
+    >
       <div style={{
         display: 'flex',
         alignItems: 'center',
