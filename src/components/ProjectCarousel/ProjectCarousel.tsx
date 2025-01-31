@@ -26,7 +26,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
   projects,
   textColor,
   backgroundColor,
-  autoRotateInterval = 1500,
+  autoRotateInterval = 2000,
   isMobile = false
 }) => {
   // Memoize constants
