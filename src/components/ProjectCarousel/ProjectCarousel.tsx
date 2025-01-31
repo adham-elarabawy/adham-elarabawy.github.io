@@ -18,7 +18,6 @@ interface ProjectCarouselProps {
   projects: Project[];
   textColor: string;
   backgroundColor: string;
-  autoRotateInterval?: number; // milliseconds
   isMobile?: boolean;
 }
 
@@ -26,7 +25,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
   projects,
   textColor,
   backgroundColor,
-  autoRotateInterval = 2000,
   isMobile = false
 }) => {
   // Memoize constants
@@ -38,35 +36,27 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
   const theme = useMantineTheme();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const [activeCard, setActiveCard] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [isScrollable, setIsScrollable] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout>();
-  const lastScrollTime = useRef<number>(0);
 
-  // Memoize scroll position calculation
-  const calculateScrollPosition = useCallback((scrollLeft: number, maxScroll: number) => {
-    if (Math.abs(scrollLeft - maxScroll) < 10) {
+  // Simplified scroll position calculation
+  const calculateScrollPosition = useCallback(() => {
+    if (!scrollAreaRef.current) return;
+    const { scrollLeft, clientWidth, scrollWidth } = scrollAreaRef.current;
+    
+    // Check if we're at or very close to the end
+    if (Math.abs(scrollLeft + clientWidth - scrollWidth) < 10) {
       return projects.length - 1;
     }
-    return Math.min(
-      Math.round(scrollLeft / (dimensions.CARD_WIDTH + dimensions.CARD_GAP)),
-      projects.length - 1
-    );
-  }, [projects.length, dimensions]);
+    
+    const position = Math.round(scrollLeft / (dimensions.CARD_WIDTH + dimensions.CARD_GAP));
+    return Math.min(position, projects.length - 1);
+  }, [dimensions, projects.length]);
 
   const handleScroll = useCallback(() => {
-    if (!scrollAreaRef.current) return;
-
-    const now = Date.now();
-    if (now - lastScrollTime.current < 16) return; // Skip if less than 16ms (60fps)
-    lastScrollTime.current = now;
-    
-    const { scrollLeft, clientWidth, scrollWidth } = scrollAreaRef.current;
-    const maxScroll = scrollWidth - clientWidth;
-    
-    const newActiveCard = calculateScrollPosition(scrollLeft, maxScroll);
-    setActiveCard(newActiveCard);
-    setIsScrollable(scrollWidth > clientWidth);
+    const newActiveCard = calculateScrollPosition();
+    if (newActiveCard !== undefined) {
+      setActiveCard(newActiveCard);
+    }
   }, [calculateScrollPosition]);
 
   const handleDotClick = useCallback((index: number) => {
@@ -89,72 +79,33 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
   ), [projects.length, activeCard, handleDotClick]);
 
   useEffect(() => {
-    const scrollHandler = (() => {
-      let ticking = false;
-      return () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            handleScroll();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      };
-    })();
+    const currentRef = scrollAreaRef.current;
+    if (!currentRef) return;
 
     const resizeObserver = new ResizeObserver(() => {
-      if (scrollAreaRef.current) {
-        setIsScrollable(
-          scrollAreaRef.current.scrollWidth > scrollAreaRef.current.clientWidth
-        );
-      }
+      setIsScrollable(currentRef.scrollWidth > currentRef.clientWidth);
     });
-
-    const handleVisibilityChange = () => setIsPaused(document.hidden);
     
     const wheelHandler = !isMobile ? (e: WheelEvent) => {
-      if (scrollAreaRef.current) {
-        e.preventDefault();
-        scrollAreaRef.current.scrollLeft += e.deltaY;
-        scrollHandler();
-      }
+      e.preventDefault();
+      currentRef.scrollLeft += e.deltaY;
+      handleScroll();
     } : null;
 
-    const currentRef = scrollAreaRef.current;
-    if (currentRef) {
-      currentRef.addEventListener('scroll', scrollHandler, { passive: true });
-      resizeObserver.observe(currentRef);
-      if (wheelHandler) {
-        currentRef.addEventListener('wheel', wheelHandler, { passive: false });
-      }
+    currentRef.addEventListener('scroll', handleScroll);
+    resizeObserver.observe(currentRef);
+    if (wheelHandler) {
+      currentRef.addEventListener('wheel', wheelHandler, { passive: false });
     }
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
     return () => {
-      if (currentRef) {
-        currentRef.removeEventListener('scroll', scrollHandler);
-        resizeObserver.unobserve(currentRef);
-        if (wheelHandler) {
-          currentRef.removeEventListener('wheel', wheelHandler);
-        }
+      currentRef.removeEventListener('scroll', handleScroll);
+      resizeObserver.unobserve(currentRef);
+      if (wheelHandler) {
+        currentRef.removeEventListener('wheel', wheelHandler);
       }
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [handleScroll, isMobile]);
-
-  useEffect(() => {
-    if (isPaused || !autoRotateInterval || document.hidden) return;
-
-    intervalRef.current = setInterval(() => {
-      const nextCard = (activeCard + 1) % projects.length;
-      handleDotClick(nextCard);
-    }, autoRotateInterval);
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [isPaused, autoRotateInterval, activeCard, projects.length, handleDotClick]);
 
   return (
     <div style={{ 
@@ -172,8 +123,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = React.memo(({
       }}>
         <div 
           ref={scrollAreaRef} 
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
           style={{ 
             width: '100%',
             overflowX: 'auto',
