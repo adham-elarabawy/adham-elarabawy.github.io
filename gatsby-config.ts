@@ -2,7 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const siteMetadata = {
   title: 'Adham Elarabawy',
-  description: 'Machine Learning Researcher. Currently @ Harvey AI, previously Scale AI, Google, UC Berkeley, BAIR.',
+  description: 'ML Research Engineer at Google DeepMind. Previously at Physical Intelligence, Harvey AI, Scale AI, Google, UC Berkeley, BAIR.',
+  siteUrl: 'https://elarabawy.com',
 };
 
 const config: GatsbyConfig = {

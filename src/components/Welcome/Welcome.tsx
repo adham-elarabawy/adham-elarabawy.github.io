@@ -10,7 +10,7 @@ export function Welcome() {
 
   return (
     <>
-      <Center pt={isMobile ? 0 : 40}>
+      <Center>
         <Tooltip label="Hello!" position="center">
           <div> {/* Wrap StaticImage in a div for Tooltip to work correctly */}
             <StaticImage
@@ -28,8 +28,11 @@ export function Welcome() {
         Adham Elarabawy
       </Title>
       <Text size="lg" color="dimmed" ta="center" maw={580} mx="auto" mt="l">
-        ML Research at <Anchor href="https://π.com" target="_blank" rel="noopener noreferrer">Physical Intelligence</Anchor>
+        Research Engineer at <Anchor href="https://deepmind.com" target="_blank" rel="noopener noreferrer">Google DeepMind</Anchor>
       </Text>
+      {/* <Text size="sm" color="gray.6" ta="center" maw={580} mx="auto" mt="sm" fs="italic">
+        Focused on efficient, large-scale models for multimodality and robotics that bridge perception and action.
+      </Text> */}
     </>
   );
 }

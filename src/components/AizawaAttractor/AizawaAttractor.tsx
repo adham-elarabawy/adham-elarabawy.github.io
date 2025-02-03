@@ -54,7 +54,7 @@ function calculateAizawaDerivatives(x: number, y: number, z: number, params: typ
 export function AizawaAttractor({
   params = DEFAULT_PARAMS,
   noiseFactor = 0.001,
-  wobble = { frequency: 2, amplitude: 0.05 },
+  wobble = { frequency: 0.5, amplitude: 0.1 },
   particleCounts = { baseActive: 4000, hoverActive: 4000, trail: 50000 },
   color = '#FFFFFF',
   backgroundColor = '#000000'
@@ -210,8 +210,8 @@ export function AizawaAttractor({
     group.add(trailSystem);
     scene.add(group);
 
-    const NORMAL_SPEED = 0.001;
-    const HOVER_SPEED = 0.004;
+    const NORMAL_SPEED = 0.0008;
+    const HOVER_SPEED = 0.0002;
     const NORMAL_CAMERA_Z = 9;
     const HOVER_CAMERA_Z = 4;
     

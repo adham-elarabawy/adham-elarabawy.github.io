@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { SEO } from '../components/SEO/SEO';
 import { Box, Grid, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { graphql } from "gatsby";
@@ -168,7 +169,7 @@ export default function HomePage({ data }) {
             aspectRatio: '1 / 1',
             flex: '0 0 auto',
             zIndex: 1,
-            marginTop: '-15vh'
+            marginTop: '-14vh'
           }}>
             <div style={{
               position: 'absolute',
@@ -230,6 +231,8 @@ export default function HomePage({ data }) {
     </div>
   );
 }
+
+export const Head = () => <SEO />
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
