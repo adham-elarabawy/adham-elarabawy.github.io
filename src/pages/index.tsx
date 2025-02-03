@@ -12,7 +12,7 @@ import { Footer } from '../components/Footer/Footer';
 
 export default function HomePage({ data }) {
   const theme = useMantineTheme();
-  const isMobile = useMediaQuery('(max-width: 1200px)');
+  const isMobile = useMediaQuery('(max-width: 1200px)', true); // Initialize with true for SSR
   const textColor = theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7];
   const bgColor = theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0];
   const rightPaneBgColor = theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[1];
@@ -20,6 +20,12 @@ export default function HomePage({ data }) {
     'rgba(255, 255, 255, 0.05)' : 
     'rgba(0, 0, 0, 0.05)';
   const leftPanelRef = useRef<HTMLDivElement>(null);
+
+  // Add visibility:hidden during initial render to prevent layout shift
+  const [isInitialRender, setIsInitialRender] = React.useState(true);
+  React.useEffect(() => {
+    setIsInitialRender(false);
+  }, []);
 
   const projects = data.allMdx.nodes.sort((a, b) => a.frontmatter.sort_id - b.frontmatter.sort_id);
 
@@ -35,7 +41,9 @@ export default function HomePage({ data }) {
 
   if (isMobile) {
     return (
-      <div style={{
+      <div 
+        style={{
+          visibility: isInitialRender ? 'hidden' : 'visible',
         width: '100%',
         minHeight: '100vh',
         backgroundColor: rightPaneBgColor,
@@ -84,6 +92,9 @@ export default function HomePage({ data }) {
             grow={true} 
             justify="center"
             gutter="xl"
+            style={{
+              visibility: isInitialRender ? 'hidden' : 'visible'
+            }}
           >
             {projects.map((project) => (
               <Grid.Col key={project.id} span={12} sm={6} style={{ display: 'flex', justifyContent: 'center' }}>
