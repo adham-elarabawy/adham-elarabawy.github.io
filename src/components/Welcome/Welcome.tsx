@@ -37,7 +37,7 @@ export function Welcome() {
         Adham Elarabawy
       </Title>
       <Text size="lg" color="dimmed" ta="center" maw={580} mx="auto" mt="l">
-        Research Engineer at <Anchor href="https://deepmind.com" target="_blank" rel="noopener noreferrer">Google DeepMind</Anchor>
+        Research Engineer at <Anchor href="https://π.com" target="_blank" rel="noopener noreferrer">Physical Intelligence</Anchor>
       </Text>
       {/* <Text size="sm" color="gray.6" ta="center" maw={580} mx="auto" mt="sm" fs="italic">
         Focused on efficient, large-scale models for multimodality and robotics that bridge perception and action.
