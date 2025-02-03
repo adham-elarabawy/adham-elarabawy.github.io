@@ -24,7 +24,16 @@ export function Welcome() {
           </div>
         </Tooltip>
       </Center>
-      <Title className={classes.title} ta="center" mt={10}>
+      <Title
+        ta="center"
+        mt={10}
+        style={{
+          fontSize: isMobile ? 32 : 46,
+          fontWeight: 700,
+          letterSpacing: -2,
+          color: 'var(--mantine-color-text)'
+        }}
+      >
         Adham Elarabawy
       </Title>
       <Text size="lg" color="dimmed" ta="center" maw={580} mx="auto" mt="l">
