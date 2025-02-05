@@ -14,7 +14,7 @@ export default function HomePage({ data }) {
   const theme = useMantineTheme();
   const isMobile = useMediaQuery('(max-width: 1200px)', true); // Initialize with true for SSR
   const textColor = theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7];
-  const bgColor = theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0];
+  const bgColor = theme.colorScheme === 'dark' ? theme.colors.dark[7] : 'white';
   const rightPaneBgColor = theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[1];
   const gridColor = theme.colorScheme === 'dark' ? 
     'rgba(255, 255, 255, 0.05)' : 
@@ -143,29 +143,33 @@ export default function HomePage({ data }) {
           ref={leftPanelRef}
           style={{ 
             width: '35%', 
+            maxWidth: '500px',
             height: '100%',
             position: 'relative',
-            backgroundColor: bgColor,
+            backgroundColor: 'rgba(255, 255, 255)',
             boxShadow: '2px 0 8px rgba(0, 0, 0, 0.08)',
             zIndex: 1,
             display: 'flex',
             flexDirection: 'column',
-            gap: '2rem'
+            overflow: 'hidden'
           }}
         >
           {/* Content overlay */}
           <div style={{
-            position: 'relative',
+            position: 'absolute',
             zIndex: 2,
             color: textColor,
             backdropFilter: 'blur(3px)',
             background: theme.colorScheme === 'dark' ? 
-              'rgba(0, 0, 0, 0.1)' : 
-              'rgba(255, 255, 255, 0.1)',
+              'rgba(0, 0, 0, 0.6)' : 
+              'rgba(255, 255, 255, 0.6)',
             padding: '2rem',
-            margin: '1rem',
             borderRadius: theme.radius.md,
-            flex: '0 0 auto'
+            left: '1rem',
+            right: '1rem',
+            top: '30%',
+            transform: 'translateY(-50%)',
+            width: 'auto'
           }}>
             <Welcome />
             <Box mt="md">
@@ -175,33 +179,25 @@ export default function HomePage({ data }) {
 
           {/* Attractor container */}
           <div style={{
-            position: 'relative',
+            position: 'absolute',
             width: '100%',
-            aspectRatio: '1 / 1',
-            flex: '0 0 auto',
+            height: '100%',
+            top: 0,
             zIndex: 1,
-            marginTop: '-14vh'
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}>
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '20%',
-              background: `linear-gradient(to bottom, ${bgColor} 0%, transparent 100%)`,
-              zIndex: 2,
-              pointerEvents: 'none'
-            }} />
             <AizawaAttractor 
               color='#000000'
-              backgroundColor={bgColor}
+              backgroundColor='#FFFFFF'
             />
           </div>
         </div>
 
         {/* Right side - Project Cards */}
         <div style={{ 
-          width: '65%', 
+          width: 'calc(100% - min(35%, 500px))', 
           height: '100%',
           display: 'flex',
           position: 'relative',

@@ -53,8 +53,8 @@ function calculateAizawaDerivatives(x: number, y: number, z: number, params: typ
 
 export function AizawaAttractor({
   params = DEFAULT_PARAMS,
-  noiseFactor = 0.001,
-  wobble = { frequency: 0.5, amplitude: 0.1 },
+  noiseFactor = 0.00005,
+  wobble = { frequency: 0.25, amplitude: 0.08 },
   particleCounts = { baseActive: 4000, hoverActive: 4000, trail: 50000 },
   color = '#FFFFFF',
   backgroundColor = '#000000'
@@ -71,8 +71,12 @@ export function AizawaAttractor({
     const container = containerRef.current;
     const scene = new THREE.Scene();
     
-    // Force a 1:1 aspect ratio for the camera
-    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      60, // FOV
+      container.clientWidth / container.clientHeight, // aspect ratio
+      0.1, // near plane
+      1000, // far plane
+    );
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true
@@ -80,8 +84,7 @@ export function AizawaAttractor({
 
     // Set pixel ratio for sharper rendering
     renderer.setPixelRatio(window.devicePixelRatio);
-    const size = Math.min(container.clientWidth, container.clientHeight);
-    renderer.setSize(size, size);
+    renderer.setSize(container.clientWidth, container.clientHeight);
     
     const [bgR, bgG, bgB] = hexToRGB(backgroundColor);
     renderer.setClearColor(new THREE.Color(bgR, bgG, bgB), 1);
@@ -202,7 +205,7 @@ export function AizawaAttractor({
     group.rotation.x = initialRotationX;
 
     // Adjust camera to better frame the centered group
-    camera.position.set(0, 0, 9);
+    camera.position.set(0, 7, 8);
     camera.lookAt(0, -1, 0);  
     camera.up.set(0, 1, 0);
 
@@ -212,8 +215,8 @@ export function AizawaAttractor({
 
     const NORMAL_SPEED = 0.0008;
     const HOVER_SPEED = 0.0002;
-    const NORMAL_CAMERA_Z = 9;
-    const HOVER_CAMERA_Z = 4;
+    const NORMAL_CAMERA_Z = 4;
+    const HOVER_CAMERA_Z = 3.9;
     
     let time = 0;
     let currentSpeed = NORMAL_SPEED;
@@ -319,8 +322,9 @@ export function AizawaAttractor({
     function handleResize() {
       if (!containerRef.current) return;
       const container = containerRef.current;
-      const size = Math.min(container.clientWidth, container.clientHeight);
-      renderer.setSize(size, size);
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
     }
 
     window.addEventListener('resize', handleResize);
