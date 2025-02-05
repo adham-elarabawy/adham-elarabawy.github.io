@@ -53,7 +53,7 @@ function calculateAizawaDerivatives(x: number, y: number, z: number, params: typ
 
 export function AizawaAttractor({
   params = DEFAULT_PARAMS,
-  noiseFactor = 0.00005,
+  noiseFactor = 0.00001,
   wobble = { frequency: 0.25, amplitude: 0.08 },
   particleCounts = { baseActive: 4000, hoverActive: 4000, trail: 50000 },
   color = '#FFFFFF',
@@ -72,7 +72,7 @@ export function AizawaAttractor({
     const scene = new THREE.Scene();
     
     const camera = new THREE.PerspectiveCamera(
-      60, // FOV
+      70, // FOV
       container.clientWidth / container.clientHeight, // aspect ratio
       0.1, // near plane
       1000, // far plane
@@ -213,10 +213,10 @@ export function AizawaAttractor({
     group.add(trailSystem);
     scene.add(group);
 
-    const NORMAL_SPEED = 0.0008;
-    const HOVER_SPEED = 0.0002;
+    const NORMAL_SPEED = 0.0002;
+    const HOVER_SPEED = 0.0001;
     const NORMAL_CAMERA_Z = 4;
-    const HOVER_CAMERA_Z = 3.9;
+    const HOVER_CAMERA_Z = 3.7;
     
     let time = 0;
     let currentSpeed = NORMAL_SPEED;
@@ -359,15 +359,22 @@ export function AizawaAttractor({
           top: mousePosition.y + 10,
           pointerEvents: 'none',
           zIndex: 1000,
-          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
           padding: '8px 12px',
           borderRadius: '4px',
           fontSize: '12px',
           color: 'white',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          maxWidth: '280px'
         }}>
           <div style={{ fontWeight: 600, marginBottom: '4px' }}>Aizawa Attractor</div>
-          <div style={{ color: 'rgba(255,255,255,0.9)', fontSize: '11px' }}>
+          <div style={{ color: 'rgba(255,255,255,0.95)', fontSize: '11px', marginBottom: '4px' }}>
+            GPU-accelerated WebGL implementation for real-time 3D visualization
+          </div>
+          <div style={{ color: 'rgba(147,197,253,0.95)', fontSize: '11px', marginBottom: '4px' }}>
+            Refresh to explore different stochastic trajectories
+          </div>
+          <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px' }}>
             a: {params.a.toFixed(2)}, b: {params.b.toFixed(2)}, c: {params.c.toFixed(2)},
             d: {params.d.toFixed(2)}, e: {params.e.toFixed(2)}, f: {params.f.toFixed(2)}
           </div>
