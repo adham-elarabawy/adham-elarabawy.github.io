@@ -1,5 +1,4 @@
 # Build directories
-public/
 _site/
 .cache/
 dist/
