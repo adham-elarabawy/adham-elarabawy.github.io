@@ -1,14 +1,16 @@
 {
   "name": "simple-site",
   "scripts": {
-    "build:css": "npx postcss src/styles.css -o _site/styles.css",
-    "dev": "npm run build:css && eleventy --serve"
+    "build": "npm run build:css && npx @11ty/eleventy",
+    "build:css": "npx postcss src/styles.css -o _site/styles.css"
   },
+
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "alpinejs": "^3.13.3",
     "autoprefixer": "^10.4.21",
     "eleventy": "latest",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^3.4.17"
