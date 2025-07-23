@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-base text-text font-serif antialiased;
+}
+
+.prose {
+  @apply text-lg leading-relaxed;
+}
+
+.prose h1,
+.prose h2 {
+  @apply font-sans;
+}
+
+/* Editorial Olive Link Styling */
+.prose a {
+  @apply text-olive-700 hover:text-olive-900 hover:underline transition;
+}
+
+/* Selection highlight color */
+::selection {
+  background-color: #e6e9df; /* olive-100 */
+  color: #1e1e1e; /* text */
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  font-feature-settings: "liga", "kern", "onum", "pnum";
+}
+
+a, button, .group:hover {
+  cursor: pointer;
+}
+
+mark {
+  background-color: #ecebe4;
+  color: #1e1e1e;
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+#back-to-top {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Apply globally */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdfaf6; /* base */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6a7c4f; /* olive */
+  border-radius: 4px;
+  border: 2px solid #fdfaf6; /* creates inner spacing */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #55653e; /* darker olive on hover */
+}
+
+.project-card a {
+  @apply no-underline text-inherit;
+}
+
+.project-card h3 {
+  @apply text-[#1e1e1e]; /* same as your ink color */
+}
+
+.project-card h3 a {
+  @apply text-olive-700 hover:text-olive-900 hover:underline transition;
+}
+
+/* Optional: reset hover underline from affecting the whole card */
+.project-card p,
+.project-card span,
+.project-card time {
+  @apply no-underline text-inherit;
+}

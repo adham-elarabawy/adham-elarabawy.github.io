@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-base text-text">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title or "Adham Elarabawy" }}</title>
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/public/assets/favicon.ico" type="image/x-icon" />
+
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-THF0W3K80J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-THF0W3K80J');
+</script>
+</head>
+<body class="antialiased">
+  <div class="max-w-2xl mx-auto px-6 pt-16 pb-12">
+    {% include "nav.njk" %}
+    <main class="prose prose-lg max-w-none fade-in">
+      {{ content | safe }}
+    </main>
+    {% include "footer.njk" %}
+  </div>
+
+
+<!-- Floating Audio Player -->
+<div class="fixed bottom-4 left-4 z-50 font-sans text-sm tracking-tight rounded-full border border-olive-200 bg-olive-50 px-4 py-2 shadow-sm hover:shadow-md transition flex items-center gap-2 text-olive-800">
+  <button id="audio-toggle" class="focus:outline-none">
+    <i id="audio-icon" class="ti ti-player-play"></i>
+  </button>
+  <span class="hidden md:inline select-none">A gentle underscore</span>
+  <audio id="background-audio">
+    <source src="/public/assets/music.mp3" type="audio/mp3" />
+  </audio>
+</div>
+
+
+<!-- Back to Top Button -->
+<button
+  id="back-to-top"
+  onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+  class="hidden fixed bottom-4 right-4 z-50 font-sans text-sm tracking-tight rounded-full border border-olive-200 bg-olive-50 px-4 py-2 shadow-sm hover:shadow-md transition flex items-center gap-2 text-olive-800"
+>
+  <span>↑</span>
+  <span class="select-none">Back to top</span>
+</button>
+
+
+
+<script>
+  const audio = document.getElementById("background-audio");
+  const toggle = document.getElementById("audio-toggle");
+  const icon = document.getElementById("audio-icon");
+
+  toggle.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      icon.classList.remove("ti-player-play");
+      icon.classList.add("ti-player-pause");
+    } else {
+      audio.pause();
+      icon.classList.remove("ti-player-pause");
+      icon.classList.add("ti-player-play");
+    }
+  });
+
+  // Back to top visibility on scroll
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      backToTop.classList.remove("hidden");
+    } else {
+      backToTop.classList.add("hidden");
+    }
+  });
+</script>
+
+
+</body>
+</html>
