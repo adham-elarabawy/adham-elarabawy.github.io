@@ -9,14 +9,14 @@ layout: layout.njk
     <div class="relative w-36 h-52 shrink-0">
       <!-- Default photo -->
       <img
-        src="/public/assets/me.jpg"
+        src="/assets/main/me.jpg"
         alt="Adham Elarabawy"
         class="w-full h-full object-cover rounded-sm border border-sand-600 shadow-sm transition-opacity duration-300 ease-in-out"
       />
       
       <!-- Ghibli-style hover photo -->
       <img
-        src="/public/assets/me-ghibli.jpg"
+        src="/assets/main/me-ghibli.jpg"
         alt="Studio Ghibli style Adham"
         class="absolute top-0 left-0 w-full h-full object-cover rounded-sm border border-sand-600 shadow-sm opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
       />
