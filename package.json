@@ -2,7 +2,8 @@
   "name": "simple-site",
   "scripts": {
     "build": "npm run build:css && npx @11ty/eleventy",
-    "build:css": "npx postcss src/styles.css -o _site/styles.css"
+    "build:css": "npx postcss src/styles.css -o _site/styles.css",
+    "dev": "npx @11ty/eleventy --serve"
   },
 
   "devDependencies": {
