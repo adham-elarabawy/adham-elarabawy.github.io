@@ -1,5 +1,6 @@
 module.exports = function (eleventyConfig) {
-  // Optional: also copy any images/assets
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
   eleventyConfig.addPassthroughCopy("public");
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 

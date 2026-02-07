@@ -3,42 +3,45 @@ title: Projects
 layout: layout.njk
 ---
 
-<h1 class="text-2xl font-semibold text-ink mb-6 px-6 max-w-4xl mx-auto font-sans">All Projects</h1>
+<h1 class="text-2xl font-semibold text-text mb-4">All Projects</h1>
 
-<ul class="space-y-6 max-w-4xl mx-auto px-6">
+<ul class="space-y-0 divide-y divide-gray-100">
 {% assign sortedProjects = collections.projects | sort: "data.date" | reverse %}
 {% for project in sortedProjects %}
-<li class="flex flex-col md:flex-row md:items-center gap-y-1 md:gap-x-4 p-3">
+<li class="flex flex-row items-start gap-x-3 py-2.5 first:pt-0">
 
-    <div class="aspect-[5/4] w-full md:w-48 overflow-hidden bg-sand-100 flex items-center justify-center shrink-0 rounded-sm">
+    <div class="w-28 md:w-40 shrink-0 overflow-hidden rounded-sm">
       <img
         src="{{ project.data.image }}"
         alt="{{ project.data.title }}"
-        class="w-full h-full object-cover object-center transition duration-300"
+        class="w-full aspect-[5/4] object-cover object-center"
       />
     </div>
 
-    <div class="mt-2 md:mt-0">
-      <h3 class="text-base md:text-lg font-medium text-ink mb-1 font-sans">
+    <div class="min-w-0">
+      <p class="text-xs text-gray-400 mb-0.5 tracking-wide uppercase">
+        {{ project.data.date | date: "%B %Y" }}
+      </p>
+      <h3 class="text-sm md:text-base font-semibold text-text mb-0.5 leading-snug">
         {% if project.data.external_url %}
-          <a href="{{ project.data.external_url }}" target="_blank" rel="noopener" class="hover:underline hover:text-olive-800 cursor-pointer">
+          <a href="{{ project.data.external_url }}" target="_blank" rel="noopener" class="hover:text-accent-600 transition no-underline">
             {{ project.data.title }}
           </a>
         {% else %}
-          <a href="{{ project.url }}" class="hover:underline hover:text-olive-800 cursor-pointer">
+          <a href="{{ project.url }}" class="hover:text-accent-600 transition no-underline">
             {{ project.data.title }}
           </a>
         {% endif %}
       </h3>
 
       {% if project.data.description %}
-      <p class="text-sm text-sand-700 mb-1 last:mb-0">
+      <p class="text-sm text-gray-600 leading-snug mb-1">
         {{ project.data.description }}
       </p>
       {% endif %}
 
-      <p class="text-xs text-sand-600">
-        {{ project.data.tags | join: ', ' }} · {{ project.data.date | date: "%B %Y" }}
+      <p class="text-xs text-gray-400">
+        {{ project.data.tags | join: ' · ' }}
       </p>
     </div>
   </li>

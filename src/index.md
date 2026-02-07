@@ -3,123 +3,76 @@ title: Home
 layout: layout.njk
 ---
 
-<section class="px-6 mt-16 md:mt-24 mb-16 md:mb-24">
-  <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-4 md:gap-8 items-center md:items-start">
-    
-    <div class="relative w-36 h-52 shrink-0">
-      <!-- Default photo -->
+<section class="mt-8 md:mt-12 mb-8 md:mb-12">
+  <div class="max-w-4xl mx-auto flex flex-row gap-4 md:gap-6 items-center">
+
+    <div class="w-28 md:w-40 shrink-0">
       <img
         src="/assets/main/me.jpg"
         alt="Adham Elarabawy"
-        class="w-full h-full object-cover rounded-sm border border-sand-600 shadow-sm transition-opacity duration-300 ease-in-out"
-      />
-      
-      <!-- Ghibli-style hover photo -->
-      <img
-        src="/assets/main/me-ghibli.jpg"
-        alt="Studio Ghibli style Adham"
-        class="absolute top-0 left-0 w-full h-full object-cover rounded-sm border border-sand-600 shadow-sm opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+        class="w-28 md:w-40 h-auto rounded-sm shadow-sm"
       />
     </div>
 
-    <div class="text-center md:text-left">
-      <h1 class="text-2xl font-semibold tracking-tight mb-1 text-ink">Adham Elarabawy</h1>
-      <p class="text-sm text-sand-700 mb-4">
-        Research Engineer at
-        <a href="https://deepmind.com" target="_blank" rel="noopener" class="text-ink hover:underline">
-          Google DeepMind
-        </a>
+    <div class="text-left">
+      <h1 class="text-2xl font-semibold tracking-tight mb-1 text-text">Adham Elarabawy</h1>
+      <p class="text-[1.05rem] leading-relaxed text-gray-700 max-w-prose">
+        I work on vision research at <a href="https://deepmind.com" target="_blank" rel="noopener" class="text-accent-600 hover:text-accent-800 transition">Google DeepMind</a>, with a focus on video understanding and spatiotemporal reasoning. I also spend time on long-context capabilities and memory systems.
       </p>
-      <p class="text-[1.05rem] leading-relaxed text-sand-900 max-w-prose">
-        I work on Gemini’s long-context capabilities, exploring how scaling, memory systems, and model architecture can expand the boundaries of intelligent reasoning.
-      </p>
-
-      <div class="flex justify-center md:justify-start gap-4 text-sand-600 mt-4 text-lg">
-        <a
-          href="https://github.com/adham-elarabawy"
-          target="_blank"
-          rel="noopener"
-          aria-label="GitHub"
-          class="hover:text-olive-600 no-underline"
-        >
-          <i class="ti ti-brand-github text-lg text-sand-600 hover:text-olive-600 antialiased"></i>
-        </a>
-        <a
-          href="https://linkedin.com/in/adham-elarabawy"
-          target="_blank"
-          rel="noopener"
-          aria-label="LinkedIn"
-          class="hover:text-olive-600 no-underline"
-        >
-          <i class="ti ti-brand-linkedin text-lg text-sand-600 hover:text-olive-600 antialiased"></i>
-        </a>
-        <a
-          href="https://x.com/adhamelarabawy"
-          target="_blank"
-          rel="noopener"
-          aria-label="Twitter/X"
-          class="hover:text-olive-600 no-underline"
-        >
-          <i class="ti ti-brand-x text-lg text-sand-600 hover:text-olive-600 antialiased"></i>
-        </a>
-        <a
-          href="https://youtube.com/@AdhamElarabawy"
-          target="_blank"
-          rel="noopener"
-          aria-label="YouTube"
-          class="hover:text-olive-600 no-underline"
-        >
-          <i class="ti ti-brand-youtube text-lg text-sand-600 hover:text-olive-600 antialiased"></i>
-        </a>
+      <div class="flex justify-start gap-4 mt-3 text-sm">
+        <a href="https://github.com/adham-elarabawy" target="_blank" rel="noopener" class="text-gray-500 hover:text-accent-600 transition no-underline">GitHub</a>
+        <a href="https://linkedin.com/in/adham-elarabawy" target="_blank" rel="noopener" class="text-gray-500 hover:text-accent-600 transition no-underline">LinkedIn</a>
+        <a href="https://x.com/adhamelarabawy" target="_blank" rel="noopener" class="text-gray-500 hover:text-accent-600 transition no-underline">X</a>
+        <a href="https://youtube.com/@AdhamElarabawy" target="_blank" rel="noopener" class="text-gray-500 hover:text-accent-600 transition no-underline">YouTube</a>
       </div>
     </div>
   </div>
 </section>
 
-
-
-
 ---
 
-<h2 class="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-4">
+<h2 class="text-xl md:text-2xl font-semibold tracking-tight text-text mb-3">
   Selected Projects
 </h2>
 
-<ul class="space-y-6 max-w-4xl mx-auto px-6">
+<ul class="space-y-0 divide-y divide-gray-100">
 {% assign sortedProjects = collections.projects | sort: "data.date" | reverse %}
 {% for project in sortedProjects %}
     {% if project.data.featured %}
-<li class="flex flex-col md:flex-row md:items-center gap-y-1 md:gap-x-4 p-3">
+<li class="flex flex-row items-start gap-x-3 py-2.5 first:pt-0">
 
-    <div class="aspect-[5/4] w-full md:w-48 overflow-hidden bg-sand-100 flex items-center justify-center shrink-0 rounded-sm">
+    <div class="w-28 md:w-40 shrink-0 overflow-hidden rounded-sm">
       <img
         src="{{ project.data.image }}"
         alt="{{ project.data.title }}"
-        class="w-full h-full object-cover object-center transition duration-300"
+        class="w-full aspect-[5/4] object-cover object-center"
       />
     </div>
 
-    <div class="mt-2 md:mt-0">
-      <h3 class="text-base md:text-lg font-medium text-ink mb-1 font-sans">
+    <div class="min-w-0">
+      <p class="text-xs text-gray-400 mb-0.5 tracking-wide uppercase">
+        {{ project.data.date | date: "%B %Y" }}
+      </p>
+      <h3 class="text-sm md:text-base font-semibold text-text mb-0.5 leading-snug">
         {% if project.data.external_url %}
-          <a href="{{ project.data.external_url }}" target="_blank" rel="noopener" class="hover:underline hover:text-olive-800 cursor-pointer">
+          <a href="{{ project.data.external_url }}" target="_blank" rel="noopener" class="hover:text-accent-600 transition no-underline">
             {{ project.data.title }}
           </a>
         {% else %}
-          <a href="{{ project.url }}" class="hover:underline hover:text-olive-800 cursor-pointer">
+          <a href="{{ project.url }}" class="hover:text-accent-600 transition no-underline">
             {{ project.data.title }}
           </a>
         {% endif %}
       </h3>
 
       {% if project.data.description %}
-      <p class="text-sm text-sand-700 mb-1 last:mb-0">
+      <p class="text-sm text-gray-600 leading-snug mb-1">
         {{ project.data.description }}
       </p>
       {% endif %}
 
-      <p class="text-xs text-sand-600">
-        {{ project.data.tags | join: ', ' }} · {{ project.data.date | date: "%B %Y" }}
+      <p class="text-xs text-gray-400">
+        {{ project.data.tags | join: ' · ' }}
       </p>
     </div>
   </li>
@@ -127,33 +80,29 @@ layout: layout.njk
   {% endfor %}
 </ul>
 
-
-
-
-
-<div class="text-sm text-right max-w-4xl mx-auto px-6 mt-2">
-  → <a href="/projects/" class="text-olive hover:underline">See all projects</a>
+<div class="text-sm text-right mt-3">
+  <a href="/projects/" class="text-accent-600 hover:text-accent-800 hover:underline">&rarr; See all projects</a>
 </div>
 
 ---
 
-<h2 class="text-xl md:text-2xl font-semibold tracking-tight text-ink mb-4">
+<h2 class="text-xl md:text-2xl font-semibold tracking-tight text-text mb-3">
   Featured Writing
 </h2>
 
 Coming soon!
 
-<!-- <ul class="space-y-6 max-w-4xl mx-auto px-6">
+<!-- <ul class="space-y-6 max-w-4xl mx-auto">
   {% for post in collections.blog | reverse %}
     {% if post.data.featured %}
     <li>
-      <h3 class="text-base font-medium text-ink mb-1">
+      <h3 class="text-base font-medium text-text mb-1">
         <a href="{{ post.url }}" class="hover:underline">{{ post.data.title }}</a>
       </h3>
-      <p class="text-sm text-sand-700 mb-1">
+      <p class="text-sm text-gray-500 mb-1">
         {{ post.data.description }}
       </p>
-      <p class="text-xs text-sand-600">
+      <p class="text-xs text-gray-400">
         {{ post.date | date: "%B %Y" }}
       </p>
     </li>
@@ -161,6 +110,6 @@ Coming soon!
   {% endfor %}
 </ul> -->
 
-<div class="text-sm text-right max-w-4xl mx-auto px-6 mt-2">
-  → <a href="/blog/" class="text-olive hover:underline">Read all writing</a>
+<div class="text-sm text-right max-w-4xl mx-auto mt-2">
+  <a href="/blog/" class="text-accent-600 hover:text-accent-800 hover:underline">&rarr; Read all writing</a>
 </div>

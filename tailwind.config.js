@@ -4,30 +4,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        base: '#fdfaf6',
+        base: '#ffffff',
         text: '#1e1e1e',
-        olive: {
-          50: '#f5f7f2',
-          100: '#e6e9df',
-          200: '#d4dbc7',
-          300: '#bbcaa7',
-          400: '#9daf85',
-          500: '#819264',
-          600: '#6a7c4f', // your original olive
-          700: '#586643',
-          800: '#495537',
-          900: '#3b452c',
-        },
-        sand: {
-          100: '#f7f5f2',
-          200: '#ece7df',
-          300: '#e3ded7',
-          600: '#c0bbb2',
+        accent: {
+          50: '#f0f4f9',
+          100: '#dae4f1',
+          200: '#b8cce4',
+          300: '#8badd3',
+          400: '#6b93c4',
+          500: '#4a6fa5',
+          600: '#3d5c8a',
+          700: '#334d73',
+          800: '#2b3f5e',
+          900: '#1e3a5f',
         },
       },
       fontFamily: {
-        sans: ['"Space Grotesk"', 'sans-serif'],
-        serif: ['Charter', 'Georgia', 'serif'],
+        serif: ['"Source Serif 4"', 'Charter', 'Georgia', 'serif'],
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -35,22 +28,22 @@ module.exports = {
             color: theme('colors.text'),
             fontFamily: theme('fontFamily.serif').join(', '),
             a: {
-              color: theme('colors.olive.700'),
+              color: theme('colors.accent.600'),
               textDecoration: 'underline',
-              '&:hover': { color: theme('colors.olive.900') },
+              '&:hover': { color: theme('colors.accent.800') },
             },
             h1: {
-              fontFamily: theme('fontFamily.sans').join(', '),
+              fontFamily: theme('fontFamily.serif').join(', '),
               fontSize: '2.25rem',
               lineHeight: '1.25',
               fontWeight: '600',
             },
             h2: {
-              fontFamily: theme('fontFamily.sans').join(', '),
+              fontFamily: theme('fontFamily.serif').join(', '),
               fontSize: '1.5rem',
               lineHeight: '1.4',
-              marginTop: '2rem',
-              marginBottom: '0.75rem',
+              marginTop: '1.5rem',
+              marginBottom: '0.5rem',
             },
           },
         },
@@ -58,12 +51,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/typography')],
-  safelist: [
-    'ti-player-play',
-    'ti-player-pause',
-    'ti-brand-github',
-    'ti-brand-linkedin',
-    'ti-brand-x',
-    'ti-brand-youtube',
-  ],
 };
