@@ -17,7 +17,7 @@ layout: layout.njk
     <div class="text-left">
       <h1 class="text-2xl font-semibold tracking-tight mb-1 text-text">Adham Elarabawy</h1>
       <p class="text-[1.05rem] leading-relaxed text-gray-700 max-w-prose">
-        I work on vision research at <a href="https://deepmind.com" target="_blank" rel="noopener" class="text-accent-600 hover:text-accent-800 transition">Google DeepMind</a>, with a focus on video understanding and spatiotemporal reasoning. I also spend time on long-context capabilities and memory systems.
+        I work on vision research at <a href="https://deepmind.com" target="_blank" rel="noopener" class="text-accent-600 hover:text-accent-800 transition">Google DeepMind</a>, with a focus on video understanding and representations. I also spend time on long-context capabilities. In my free time, I enjoy playing tennis and cooking.
       </p>
       <div class="flex justify-start gap-4 mt-3 text-sm">
         <a href="https://github.com/adham-elarabawy" target="_blank" rel="noopener" class="text-gray-500 hover:text-accent-600 transition no-underline">GitHub</a>
