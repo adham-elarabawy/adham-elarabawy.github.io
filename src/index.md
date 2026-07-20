@@ -71,6 +71,12 @@ layout: layout.njk
       </p>
       {% endif %}
 
+      {% if project.data.note %}
+      <p class="text-xs italic text-gray-500 mb-1">
+        {{ project.data.note }}
+      </p>
+      {% endif %}
+
       <p class="text-xs text-gray-400">
         {{ project.data.tags | join: ' · ' }}
       </p>
