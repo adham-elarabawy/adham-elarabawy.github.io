@@ -5,8 +5,8 @@
     "build:css": "npx postcss src/styles.css -o _site/styles.css",
     "dev": "npx @11ty/eleventy --serve"
   },
-
   "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
     "@tailwindcss/typography": "^0.5.16",
     "alpinejs": "^3.13.3",
     "autoprefixer": "^10.4.21",
