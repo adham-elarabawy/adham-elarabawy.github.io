@@ -42,7 +42,7 @@ layout: layout.njk
 
       {% if project.data.authors %}
       <p class="text-[0.7rem] text-gray-400 leading-[1.35] mb-1.5">
-        {% for author in project.data.authors %}{% if author == "Adham Elarabawy" %}<strong class="font-semibold text-gray-600">{{ author }}</strong>{% else %}{{ author }}{% endif %}{% if project.data.equal_contributors contains author %}<sup class="ml-px">&#42;</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% if project.data.affiliation %}<span class="mx-1 text-gray-300" aria-hidden="true">·</span><span class="font-medium text-gray-500">{{ project.data.affiliation }}</span>{% endif %}
+        {% for author in project.data.authors %}{% if author == "Adham Elarabawy" %}<strong class="font-semibold text-gray-600">{{ author }}</strong>{% else %}{{ author }}{% endif %}{% if project.data.equal_contributors contains author %}<sup class="ml-px">&#42;</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% if project.data.affiliation %}<span class="mx-1 text-gray-300" aria-hidden="true">·</span><span class="italic font-medium text-gray-500">{{ project.data.affiliation }}</span>{% endif %}
       </p>
       {% endif %}
 
