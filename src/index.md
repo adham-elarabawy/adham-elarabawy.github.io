@@ -10,6 +10,8 @@ layout: layout.njk
       <img
         src="/assets/main/me.jpg"
         alt="Adham Elarabawy"
+        width="96"
+        height="117"
         class="w-24 sm:w-28 md:w-40 h-auto rounded-sm shadow-sm"
       />
     </div>
