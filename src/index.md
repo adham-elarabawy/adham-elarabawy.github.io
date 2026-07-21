@@ -37,7 +37,7 @@ layout: layout.njk
   Selected Projects
 </h2>
 
-<ul class="mt-0 mb-0 pl-0 list-none space-y-0 divide-y divide-gray-100">
+<ul class="mt-0 mb-0 pl-0 list-none space-y-0 divide-y divide-gray-200 sm:divide-gray-100">
 {% assign sortedProjects = collections.projects | sort: "data.date" | reverse %}
 {% for project in sortedProjects %}
     {% if project.data.featured %}
