@@ -66,20 +66,14 @@ layout: layout.njk
       </h3>
 
       {% if project.data.description %}
-      <p class="text-sm text-gray-600 leading-snug mb-1">
+      <p class="text-sm text-gray-600 leading-snug mb-1.5">
         {{ project.data.description }}
       </p>
       {% endif %}
 
       {% if project.data.authors %}
-      <p class="text-xs text-gray-500 leading-snug mb-1">
-        {% for author in project.data.authors %}{% if author == "Adham Elarabawy" %}<strong class="font-semibold text-gray-700">{{ author }}</strong>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
-      </p>
-      {% endif %}
-
-      {% if project.data.note %}
-      <p class="text-xs italic text-gray-500 mb-1">
-        {{ project.data.note }}
+      <p class="text-[0.7rem] text-gray-400 leading-[1.35] mb-1.5">
+        {% for author in project.data.authors %}{% if author == "Adham Elarabawy" %}<strong class="font-semibold text-gray-600">{{ author }}</strong>{% else %}{{ author }}{% endif %}{% if project.data.equal_contributors contains author %}<sup class="ml-px">&#42;</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% if project.data.affiliation %}<span class="mx-1 text-gray-300" aria-hidden="true">·</span><span class="font-medium text-gray-500">{{ project.data.affiliation }}</span>{% endif %}
       </p>
       {% endif %}
 
