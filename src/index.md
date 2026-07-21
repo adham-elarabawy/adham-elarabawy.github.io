@@ -71,6 +71,12 @@ layout: layout.njk
       </p>
       {% endif %}
 
+      {% if project.data.authors %}
+      <p class="text-xs text-gray-500 leading-snug mb-1">
+        {% for author in project.data.authors %}{% if author == "Adham Elarabawy" %}<strong class="font-semibold text-gray-700">{{ author }}</strong>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+      </p>
+      {% endif %}
+
       {% if project.data.note %}
       <p class="text-xs italic text-gray-500 mb-1">
         {{ project.data.note }}
