@@ -3,7 +3,7 @@ title: Home
 layout: layout.njk
 ---
 
-<section class="mt-8 md:mt-12 mb-8 md:mb-12">
+<section class="mt-8 md:mt-12 mb-0">
   <div class="max-w-4xl mx-auto flex flex-row gap-3 md:gap-6 items-start md:items-center">
 
     <div class="w-24 sm:w-28 md:w-40 shrink-0">
@@ -31,93 +31,21 @@ layout: layout.njk
   </div>
 </section>
 
----
+<hr class="my-8 md:my-10" />
 
-<h2 class="text-xl md:text-2xl font-semibold tracking-tight text-text mb-3">
+<h2 class="mt-0 mb-4 text-xl md:text-2xl font-semibold tracking-tight text-text">
   Selected Projects
 </h2>
 
-<ul class="space-y-0 divide-y divide-gray-100">
+<ul class="mt-0 mb-0 pl-0 list-none space-y-0 divide-y divide-gray-100">
 {% assign sortedProjects = collections.projects | sort: "data.date" | reverse %}
 {% for project in sortedProjects %}
     {% if project.data.featured %}
-<li class="flex flex-row items-start gap-x-3 py-2.5 first:pt-0">
-
-    <div class="w-28 md:w-40 shrink-0 overflow-hidden rounded-sm">
-      <img
-        src="{{ project.data.image }}"
-        alt="{{ project.data.title }}"
-        class="w-full aspect-[5/4] object-cover object-center"
-      />
-    </div>
-
-    <div class="min-w-0">
-      <p class="text-xs text-gray-400 mb-0.5 tracking-wide uppercase">
-        {{ project.data.date | date: "%B %Y" }}
-      </p>
-      <h3 class="text-sm md:text-base font-semibold text-text mb-0.5 leading-snug">
-        {% if project.data.external_url %}
-          <a href="{{ project.data.external_url }}" target="_blank" rel="noopener" class="hover:text-accent-600 transition no-underline">
-            {{ project.data.title }}
-          </a>
-        {% else %}
-          <a href="{{ project.url }}" class="hover:text-accent-600 transition no-underline">
-            {{ project.data.title }}
-          </a>
-        {% endif %}
-      </h3>
-
-      {% if project.data.description %}
-      <p class="text-sm text-gray-600 leading-snug mb-1.5">
-        {{ project.data.description }}
-      </p>
-      {% endif %}
-
-      {% if project.data.authors %}
-      <p class="text-[0.7rem] text-gray-400 leading-[1.35] mb-1.5">
-        {% for author in project.data.authors %}{% if author == "Adham Elarabawy" %}<strong class="font-semibold text-gray-600">{{ author }}</strong>{% else %}{{ author }}{% endif %}{% if project.data.equal_contributors contains author %}<sup class="ml-px">&#42;</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% if project.data.affiliation %}<span class="mx-1 text-gray-300" aria-hidden="true">·</span><span class="italic font-medium text-gray-500">{{ project.data.affiliation }}</span>{% endif %}
-      </p>
-      {% endif %}
-
-      <p class="text-xs text-gray-400">
-        {{ project.data.tags | join: ' · ' }}
-      </p>
-    </div>
-  </li>
+{% include "project-card.liquid" %}
     {% endif %}
   {% endfor %}
 </ul>
 
 <div class="text-sm text-right mt-3">
   <a href="/projects/" class="text-accent-600 hover:text-accent-800 hover:underline">&rarr; See all projects</a>
-</div>
-
----
-
-<h2 class="text-xl md:text-2xl font-semibold tracking-tight text-text mb-3">
-  Featured Writing
-</h2>
-
-Coming soon!
-
-<!-- <ul class="space-y-6 max-w-4xl mx-auto">
-  {% for post in collections.blog | reverse %}
-    {% if post.data.featured %}
-    <li>
-      <h3 class="text-base font-medium text-text mb-1">
-        <a href="{{ post.url }}" class="hover:underline">{{ post.data.title }}</a>
-      </h3>
-      <p class="text-sm text-gray-500 mb-1">
-        {{ post.data.description }}
-      </p>
-      <p class="text-xs text-gray-400">
-        {{ post.date | date: "%B %Y" }}
-      </p>
-    </li>
-    {% endif %}
-  {% endfor %}
-</ul> -->
-
-<div class="text-sm text-right max-w-4xl mx-auto mt-2">
-  <a href="/blog/" class="text-accent-600 hover:text-accent-800 hover:underline">&rarr; Read all writing</a>
 </div>
