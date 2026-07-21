@@ -3,6 +3,7 @@ title: OpenQuadruped
 layout: layout.njk
 
 description: An open-source 3D-printed quadrupedal robot dog with custom IK, gait planning, and ROS integration.
+authors: ["Adham Elarabawy", "Maurice Rahme"]
 date: 2020-12-02
 tags: ["robotics", "machine learning"]
 image: /assets/projects/open_quadruped_demo.gif
