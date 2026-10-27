@@ -1,9 +1,9 @@
 {
   "name": "simple-site",
   "scripts": {
-    "build": "npm run build:css && npx @11ty/eleventy",
+    "build": "node -e \"require('node:fs').rmSync('_site', { recursive: true, force: true })\" && npm run build:css && WRITING_PREVIEW=0 npx @11ty/eleventy",
     "build:css": "npx postcss src/styles.css -o _site/styles.css",
-    "dev": "npx @11ty/eleventy --serve"
+    "dev": "npm run build:css && WRITING_PREVIEW=1 npx @11ty/eleventy --serve --port=8081"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",

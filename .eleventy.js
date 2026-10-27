@@ -1,4 +1,7 @@
 module.exports = function (eleventyConfig) {
+  const writingPreview = process.env.WRITING_PREVIEW === "1";
+  eleventyConfig.addGlobalData("writingPreview", writingPreview);
+  eleventyConfig.setServerPassthroughCopyBehavior("copy");
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
   eleventyConfig.addPassthroughCopy("public");
@@ -11,7 +14,7 @@ module.exports = function (eleventyConfig) {
 
   const getWriting = (collectionApi) => collectionApi
     .getFilteredByGlob("./src/blog/*.md")
-    .filter(item => item.data.writing === true && item.data.published !== false)
+    .filter(item => item.data.writing === true && (item.data.published !== false || writingPreview))
     .sort((a, b) => b.date - a.date);
 
   eleventyConfig.addCollection("writing", getWriting);
