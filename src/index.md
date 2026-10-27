@@ -38,6 +38,8 @@ layout: layout.njk
   <ul class="writing-list">
 {% for post in collections.selectedWriting %}
 {% include "writing-card.liquid" %}
+{% else %}
+    <li class="writing-empty">Nothing published yet.</li>
 {% endfor %}
   </ul>
   <div class="text-sm text-right mt-3">

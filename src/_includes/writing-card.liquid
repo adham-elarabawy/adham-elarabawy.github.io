@@ -1,9 +1,8 @@
 <li class="writing-card">
+  <p class="writing-date"><time datetime="{{ post.data.date | date: '%Y-%m-%d' }}">{{ post.data.date | date: "%B %Y" }}</time></p>
   <h3><a href="{{ post.url }}">{{ post.data.title | escape }}</a></h3>
   {% if post.data.description %}<p class="writing-description">{{ post.data.description | escape }}</p>{% endif %}
   {% if post.data.status == "in-progress" %}
   <p class="writing-meta">In progress</p>
-  {% else %}
-  <p class="writing-meta"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %Y" }}</time></p>
   {% endif %}
 </li>

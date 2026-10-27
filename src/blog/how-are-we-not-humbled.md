@@ -3,6 +3,8 @@ title: "There is so much to do. How are we not humbled?"
 layout: writing.njk
 date: 2026-10-27
 writing: true
+published: false
+permalink: false
 featured: true
 featuredOrder: 1
 status: in-progress

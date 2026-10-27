@@ -5,9 +5,9 @@ Draft in Google Docs if that feels comfortable. When the draft is ready, copy it
 ## Your first piece
 
 Start in `src/blog/how-are-we-not-humbled.md`, below the closing `---`.
-The handwritten heading is already connected. The page is linked on the homepage and the writing archive as **In progress**. No essay text has been added for you.
+The handwritten heading is already connected. The piece is an unpublished draft: `published: false` and `permalink: false` exclude it from both writing lists and prevent an article page from being built. No essay text has been added for you.
 
-When ready, add the body, remove `status: in-progress`, and change `date` to the publication date.
+When the essay is finished and you explicitly want it published, add the body, remove `status: in-progress`, `published: false`, and `permalink: false`, and change `date` to the publication date.
 
 ## Add another piece
 
@@ -19,6 +19,8 @@ title: "Your handwritten heading, transcribed"
 layout: writing.njk
 date: 2026-10-27
 writing: true
+published: false
+permalink: false
 featured: true
 featuredOrder: 2
 headingImage: /assets/writing/your-piece.webp
