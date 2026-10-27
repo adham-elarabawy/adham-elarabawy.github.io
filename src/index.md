@@ -33,6 +33,20 @@ layout: layout.njk
 
 <hr class="my-8 md:my-10" />
 
+<section aria-labelledby="selected-writing">
+  <h2 id="selected-writing" class="mt-0 mb-4 text-xl md:text-2xl font-semibold tracking-tight text-text">Selected writing</h2>
+  <ul class="writing-list">
+{% for post in collections.selectedWriting %}
+{% include "writing-card.liquid" %}
+{% endfor %}
+  </ul>
+  <div class="text-sm text-right mt-3">
+    <a href="/blog/" class="text-accent-600 hover:text-accent-800 hover:underline">&rarr; See all writing</a>
+  </div>
+</section>
+
+<hr class="my-8 md:my-10" />
+
 <h2 class="mt-0 mb-4 text-xl md:text-2xl font-semibold tracking-tight text-text">
   Selected Projects
 </h2>

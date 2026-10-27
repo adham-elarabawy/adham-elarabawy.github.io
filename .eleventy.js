@@ -9,9 +9,16 @@ module.exports = function (eleventyConfig) {
   return collectionApi.getFilteredByGlob("./src/projects/*.md").filter(item => item.inputPath.indexOf("index.md") === -1);
 });
 
-    eleventyConfig.addCollection("blog", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("src/blog/*.md");
-    });
+  const getWriting = (collectionApi) => collectionApi
+    .getFilteredByGlob("./src/blog/*.md")
+    .filter(item => item.data.writing === true && item.data.published !== false)
+    .sort((a, b) => b.date - a.date);
+
+  eleventyConfig.addCollection("writing", getWriting);
+  eleventyConfig.addCollection("selectedWriting", (collectionApi) => getWriting(collectionApi)
+    .filter(item => item.data.featured === true)
+    .sort((a, b) => (a.data.featuredOrder ?? Infinity) - (b.data.featuredOrder ?? Infinity))
+    .slice(0, 5));
 
 
   return {

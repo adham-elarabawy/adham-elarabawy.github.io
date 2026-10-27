@@ -34,3 +34,56 @@ mark {
 hr {
   @apply border-t border-gray-200 my-6;
 }
+
+.prose .writing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.writing-card {
+  padding: 1rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.prose .writing-card h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.prose .writing-card a { text-decoration: none; }
+.prose .writing-card a:hover { text-decoration: underline; }
+
+.prose .writing-description {
+  margin: 0.35rem 0 0;
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.prose .writing-meta {
+  margin: 0.4rem 0 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.writing-back { font-size: 0.875rem; }
+.writing-header { margin: 2.5rem 0; }
+
+.prose .writing-heading-image {
+  width: 100%;
+  height: auto;
+  margin: 0 0 1rem;
+}
+
+.writing-mobile-title { display: none; }
+
+@media (max-width: 639px) {
+  .prose .writing-mobile-title {
+    display: block;
+    margin: 1rem 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+}
