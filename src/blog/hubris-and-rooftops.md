@@ -39,5 +39,3 @@ I know that the humans in each of these buildings would absolutely enjoy eating 
 How humbling is it to know that the world we live in is infinitely more complicated than we could dream to understand and systematize? What hubris makes us think that we’ve accidentally Solved Everything? The physical world is clearly so much more complex than we’ve deluded ourselves into thinking it is. And yet our folly deceives us into believing that solving verifiable abstract logic (read: mathematics, coding) means we’re almost done solving Everything (read: the fullness of complexity of the real world and human coordination).
 
 I’ve long admired the idea of *[Knightian Uncertainty](https://www.econlib.org/library/Knight/knRUP.html?chapter_num=9)*. It concedes that there are situations too novel, complex, and unique to assign any reliable probability to. And what is the real world but infinitely novel, complex, and unique?
-
-For each rooftop we enable ourselves to build, there are still starlings and falcons to be inspired by.
