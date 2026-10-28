@@ -195,3 +195,10 @@ hr {
 .prose .writing-footnotes p {
   margin: 0;
 }
+
+.prose .writing-media-credit {
+  margin-top: 1.5rem;
+  color: #6b7280;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}

@@ -4,8 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title or "Adham Elarabawy" }}</title>
+  {% if socialImage %}
+  <meta name="description" content="{{ description | escape }}" />
+  <link rel="canonical" href="https://elarabawy.com{{ page.url }}" />
+  <meta property="og:type" content="{% if writing %}article{% else %}website{% endif %}" />
+  <meta property="og:title" content="{{ title | escape }}" />
+  <meta property="og:description" content="{{ description | escape }}" />
+  <meta property="og:site_name" content="Adham Elarabawy" />
+  <meta property="og:url" content="https://elarabawy.com{{ page.url }}" />
+  <meta property="og:image" content="https://elarabawy.com{{ socialImage }}" />
+  <meta property="og:image:type" content="image/jpeg" />
+  {% if socialImageWidth and socialImageHeight %}
+  <meta property="og:image:width" content="{{ socialImageWidth }}" />
+  <meta property="og:image:height" content="{{ socialImageHeight }}" />
+  {% endif %}
+  <meta property="og:image:alt" content="{{ socialImageAlt | escape }}" />
+  {% if socialVideo %}
+  <meta property="og:video" content="https://elarabawy.com{{ socialVideo }}" />
+  <meta property="og:video:secure_url" content="https://elarabawy.com{{ socialVideo }}" />
+  <meta property="og:video:type" content="video/mp4" />
+  {% if socialVideoWidth and socialVideoHeight %}
+  <meta property="og:video:width" content="{{ socialVideoWidth }}" />
+  <meta property="og:video:height" content="{{ socialVideoHeight }}" />
+  {% endif %}
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@adhamelarabawy" />
+  <meta name="twitter:creator" content="@adhamelarabawy" />
+  <meta name="twitter:title" content="{{ title | escape }}" />
+  <meta name="twitter:description" content="{{ description | escape }}" />
+  <meta name="twitter:image" content="https://elarabawy.com{{ socialImage }}" />
+  <meta name="twitter:image:alt" content="{{ socialImageAlt | escape }}" />
+  {% endif %}
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261027-writing-footnote" />
+  <link rel="stylesheet" href="/styles.css?v=20261027-writing-preview" />
   <link rel="icon" href="/assets/main/favicon.ico" type="image/x-icon" />
 
   <!-- Google Analytics -->

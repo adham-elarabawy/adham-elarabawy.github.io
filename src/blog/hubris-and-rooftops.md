@@ -1,5 +1,13 @@
 ---
 title: "Hubris & Rooftops"
+description: "On AI, uncertainty, and the view from a San Francisco window."
+socialImage: /assets/writing/hubris-murmuration.jpg
+socialImageAlt: "A murmuration of starlings above the wetlands at sunset."
+socialImageWidth: 1200
+socialImageHeight: 675
+socialVideo: /assets/writing/hubris-murmuration.mp4
+socialVideoWidth: 960
+socialVideoHeight: 540
 headingText: "There is so much to do. How are we not humbled?"
 layout: writing.njk
 date: 2026-10-27
@@ -43,3 +51,5 @@ I’ve long admired the idea of *[Knightian Uncertainty](https://www.econlib.org
 <div class="writing-footnotes" role="doc-endnotes">
 <p id="footnote-1"><sup>1</sup> My wife would like to point out that not everyone wants to have an existential experience looking at birds. And that not everyone likes the sun in their face when biting into a sandwich. <a href="#footnote-ref-1" role="doc-backlink" aria-label="Back to text">↩</a></p>
 </div>
+
+<p class="writing-media-credit">Preview footage: <a href="https://commons.wikimedia.org/wiki/File:Flock_of_starlings_(Sturnus_vulgaris).webm">starling murmuration</a> by Karen Roe, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Trimmed, muted, and resized.</p>
