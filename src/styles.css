@@ -183,3 +183,15 @@ hr {
   height: auto;
   margin: 0;
 }
+
+.writing-footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose .writing-footnotes p {
+  margin: 0;
+}

@@ -34,8 +34,12 @@ My gaze then shifts downwards, and I find myself looking for the occasional roof
 <img src="/assets/writing/hubris-rooftops.jpg" alt="A view across San Francisco rooftops toward Coit Tower and the bay." width="1600" height="1200" loading="lazy" decoding="async" />
 </figure>
 
-I know that the humans in each of these buildings would absolutely enjoy eating their lunch on a sunny rooftop. And yet, they don’t. I also know that if they were to look up at the European starlings, they’d be struck with awe. That they’d have an irreducible feeling inside them that would strike them down with humility.
+I know that the humans in each of these buildings would absolutely enjoy eating their lunch on a sunny rooftop. And yet, they don’t. I also know that if they were to look up at the European starlings, they’d be struck with awe. That they’d have an irreducible feeling inside them that would strike them down with humility.<sup id="footnote-ref-1"><a href="#footnote-1" role="doc-noteref" aria-label="Footnote 1">1</a></sup>
 
 How humbling is it to know that the world we live in is infinitely more complicated than we could dream to understand and systematize? What hubris makes us think that we’ve accidentally Solved Everything? The physical world is clearly so much more complex than we’ve deluded ourselves into thinking it is. And yet our folly deceives us into believing that solving verifiable abstract logic (read: mathematics, coding) means we’re almost done solving Everything (read: the fullness of complexity of the real world and human coordination).
 
 I’ve long admired the idea of *[Knightian Uncertainty](https://www.econlib.org/library/Knight/knRUP.html?chapter_num=9)*. It concedes that there are situations too novel, complex, and unique to assign any reliable probability to. And what is the real world but infinitely novel, complex, and unique?
+
+<div class="writing-footnotes" role="doc-endnotes">
+<p id="footnote-1"><sup>1</sup> My wife would like to point out that not everyone wants to have an existential experience looking at birds. And that not everyone likes the sun in their face when biting into a sandwich. <a href="#footnote-ref-1" role="doc-backlink" aria-label="Back to text">↩</a></p>
+</div>
