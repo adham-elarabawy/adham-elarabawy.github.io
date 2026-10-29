@@ -302,7 +302,7 @@ class BrainViewer extends HTMLElement {
 
     const label = this.hasAttribute("labels") ? document.createElement("span") : null;
     if (label) {
-      label.style.cssText = "position:absolute;left:0;right:0;bottom:2px;text-align:center;pointer-events:none;" +
+      label.style.cssText = "position:absolute;left:0;right:0;top:100%;margin-top:4px;text-align:center;pointer-events:none;" +
         "font:10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0.12em;color:#9ca3af";
       this.appendChild(label);
     }

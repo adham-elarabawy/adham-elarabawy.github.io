@@ -208,7 +208,7 @@ hr {
 /* fade the canvas, not the element: opacity/filter on the element would isolate the grain's blend */
 .brain-grain canvas {
   opacity: 0.55;
-  filter: saturate(0.9) contrast(0.92);
+  filter: grayscale(1) contrast(0.92);
   transition: opacity 0.6s ease, filter 0.6s ease;
 }
 
