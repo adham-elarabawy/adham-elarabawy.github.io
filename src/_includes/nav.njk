@@ -1,9 +1,14 @@
 <nav class="mb-8 flex justify-between items-center">
+{# the home page already has my name as its heading #}
+{% if page.url != "/" %}
 <a
   href="/"
   class="text-lg font-semibold tracking-tight text-text hover:text-accent-600 transition">
   Adham Elarabawy
 </a>
+{% else %}
+<span></span>
+{% endif %}
   <div class="text-sm space-x-4">
     <a href="/projects/" class="text-text hover:text-accent-600 transition">Projects</a>
     <a href="/blog/" class="text-text hover:text-accent-600 transition">Writing</a>

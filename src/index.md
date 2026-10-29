@@ -34,7 +34,10 @@ layout: layout.njk
 <hr class="my-8 md:my-10" />
 
 <section aria-labelledby="selected-writing">
-  <h2 id="selected-writing" class="mt-0 mb-4 text-xl md:text-2xl font-semibold tracking-tight text-text">Selected writing</h2>
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 id="selected-writing" class="m-0 text-xl md:text-2xl font-semibold tracking-tight text-text">Selected writing</h2>
+    <a href="/blog/" class="text-sm text-gray-400 hover:text-accent-600 no-underline transition">All writing ({{ collections.writing.size }}) &rarr;</a>
+  </div>
   <ul class="writing-list">
 {% for post in collections.selectedWriting %}
 {% include "writing-card.liquid" %}
@@ -42,16 +45,14 @@ layout: layout.njk
     <li class="writing-empty">Nothing published yet.</li>
 {% endfor %}
   </ul>
-  <div class="text-sm text-right mt-3">
-    <a href="/blog/" class="text-accent-600 hover:text-accent-800 hover:underline">&rarr; See all writing</a>
-  </div>
 </section>
 
 <hr class="my-8 md:my-10" />
 
-<h2 class="mt-0 mb-4 text-xl md:text-2xl font-semibold tracking-tight text-text">
-  Selected Projects
-</h2>
+<div class="flex items-baseline justify-between mb-4">
+  <h2 class="m-0 text-xl md:text-2xl font-semibold tracking-tight text-text">Selected projects</h2>
+  <a href="/projects/" class="text-sm text-gray-400 hover:text-accent-600 no-underline transition">All projects ({{ collections.projects.size }}) &rarr;</a>
+</div>
 
 <ul class="mt-0 mb-0 pl-0 list-none space-y-0 divide-y divide-gray-200 sm:divide-gray-100">
 {% assign sortedProjects = collections.projects | sort: "data.date" | reverse %}
@@ -61,7 +62,3 @@ layout: layout.njk
     {% endif %}
   {% endfor %}
 </ul>
-
-<div class="text-sm text-right mt-3">
-  <a href="/projects/" class="text-accent-600 hover:text-accent-800 hover:underline">&rarr; See all projects</a>
-</div>

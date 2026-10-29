@@ -1,5 +1,7 @@
-// <brain-viewer src="/assets/brain/" cut="axial|coronal|sagittal"> — my cortex inside a translucent
-// head, from a 2021 MRI, with a slow sweeping cut showing the scan. Hover moves the cut, drag rotates.
+// <brain-viewer src="/assets/brain/" cut="axial|coronal|sagittal" edge="pearl|ice|north|aurora|ember" labels>
+// My cortex inside a translucent head, from a 2021 MRI, with a slow sweeping cut showing the scan.
+// Hover moves the cut, drag rotates. `edge` adds an iridescent sheen at the silhouettes;
+// `labels` adds a monospace readout of the current slice.
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 
 // North palette (north-research.com): midnight navy ink, cool silver, on the white page
@@ -11,10 +13,30 @@ const INK = [0, 0, 28]; // #00001c
 // Volume axes are (a0=superior, a1=anterior, a2=left/right); three.js uses x=a2, y=a0, z=a1.
 // Each cut sweeps along one of them; `face` is the rig yaw that turns the cut face toward the camera.
 const CUTS = {
-  axial: { axis: 1, vol: 0, face: null, elevation: 0.62, dist: 420, lift: 0 },
-  coronal: { axis: 2, vol: 1, face: 0.35, elevation: 0.22, dist: 500, lift: -10 },
-  sagittal: { axis: 0, vol: 2, face: -Math.PI / 2 + 0.35, elevation: 0.22, dist: 500, lift: -10 },
+  axial: { axis: 1, vol: 0, face: null, elevation: 0.62, dist: 420, lift: 0, tag: "AX" },
+  coronal: { axis: 2, vol: 1, face: 0.35, elevation: 0.22, dist: 500, lift: -10, tag: "COR" },
+  sagittal: { axis: 0, vol: 2, face: -Math.PI / 2 + 0.35, elevation: 0.22, dist: 500, lift: -10, tag: "SAG" },
 };
+
+// Iridescent edge palettes (cosine palettes: a + b * cos(2π(t + d))), washed toward silver
+const EDGES = {
+  pearl: { a: [0.78, 0.74, 0.84], b: [0.22, 0.2, 0.2], d: [0.0, 0.15, 0.3] },
+  ice: { a: [0.5, 0.72, 0.86], b: [0.25, 0.22, 0.14], d: [0.55, 0.6, 0.68] },
+  north: { a: [0.42, 0.48, 0.74], b: [0.25, 0.25, 0.22], d: [0.62, 0.64, 0.68] },
+  aurora: { a: [0.45, 0.65, 0.7], b: [0.4, 0.35, 0.35], d: [0.3, 0.45, 0.62] },
+  ember: { a: [0.82, 0.62, 0.52], b: [0.25, 0.25, 0.25], d: [0.0, 0.08, 0.2] },
+};
+
+const IRID_GLSL = `
+  uniform vec3 pa; uniform vec3 pb; uniform vec3 pd;
+  vec3 irid(float rim, float time) {
+    return pa + pb * cos(6.2831 * (rim * 0.9 + time * 0.04 + pd));
+  }`;
+
+function paletteUniforms(edge) {
+  const v = (x) => ({ value: new THREE.Vector3(...(x || [0, 0, 0])) });
+  return { pa: v(edge?.a), pb: v(edge?.b), pd: v(edge?.d), time: { value: 0 } };
+}
 
 function unpack(bin, verts, tris, dims, withK) {
   const [nz, ny, nx] = dims;
@@ -82,9 +104,10 @@ async function fetchData(base) {
   return { cortex, head, vol, dims: meta.dims };
 }
 
-function glowMaterial(clip) {
+function glowMaterial(clip, edge) {
   return new THREE.ShaderMaterial({
-    uniforms: { color: { value: GLOW }, strength: { value: 0.3 } },
+    defines: edge ? { IRID: "" } : {},
+    uniforms: { color: { value: GLOW }, strength: { value: edge ? 0.55 : 0.3 }, ...paletteUniforms(edge) },
     vertexShader: `
       #include <common>
       #include <clipping_planes_pars_vertex>
@@ -99,19 +122,60 @@ function glowMaterial(clip) {
       }`,
     fragmentShader: `
       #include <clipping_planes_pars_fragment>
-      uniform vec3 color; uniform float strength;
+      uniform vec3 color; uniform float strength; uniform float time;
       varying vec3 vN; varying vec3 vV; varying float vY;
+      ${IRID_GLSL}
       void main() {
         #include <clipping_planes_fragment>
         float rim = 1.0 - abs(dot(normalize(vN), normalize(vV)));
         // the scan stops at the jaw; fade the shell out before its flat bottom edge
         float a = pow(rim, 2.4) * strength * smoothstep(-80.0, -30.0, vY);
-        gl_FragColor = vec4(color * a, a); // premultiplied, so it composites cleanly over the page
+        vec3 c = color;
+        #ifdef IRID
+          c = irid(rim, time);
+        #endif
+        gl_FragColor = vec4(c * a, a); // premultiplied, so it composites cleanly over the page
       }`,
     clipping: true,
     clippingPlanes: [clip],
     transparent: true,
     depthWrite: false,
+    premultipliedAlpha: true,
+    side: THREE.DoubleSide,
+  });
+}
+
+// Iridescent sheen drawn over the shaded cortex, strongest at its silhouette
+function sheenMaterial(clip, edge) {
+  return new THREE.ShaderMaterial({
+    uniforms: paletteUniforms(edge),
+    vertexShader: `
+      #include <common>
+      #include <clipping_planes_pars_vertex>
+      varying vec3 vN; varying vec3 vV;
+      void main() {
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        vN = normalize(normalMatrix * normal);
+        vV = normalize(-mvPosition.xyz);
+        gl_Position = projectionMatrix * mvPosition;
+        #include <clipping_planes_vertex>
+      }`,
+    fragmentShader: `
+      #include <clipping_planes_pars_fragment>
+      uniform float time;
+      varying vec3 vN; varying vec3 vV;
+      ${IRID_GLSL}
+      void main() {
+        #include <clipping_planes_fragment>
+        float rim = 1.0 - abs(dot(normalize(vN), normalize(vV)));
+        float a = smoothstep(0.3, 1.0, rim) * 0.85;
+        gl_FragColor = vec4(irid(rim, time) * a, a);
+      }`,
+    clipping: true,
+    clippingPlanes: [clip],
+    transparent: true,
+    depthWrite: false,
+    depthFunc: THREE.LessEqualDepth,
     premultipliedAlpha: true,
     side: THREE.DoubleSide,
   });
@@ -149,6 +213,7 @@ class BrainViewer extends HTMLElement {
   async init() {
     const base = this.getAttribute("src") || "/assets/brain/";
     const mode = CUTS[this.getAttribute("cut")] || CUTS.axial;
+    const edge = EDGES[this.getAttribute("edge")] || null;
     const { cortex, head, vol, dims } = await loadData(base);
     const nz = dims[0];
 
@@ -180,7 +245,12 @@ class BrainViewer extends HTMLElement {
     rig.add(new THREE.Mesh(cortex, new THREE.MeshStandardMaterial({
       vertexColors: true, roughness: 0.55, side: THREE.DoubleSide, clippingPlanes: [clip],
     })));
-    const shell = new THREE.Mesh(head, glowMaterial(clip));
+    const sheen = edge ? new THREE.Mesh(cortex, sheenMaterial(clip, edge)) : null;
+    if (sheen) {
+      sheen.renderOrder = 1;
+      rig.add(sheen);
+    }
+    const shell = new THREE.Mesh(head, glowMaterial(clip, edge));
     shell.renderOrder = 2;
     rig.add(shell);
 
@@ -197,7 +267,8 @@ class BrainViewer extends HTMLElement {
         polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
       })
     );
-    cap.renderOrder = 1;
+    cap.renderOrder = 2;
+    shell.renderOrder = 3;
     // orient the plane so texture u/v land on the right axes; -0.5 moves texel centers onto voxel centers
     let flipV = false;
     if (mode.vol === 0) { cap.rotation.x = -Math.PI / 2; cap.position.set(-0.5, 0, -0.5); flipV = true; }
@@ -227,6 +298,18 @@ class BrainViewer extends HTMLElement {
         }
       }
       tex.needsUpdate = true;
+    };
+
+    const label = this.hasAttribute("labels") ? document.createElement("span") : null;
+    if (label) {
+      label.style.cssText = "position:absolute;left:0;right:0;bottom:2px;text-align:center;pointer-events:none;" +
+        "font:10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:0.12em;color:#9ca3af";
+      this.appendChild(label);
+    }
+    let lastLabel = "";
+    const setLabel = (i) => {
+      const text = `${mode.tag} ${i === null ? "———" : String(i).padStart(3, "0")}`;
+      if (label && text !== lastLabel) label.textContent = lastLabel = text;
     };
 
     // interaction
@@ -299,6 +382,10 @@ class BrainViewer extends HTMLElement {
         drawSlice(i);
         cap.position.setComponent(mode.axis, i - dims[mode.vol] / 2);
       }
+      setLabel(cap.visible ? i : null);
+      const time = now / 1000;
+      shell.material.uniforms.time.value = time;
+      if (sheen) sheen.material.uniforms.time.value = time;
       renderer.render(scene, camera);
       raf = requestAnimationFrame(tick);
     };
@@ -307,4 +394,4 @@ class BrainViewer extends HTMLElement {
   }
 }
 
-customElements.define("brain-viewer", BrainViewer);
+if (!customElements.get("brain-viewer")) customElements.define("brain-viewer", BrainViewer);
