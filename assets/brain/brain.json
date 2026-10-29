@@ -1,0 +1,1 @@
+{"dims": [162, 168, 165], "cols": 13, "cortex": {"verts": 59822, "tris": 120426}, "head": {"verts": 17529, "tris": 35054}, "encoding": "slices: 0 empty, 1-120 head tissue, 128-255 cortex interior", "axes": "axis0=superior+, axis1=anterior+, axis2=left/right; 1 voxel = 1 unit"}
